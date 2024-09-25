@@ -60,6 +60,7 @@
     {
       "group": "Essentials",
       "pages": [
+        "essentials/test",
         "essentials/markdown",
         "essentials/code",
         "essentials/images",
