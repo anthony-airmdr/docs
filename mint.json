@@ -27,8 +27,8 @@
   },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
+      "name": "Release Notes",
+      "url": "release-notes"
     }
   ],
   "anchors": [
@@ -70,7 +70,7 @@
       ]
     },
     {
-      "group": "API Documentation",
+      "group": "Release Notes",
       "pages": [
         "api-reference/introduction"
       ]
