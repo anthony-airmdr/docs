@@ -50,12 +50,16 @@
   ],
   "navigation": [
     {
-      "group": "Get Started now",
+      "group": "Get Started",
       "pages": [
         "introduction",
         "quickstart",
         "development"
       ]
+    },
+   {
+    "group": "Updates",
+    "pages": ["changelog"]
     },
     {
       "group": "Essentials",
