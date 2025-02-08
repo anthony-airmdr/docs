@@ -38,6 +38,11 @@
       "url": "https://mintlify.com/docs"
     },
     {
+      "name": "Release Notes",
+      "icon": "release-notes-icon",
+      "url": "https://mintlify.com/docs"
+    },
+    {
       "name": "Community",
       "icon": "slack",
       "url": "https://mintlify.com/community"
