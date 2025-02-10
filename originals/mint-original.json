@@ -25,6 +25,32 @@
     "name": "Dashboard",
     "url": "https://dashboard.mintlify.com"
   },
+  {
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Release Notes",
+        "pages": [
+          "Release Notes",
+          "Enhancements",
+          "Bug Fixes"
+        ]
+      },
+      {
+        "tab": "Integrations",
+        "pages": [
+          "Integrations",
+          "Custom Integrations",
+          "Remote Agent Client"
+        ]
+      },
+      {
+        "tab": "Blog",
+        "href": "https://airmdr.com/blog"
+      }
+    ]
+  }
+}
   "tabs": [
     {
       "name": "API Reference",
