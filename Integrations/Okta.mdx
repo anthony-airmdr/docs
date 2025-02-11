@@ -9,7 +9,8 @@ Okta securely connects people to their applications from any device, anywhere, a
 
 * Login into the Okta Admin Consolehttps://your-okta-domain.okta.com
 
-* Enter your admin username and password, then click Sign In. The user must have access to create an Okta API token
+* Enter your admin username and password, then click Sign In. 
+  The user must have access to create an Okta API token
   List of RBACs (Role-Based Access Control) to create Okta API token:
 
   * Super Admins
@@ -18,71 +19,25 @@ Okta securely connects people to their applications from any device, anywhere, a
 
   * Group Admins
 
-  * Group Member-ship Admins
+  * Group Membership Admins
 
   * Read Only Admins
 
-* In the Okta Admin Console, in the top navigation bar, click on
+* In the Okta Admin Console, in the top navigation bar, click on Security.
 
-  **Security**
+* From the dropdown, select API.
 
-  .
+* Under the API section, click on theTokenstab.
 
-* From the dropdown, select
+* Click the Create Token button.
 
-  **API**
+* In the Create Token dialog box, enter a Token Name (e.g., "My API Token").
 
-  .
-
-* Under the
-
-  **API**
-
-  section, click on the
-
-  **Tokens**
-
-  tab.
-
-* Click the
-
-  **Create Token**
-
-  button.
-
-* In the
-
-  **Create Token**
-
-  dialog box, enter a
-
-  **Token Name**
-
-  (e.g., "My API Token").
-
-* Click
-
-  **Create Token**
-
-  to generate the new token.
-
-  <Icon icon="file-import" />
-
+* Click Create Token to generate the new token.
   After creation, Okta will display the new API token.
+  This is the only time the token will be visible, so make sure to copy and store it securely (e.g., in a password manager).
 
-  <Icon icon="copy" />
-
-  This is the only time the token will be visible, so
-
-  **make sure to copy and store it**
-
-  securely (e.g., in a password manager).
-
-* Click
-
-  **Done**
-
-  to finish the process.
+* Click Done to finish the process.
 
 * Now that you have your API token, you can use it to authenticate API requests. When making API calls, pass the token in the Authorization header as follows:
 
@@ -90,17 +45,9 @@ Okta securely connects people to their applications from any device, anywhere, a
 
 If you need to revoke the token at any time:
 
-* Go back to the
+* Go back to the API Tokens page in the Okta Admin Console.
 
-  **API Tokens**
-
-  page in the Okta Admin Console.
-
-* Find the token you want to revoke and click on the
-
-  **Revoke**
-
-  button next to it.
+* Find the token you want to revoke and click on the Revoke button next to it.
 
 ## FAQ
 
