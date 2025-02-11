@@ -30,20 +30,33 @@
     "tabs": [
       {
         "tab": "Release Notes",
+        "groups": [
+          {
+            "group": "Group 1",
         "pages": [
           "Release Notes",
           "Enhancements",
           "Bug Fixes"
         ]
-      },
-      {
+      }
+    ]
+  }
+  {
         "tab": "Integrations",
+         "groups": [
+          {
+            "group": "Group 2",
         "pages": [
           "Integrations",
           "Custom Integrations",
           "Remote Agent Client"
-        ]
-      },
+             ]
+           }
+         ]
+       } 
+     ]
+   }
+},
       {
         "tab": "Blog",
         "href": "https://airmdr.com/blog"
