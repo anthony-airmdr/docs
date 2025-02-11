@@ -1,18 +1,128 @@
 ---
-title: "Okta Version: X.X.X"
+title: "Okta Overview"
 description: "Okta is an integrated identity and mobility management service."
 ---
 
-Okta securely connects people to their applications from any device, anywhere, at any time. Okta integrates with existing directories and identity systems, as well as thousands of on-premises, cloud and mobile applications. It runs on a secure, reliable, and extensively audited cloud-based platform.
+Okta securely connects people to their applications from any device, anywhere, at any time. Okta integrates with existing directories and identity systems, as well as thousands of on-premises, cloud, and mobile applications. It runs on a secure, reliable, and extensively audited cloud-based platform.
 
-## Create Custom Integrations
+## Create Okta API Token
 
-Integrations in Devo SOAR enable interactions with the external world and play a crucial role in performing various actions.
-These integrations empower the platform to:
+* Login into the Okta Admin Console <
 
-* Fetch Data
+  `https://<your-okta-domain>.okta.com`
 
-* Make HTTP Calls
+  \>
+
+* Enter your admin username and password, then click 
+
+  **Sign In**
+
+  .
+   
+
+  <Icon icon="circle-exclamation" />
+
+   The user must have access to create an Okta API token
+  List of RBACs (Role-Based Access Control) to create Okta API token:
+  \* Super Admins
+  \* Org Admins
+  \* Group Admins
+  \* Group Member-ship Admins
+  \* Read Only Admins
+
+* In the Okta Admin Console, in the top navigation bar, click on 
+
+  **Security**
+
+  .
+
+* From the dropdown, select 
+
+  **API**
+
+  .
+
+  ![](/Okta1.JPG)
+
+   
+
+* Under the 
+
+  **API**
+
+   section, click on the 
+
+  **Tokens**
+
+   tab.
+
+* Click the 
+
+  **Create Token**
+
+   button.
+
+![](/Okta2.JPG)
+
+* In the 
+
+  **Create Token**
+
+   dialog box, enter a 
+
+  **Token Name**
+
+   (e.g., “My API Token”).
+
+* Click 
+
+  **Create Token**
+
+   to generate the new token.
+
+
+  <Icon icon="file-import" />
+
+   After creation, Okta will display the new API token.
+
+
+  <Icon icon="copy" />
+
+   This is the only time the token will be visible, so 
+
+  **make sure to copy and store it**
+
+   securely (e.g., in a password manager).
+
+* Click 
+
+  **Done**
+
+   to finish the process.
+
+* Now that you have your API token, you can use it to authenticate API requests. When making API calls, pass the token in the Authorization header as follows:
+
+<CodeGroup>
+  ```javascript Plaintext
+  Authorization: SSWS <Your-API-Token>
+  ```
+</CodeGroup>
+
+## Optional: Revoke an API Token
+
+If you need to revoke the token at any time:
+
+* Go back to the 
+
+  **API Tokens**
+
+   page in the Okta Admin Console.
+
+* Find the token you want to revoke and click on the 
+
+  **Revoke**
+
+   button next to it.
 
 ## FAQ
 
