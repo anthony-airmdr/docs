@@ -55,17 +55,20 @@
             "pages": ["changelog/overview"]
           }
         ]
-      }
-    ]
-  },
+      },
   {
-        "tab": "Integrations",
-        "pages": [
-          "Integrations",
-          "Custom Integrations",
-          "Remote Agent Client"
-             ]
-           },
+        "dropdown": "Integrations",
+        "icon": "plug",
+        "description": "Connect with your providers",
+        "groups": [
+          {
+            "group": "Analytics",
+            "pages": [
+              "integrations/analytics/overview",
+            ]
+          }
+        ]
+      },
       {
         "tab": "Blog",
         "href": "https://airmdr.com/blog"
