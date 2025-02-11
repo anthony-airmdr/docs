@@ -1,16 +1,16 @@
 ---
-title: "Analytics Integrations"
-description: "Integrate with an analytics platform to track events"
+title: "Integrations"
+description: "Data sharing with third-party apps is possible through integrations."
 ---
 
-Automatically send data about your documentation engagement to your third party analytics provider.
+You can connect to a third-party application using the functionality of the integration, and then use your playbook to call that connection.
 
 ## All Integrations
 
 <CardGroup cols={2}>
     <Card
-    title="Google Analytics 4"
-    href="/integrations/analytics/google-analytics"
+    title="Okta"
+    href="/integrations/analytics/Okta"
     horizontal
     icon={
 <svg
@@ -35,8 +35,8 @@ Automatically send data about your documentation engagement to your third party 
   />
 
   <Card
-    title="Google Tag Manager"
-    href="/integrations/analytics/google-tag-manager"
+    title="Okta"
+    href="/integrations/analytics/Okta"
     horizontal
     icon={
 <svg
@@ -72,29 +72,12 @@ Automatically send data about your documentation engagement to your third party 
   />
 </CardGroup>
 
-## Enabling Analytics
+## Create Custom Integrations 
 
-Set your analytics keys in `docs.json`. You can add an unlimited number of analytics integrations for free.
-
-The syntax for `docs.json` is below. You only need to include entries for the platforms you want to connect.
-
-<CodeGroup>
-  ```json Analytics options in docs.json
-  integrations: {
-      "Okta": {
-          "apiKey": "required"
-      },
-  }
-  ```
-
-  ```json Google Analytics 4 Example
-  integrations: {
-      "ga4": {
-          "measurementId": "G-XXXXXXX"
-      }
-  }
-  ```
-</CodeGroup>
+Integrations in Devo SOAR enable interactions with the external world and play a crucial role in performing various actions. 
+These integrations empower the platform to:
+* Fetch Data
+* Make HTTP Calls
 
 ## FAQ
 
