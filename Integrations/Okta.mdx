@@ -1,88 +1,65 @@
 ---
-title: "Okta Version: X.X.X"
+title: "Okta Overview"
 description: "Okta is an integrated identity and mobility management service."
 ---
 
-Okta securely connects people to their applications from any device, anywhere, at any time. Okta integrates with existing directories and identity systems, as well as thousands of on-premises, cloud and mobile applications. It runs on a secure, reliable, and extensively audited cloud-based platform.
+Okta securely connects people to their applications from any device, anywhere, at any time. Okta integrates with existing directories and identity systems, as well as thousands of on-premises, cloud, and mobile applications. It runs on a secure, reliable, and extensively audited cloud-based platform.
 
-## All Integrations
+## Create Okta API Token
 
-<CardGroup cols={2}>
-    <Card
-    title="Okta"
-    href="/integrations/analytics/Okta"
-    horizontal
-    icon={
-<svg
-  className="h-6 w-6"
-  xmlns="http://www.w3.org/2000/svg"
-  width="64"
-  height="64"
-  viewBox="0 0 64 64"
->
-  <g transform="matrix(.363638 0 0 .363636 -3.272763 -2.909091)">
-    <path
-      d="M130 29v132c0 14.77 10.2 23 21 23 10 0 21-7 21-23V30c0-13.54-10-22-21-22s-21 9.33-21 21z"
-      fill="#f9ab00"
-    />
-    <g fill="#e37400">
-      <path d="M75 96v65c0 14.77 10.2 23 21 23 10 0 21-7 21-23V97c0-13.54-10-22-21-22s-21 9.33-21 21z" />
-      <circle cx="41" cy="163" r="21" />
-    </g>
-  </g>
-</svg>
-}
-  />
+* Login into the Okta Admin Console -->
 
-  <Card
-    title="Okta"
-    href="/integrations/analytics/Okta"
-    horizontal
-    icon={
-<svg
-  className="h-6 w-6"
-  version="1.1"
-  xmlns="http://www.w3.org/2000/svg"
-  x="0px"
-  y="0px"
-  width="192px"
-  height="192px"
-  viewBox="0 0 192 192"
-  enableBackground="new 0 0 192 192"
->
-  <rect fill="none" width="192" height="192" />
-  <g>
-    <polygon
-      fill="#8AB4F8"
-      points="111.31,176.79 80.76,147 146.37,80 178,111 	"
-    />
-    <path
-      fill="#4285F4"
-      d="M111.44,45.08L81,14L14.44,79.93c-8.58,8.58-8.58,22.49,0,31.08L80,177l31-29L61.05,95.47L111.44,45.08z"
-    />
-    <path
-      fill="#8AB4F8"
-      d="M177.56,80.44l-66-66c-8.59-8.59-22.52-8.59-31.11,0c-8.59,8.59-8.59,22.52,0,31.11l66,66
-	c8.59,8.59,22.52,8.59,31.11,0C186.15,102.96,186.15,89.03,177.56,80.44z"
-    />
-    <circle fill="#246FDB" cx="95.5" cy="162.5" r="21.5" />
-  </g>
-</svg>
-}
-  />
-</CardGroup>
+  [https://your-okta-domain.okta.com](https://your-okta-domain.okta.com)
 
-## Create Custom Integrations 
+* Enter your admin username and password, then click **Sign In**.
 
-Integrations in Devo SOAR enable interactions with the external world and play a crucial role in performing various actions. 
-These integrations empower the platform to:
-* Fetch Data
-* Make HTTP Calls
+> The user must have access to create an Okta API token. List of RBACs (Role-Based Access Control) to create Okta API token are as follows:
+
+> Super Admins
+
+> Org Admins
+
+> Group Admins
+
+> Group Membership Admins
+
+> Read Only Admins
+
+* In the Okta Admin Console, in the top navigation bar, click on **Security**.
+
+* From the dropdown, select **API**.
+
+![](/Okta1.png)
+
+* Under the **API** section, click on the **Tokens** tab.
+
+* Click the **Create Token** button.
+
+![](/Okta2.png)
+
+* In the **Create Token** dialog box, enter a **Token Name** (e.g., "Companyname Okta API Token").
+
+* Click **Create Token** to generate the new token.
+  After creation, Okta will display the new API token.
+  This is the only time the token will be visible, so make sure to copy and store it securely (e.g., in a password manager).
+
+![](/Okta3.png)
+
+* Click **Done** to finish the process.
+  Now that you have your API token, you can use it to authenticate API requests.
+
+* Email the API token and the Okta Base URL to AirMDR.
+
+## Optional: Revoke an API Token
+
+If you need to revoke the token at any time:
+
+* Go back to the **API Tokens** page in the Okta Admin Console.
+
+* Find the token you want to revoke and click on the **Revoke** button next to it.
 
 ## FAQ
 
 <Accordion title="What else than Integrations?">
   * `Integrations`
-
 </Accordion>
-
