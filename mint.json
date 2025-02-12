@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/mint.json",
-  "theme": "maple",
+  "theme": "prism",
   "name": "AirMDR",
   "logo": {
     "dark": "/logo/dark.svg",
