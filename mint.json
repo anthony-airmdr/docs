@@ -10,8 +10,9 @@
     "primary": "#0D9373",
     "light": "#07C983",
     "dark": "#0D9373"
-    },
+    }
     "favicon": "/favicon.png",
+  },
   "topbarLinks": [
     {
       "name": "Support",
@@ -33,15 +34,18 @@
           {
             "group": "Getting Started",
             "pages": [
+              "quickstart",
               {
                 "group": "Editing",
                 "icon": "pen-paintbrush",
                 "pages": ["development", "web-editor"]
-              }]
+              }
               }
             ]
-          },
-      {
+          }
+        ]
+      }
+{
         "dropdown": "Changelog",
         "icon": "list-timeline",
         "description": "Updates and changes",
@@ -59,7 +63,9 @@
         "groups": [
           {
             "group": "Analytics",
-            "pages": ["integrations/analytics/overview"]
+            "pages": [
+              "integrations/analytics/overview",
+            ]
           }
         ]
       },
@@ -68,7 +74,7 @@
         "href": "https://airmdr.com/blog"
       }
     ]
-  },
+  }
  
   "anchors": [
     {
