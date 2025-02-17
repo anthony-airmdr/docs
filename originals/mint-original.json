@@ -1,47 +1,72 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "$schema": "https://mintlify.com/mint.json",
+  "theme": "maple",
+  "name": "AirMDR",
   "logo": {
     "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "light": "/logo/airmdr_logo.png"
   },
-  "favicon": "/favicon.svg",
   "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
-    "dark": "#0D9373",
-    "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+    "dark": "#0D9373"
     }
+    "favicon": "/favicon.png",
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:support@airmdr.com"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Contact Us",
+    "url": "https://airmdr.com/contact-us"
   },
-  {
-  "navigation": {
-    "tabs": [
+  "navigation": 
+{
+    "dropdowns": [
       {
-        "tab": "Release Notes",
-        "pages": [
-          "Release Notes",
-          "Enhancements",
-          "Bug Fixes"
+        "dropdown": "Getting Started",
+        "icon": "book",
+        "description": "Set up your documentation",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "quickstart",
+              {
+                "group": "Editing",
+                "icon": "pen-paintbrush",
+                "pages": ["development", "web-editor"]
+              }
+              }
+            ]
+          }
+        ]
+      }
+{
+        "dropdown": "Changelog",
+        "icon": "list-timeline",
+        "description": "Updates and changes",
+        "groups": [
+          {
+            "group": "Changelog",
+            "pages": ["changelog/overview"]
+          }
         ]
       },
-      {
-        "tab": "Integrations",
-        "pages": [
-          "Integrations",
-          "Custom Integrations",
-          "Remote Agent Client"
+  {
+        "dropdown": "Integrations",
+        "icon": "plug",
+        "description": "Connect with your providers",
+        "groups": [
+          {
+            "group": "Analytics",
+            "pages": [
+              "integrations/analytics/overview",
+            ]
+          }
         ]
       },
       {
@@ -50,28 +75,27 @@
       }
     ]
   }
-}
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
+ 
   "anchors": [
     {
-      "name": "Documentation",
+      "name": "Welcome to AirMDR!",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "url": "https://airmdr.com/ai-mdr"
+    },
+    {
+      "name": "Connect to Us",
+      "icon": "phone",
+      "url": "https://airmdr.com/ai-mdr"
     },
     {
       "name": "Community",
       "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "url": "https://airmdr.com/community"
     },
     {
       "name": "Blog",
       "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "url": "https://airmdr.com/blog"
     }
   ],
   "navigation": [
@@ -83,9 +107,14 @@
         "development"
       ]
     },
+   {
+    "group": "Updates",
+    "pages": ["changelog"]
+    },
     {
       "group": "Essentials",
       "pages": [
+        "essentials/test",
         "essentials/markdown",
         "essentials/code",
         "essentials/images",
@@ -93,25 +122,10 @@
         "essentials/navigation",
         "essentials/reusable-snippets"
       ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
-      ]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "x": "https://x.com/AirMDR_Company",
+    "linkedin": "https://www.linkedin.com/company/airmdr"
   }
 }
