@@ -78,14 +78,19 @@
  
   "anchors": [
     {
-      "name": "Documentation",
+      "name": "Welcome to AirMDR!",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "url": "https://airmdr.com/ai-mdr"
+    },
+    {
+      "name": "Connect to Us",
+      "icon": "phone",
+      "url": "https://airmdr.com/ai-mdr"
     },
     {
       "name": "Community",
       "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "url": "https://airmdr.com/community"
     },
     {
       "name": "Blog",
