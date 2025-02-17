@@ -1,130 +1,106 @@
 {
-  "$schema": "https://mintlify.com/mint.json",
-  "theme": "maple",
-  "name": "AirMDR",
-  "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/airmdr_logo.png"
-  },
-  "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373"
+    "$schema": "https://mintlify.com/docs.json",
+    "theme": "maple",
+    "name": "AirMDR",
+    "colors": {
+      "primary": "#0D9373",
+      "light": "#07C983",
+      "dark": "#0D9373"
     },
-    "favicon": "/favicon.png",
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:support@airmdr.com"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Contact Us",
-    "url": "https://airmdr.com/contact-us"
-  },
-  "navigation": 
-{
-    "dropdowns": [
-      {
-        "dropdown": "Getting Started",
-        "icon": "book",
-        "description": "Set up your documentation",
-        "groups": [
-          {
-            "group": "Getting Started",
-            "pages": [
-              "quickstart",
-              {
-                "group": "Editing",
-                "icon": "pen-paintbrush",
-                "pages": ["development", "web-editor"
-                  ]
-                 }
-                ]
-              }
+    "favicon": "favicon.svg",
+    "navigation": {
+      "tabs": [
+        {
+          "tab": "Guides",
+          "groups": [
+            {
+              "group": "Get Started",
+              "pages": [
+                "introduction",
+                "quickstart",
+                "development"
+              ]
+            },
+            {
+              "group": "Essentials",
+              "pages": [
+                "essentials/markdown",
+                "essentials/code",
+                "essentials/images",
+                "essentials/settings",
+                "essentials/navigation",
+                "essentials/reusable-snippets"
+              ]
+            }
+          ]
+        },
+        {
+          "tab": "API Reference",
+          "groups": [
+            {
+              "group": "API Documentation",
+              "pages": [
+                "api-reference/introduction"
+              ]
+            },
+            {
+              "group": "Endpoint Examples",
+              "pages": [
+                "api-reference/endpoint/get",
+                "api-reference/endpoint/create",
+                "api-reference/endpoint/delete"
+              ]
+            }
+          ]
+        },
+        {
+            "tab": "Test",
+            "groups": [
+                {
+                    "group": "test group",
+                    "pages": [
+                        "essentials/test"
+                    ]
+                }
             ]
-          }
-        ]
-      },
-{
-        "dropdown": "Changelog",
-        "icon": "list-timeline",
-        "description": "Updates and changes",
-        "groups": [
+        }
+      ],
+      "global": {
+        "anchors": [
           {
-            "group": "Changelog",
-            "pages": ["changelog/overview"]
-          }
-        ]
-      },
-  {
-        "dropdown": "Integrations",
-        "icon": "plug",
-        "description": "Connect with your providers",
-        "groups": [
+            "anchor": "Website",
+            "href": "https://airmdr.com/",
+            "icon": "globe-pointer"
+          },
           {
-            "group": "Analytics",
-            "pages": [
-              "integrations/analytics/overview",
-            ]
+            "anchor": "Blog",
+            "href": "https://mintlify.com/blog",
+            "icon": "newspaper"
           }
         ]
-      },
-      {
-        "tab": "Blog",
-        "href": "https://airmdr.com/blog"
       }
-  
- 
-  "anchors": [
-    {
-      "name": "Welcome to AirMDR!",
-      "icon": "book-open-cover",
-      "url": "https://airmdr.com/ai-mdr"
     },
-    {
-      "name": "Connect to Us",
-      "icon": "phone",
-      "url": "https://airmdr.com/ai-mdr"
+    "logo": {
+      "light": "/logo/airmdr_logo.png",
+      "dark": "/logo/dark.svg"
     },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://airmdr.com/community"
+    "navbar": {
+      "links": [
+        {
+          "label": "Support",
+          "href": "mailto:support@airmdr.com"
+        }
+      ],
+      "primary": {
+        "type": "button",
+        "label": "Contact Us",
+        "href": "https://airmdr.com/contact-us"
+      }
     },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://airmdr.com/blog"
+    "footer": {
+      "socials": {
+        "x": "https://x.com/AirMDR_Company",
+        "linkedin": "https://www.linkedin.com/company/airmdr"
+      }
     }
-  ],
-  "navigation": [
-    {
-      "group": "Get Started",
-      "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
-    },
-   {
-    "group": "Updates",
-    "pages": ["changelog"]
-    },
-    {
-      "group": "Essentials",
-      "pages": [
-        "essentials/test",
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    }
-  ],
-  "footerSocials": {
-    "x": "https://x.com/AirMDR_Company",
-    "linkedin": "https://www.linkedin.com/company/airmdr"
   }
