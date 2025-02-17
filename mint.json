@@ -10,7 +10,7 @@
     "primary": "#0D9373",
     "light": "#07C983",
     "dark": "#0D9373"
-    }
+    },
     "favicon": "/favicon.png",
   "topbarLinks": [
     {
@@ -39,11 +39,12 @@
                 "icon": "pen-paintbrush",
                 "pages": ["development", "web-editor"]
               }
+            ]
               }
             ]
           }
         ]
-      }
+      }}
 {
         "dropdown": "Changelog",
         "icon": "list-timeline",
@@ -72,8 +73,7 @@
         "tab": "Blog",
         "href": "https://airmdr.com/blog"
       }
-    ]
-  }
+  
  
   "anchors": [
     {
@@ -127,4 +127,3 @@
     "x": "https://x.com/AirMDR_Company",
     "linkedin": "https://www.linkedin.com/company/airmdr"
   }
-}
