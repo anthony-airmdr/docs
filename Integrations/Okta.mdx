@@ -7,46 +7,67 @@ Okta securely connects people to their applications from any device, anywhere, a
 
 ## Create Okta API Token
 
-* Login into the Okta Admin Console -->[https://your-okta-domain.okta.com](https://your-okta-domain.okta.com)
+* Login into the [Okta Admin Console](https://your-okta-domain.okta.com).
 
 * Enter your admin username and password, then click **Sign In**.
 
-> The user must have access to create an Okta API token. The list of RBACs (Role-Based Access Control) to create Okta API tokens are as follows:
+<Info>
+  The user must have access to create an Okta API token.&#x20;
 
-> Super Admins
+  The list of RBACs (Role-Based Access Control) to create Okta API tokens are as follows:
 
-> Org Admins
+  * Super Admins
 
-> Group Admins
+  * Org Admins
 
-> Group Membership Admins
+  * Group Admins
 
-> Read Only Admins
+  * Group Membership Admins
 
-* In the Okta Admin Console, in the top navigation bar, click on  **Security**.
+  * Read Only Admins
+</Info>
 
-* From the dropdown, select  **API**.
+* In the Okta Admin Console, click on **Security** in the top navigation bar.
 
-![](/Okta1.png)
+* From the dropdown, select **API**.
 
-* Under the  **API**  section, click on the  **Tokens** tab.
 
-* Click the  **Create Token**  button.
 
-![](/Okta2.png)
+
+  ![](/Okta1.png)
+
+* Under the **API** section, click on the **Tokens** tab.
+
+* Click the **Create Token** button.
+
+
+
+
+  ![](/Okta2.png)
 
 * In the **Create Token** dialog box, enter a **Token Name** (e.g., "Companyname Okta API Token").
 
 * Click **Create Token** to generate the new token.
-  After creation, Okta will display the new API token.
-  This is the only time the token will be visible, so copy and store it securely (e.g., in a password manager).
 
-![](/Okta3.png)
+
+<Info>
+  After creation, Okta will display the new API token.
+</Info>
+
+<Warning>
+  This is the only time the token will be visible, so copy and store it securely (e.g., in a password manager).
+</Warning>
 
 * Click **Done** to finish the process.
-  Now that you have your API token, you can use it to authenticate API requests.
 
-* Email the API token and the Okta Base URL to AirMDR.
+
+<Tip>
+  Now that you have your API token, you can use it to authenticate API requests.
+</Tip>
+
+<Check>
+  <Icon icon="envelope" /> Email the API token and the Okta Base URL to AirMDR.
+</Check>
 
 ## Optional: Revoke an API Token
 
@@ -57,7 +78,3 @@ If you need to revoke the token at any time:
 * Find the token you want to revoke and click on the **Revoke** button next to it.
 
 ## FAQ
-
-<Accordion title="What else than Integrations?">
-  * `Integrations`
-</Accordion>
