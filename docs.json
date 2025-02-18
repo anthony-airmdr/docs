@@ -11,7 +11,7 @@
     "navigation": {
       "tabs": [
         {
-          "tab": "Guides",
+          "tab": "Documentation",
           "groups": [
             {
               "group": "Get Started",
@@ -54,12 +54,12 @@
           ]
         },
         {
-            "tab": "Test",
+            "tab": "Integrations",
             "groups": [
                 {
-                    "group": "test group",
+                    "group": "Okta",
                     "pages": [
-                        "essentials/test"
+                        "Integrations/Okta"
                     ]
                 }
             ]
