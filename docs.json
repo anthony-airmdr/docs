@@ -54,12 +54,12 @@
           ]
         },
         {
-            "tab": "Test",
+            "tab": "Integrations",
             "groups": [
                 {
-                    "group": "test group",
+                    "group": "Okta",
                     "pages": [
-                        "essentials/test"
+                        "Integrations/Okta"
                     ]
                 }
             ]
