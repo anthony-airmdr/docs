@@ -63,6 +63,11 @@
         "type": "button",
         "label": "Contact Us",
         "href": "https://airmdr.com/contact-us"
+      },
+        {
+        "type": "button",
+        "label": "AirMDR Blog",
+        "href": "https://airmdr.com/blog"
       }
     },
     "footer": {
