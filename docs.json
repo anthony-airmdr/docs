@@ -11,48 +11,10 @@
     "navigation": {
       "tabs": [
         {
-          "tab": "Documentation",
-          "groups": [
-            {
-              "group": "Get Started",
-              "pages": [
-                "introduction",
-                "quickstart",
-                "development"
-              ]
-            },
-            {
-              "group": "Essentials",
-              "pages": [
-                "essentials/Single-SignON-SSO-Setup"
-              ]
-            }
-          ]
-        },
-        {
-          "tab": "API Reference",
-          "groups": [
-            {
-              "group": "API Documentation",
-              "pages": [
-                "api-reference/introduction"
-              ]
-            },
-            {
-              "group": "Endpoint Examples",
-              "pages": [
-                "api-reference/endpoint/get",
-                "api-reference/endpoint/create",
-                "api-reference/endpoint/delete"
-              ]
-            }
-          ]
-        },
-        {
             "tab": "Integrations",
             "groups": [
                 {
-                    "group": "Okta",
+                    "group": "Integrations",
                     "pages": [
                         "Integrations/Okta"
                     ]
@@ -60,15 +22,15 @@
             ]
         },
           {
-            "tab": "Changelog",
-            "groups": [
-                {
-                    "group": "Changelog",
-                    "pages": [
-                        "changelog/changelog"
-                    ]
-                }
-            ]
+          "tab": "Okta SSO Setup",
+          "groups": [
+            {
+              "group": "SSO to Authenticate Access",
+              "pages": [
+                "essentials/Single-SignON-SSO-Setup"
+              ]
+            }
+          ]
         }
       ],
       "global": {
@@ -76,11 +38,11 @@
           {
             "anchor": "Website",
             "href": "https://airmdr.com/",
-            "icon": "globe-pointer"
+            "icon": "/logo/airmdr_logo.png"
           },
           {
             "anchor": "Blog",
-            "href": "https://mintlify.com/blog",
+            "href": "https://airmdr.com/blog",
             "icon": "newspaper"
           }
         ]
