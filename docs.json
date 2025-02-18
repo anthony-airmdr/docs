@@ -38,7 +38,7 @@
           {
             "anchor": "Website",
             "href": "https://airmdr.com/",
-            "icon": "/logo/airmdr_logo.png"
+            "icon": "globe-pointer"
           },
           {
             "anchor": "Blog",
@@ -63,7 +63,8 @@
         "type": "button",
         "label": "Contact Us",
         "href": "https://airmdr.com/contact-us"
-      },
+      }
+    },
     "footer": {
       "socials": {
         "x": "https://x.com/AirMDR_Company",
