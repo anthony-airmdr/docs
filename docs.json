@@ -57,7 +57,11 @@
         {
           "label": "Support",
           "href": "mailto:support@airmdr.com"
-        }
+        },
+         {
+          "label": "Blog",
+          "href": "https://airmdr.com/blog"
+        } 
       ],
       "primary": {
         "type": "button",
