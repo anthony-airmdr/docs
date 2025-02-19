@@ -5,7 +5,8 @@ description: "AirMDR supports Okta single sign-on to authenticate users for acce
 
 ### Overview
 
-Okta Single Sign-On (SSO) can authenticate access to various applications by integrating it with your application. Here’s a step-by-step guide to set up Okta SSO authentication.
+Okta Single Sign-On (SSO) can authenticate access to various applications by integrating it with your application. Here’s a step-by-step guide to setting up Okta SSO authentication.
+
 AirMDR supports the Okta single sign-on (SSO) method for authenticating users and granting them access to the user interface.
 
 ### Pre-requisites:
@@ -19,8 +20,6 @@ AirMDR supports the Okta single sign-on (SSO) method for authenticating users an
 * Enter your admin username and password, then click **Sign In**.
 
 * Navigate to **Applications** → **Applications** and click **+Create Application** Icon.
-
-  ![](/image.png)
 
 * Create application Pop-up appears:
 
@@ -52,80 +51,50 @@ AirMDR supports the Okta single sign-on (SSO) method for authenticating users an
   To **Copy** the Service URL:
 
   * Navigate on to the bottom left, click on the **User** > **Go to Admin dashboard** > **AirMDR System Organization** > **SSO SETTINGS**
-
-    **image**
 </Tip>
 
-* The **Usage** tab provides all the required credentials (SAML Protocol Configuration Parameters).image
+* The **Usage** tab provides all the required credentials (SAML Protocol Configuration Parameters).
 
 ### Set up and configure Okta SSO in AirMDR UI
 
 * Login into the AirMDR UI.
 
-* On the bottom left, click on the **User** and select **Go to Admin dashboard**.image
+* On the bottom left, click on the **User** and select **Go to Admin dashboard**.
 
 * Select the Organization for which SSO has to be set up.
 
-* Under the **SSO SETTINGS** tab, click **Edit**.image
+* Under the **SSO SETTINGS** tab, click **Edit**.
 
-* In the **Setup SSO** dropdown list, select **Yes, New Config**.image
+* In the **Setup SSO** dropdown list, select **Yes, New Config**.
 
 * In the **SSO SETTINGS**, provide the SAML Protocol Configuration Parameters from Okta
 
 <Check>
   - In the **Identity Provider (IdP) to use** dropdown list select **Custom**
 
-  -
+  - Use **Upload** option to include the **Identity Provider Certificate** from Okta
+
+  - In the **Provide your SSO endpoint**, enter the Identity Provider Login URL from Okta.
+
+  - In the Use Issuer ID dropdown, select **Yes** and provide **Issuer ID** from Okta
 </Check>
 
-*
+* Click **Submit**. (SSO Okta SSO Authentication is successfully created for your account).
 
-*
+### To Evaluate Integration
 
-*
-
-*
-
-* Create Application in Okta
-
-* In the Okta Admin Console, click on **Security** in the top navigation bar.
-
-* From the dropdown, select **API**.
-
-* Under the **API** section, click on the **Tokens** tab.
-
-* Click the **Create Token** button.
-
-![](/Okta2.png)
-
-* In the **Create Token** dialog box, enter a **Token Name** (e.g., "Companyname Okta API Token").
-
-* Click **Create Token** to generate the new token.
+* Navigate to the AirMDR Login page, enter your **Email,** and click **Proceed to Login**.
 
 <Info>
-  After creation, Okta will display the new API token.
+  As your SSO Okta SSO Authentication is successfully created for your account
 </Info>
 
-<Warning>
-  This is the only time the token will be visible, so copy and store it securely (e.g., in a password manager).
-</Warning>
+* The page will be redirected to the Okta URL provided as the **SSO Endpoint** in the **SSO SETTINGS**.
 
-* Click **Done** to finish the process.
+* Enter the credentials created in the **Okta** > **User Management**
 
-<Tip>
-  Now that you have your API token, you can use it to authenticate API requests.
-</Tip>
-
-<Check>
-  <Icon icon="envelope" /> Email the API token and the Okta Base URL to AirMDR.
-</Check>
-
-## Optional: Revoke an API Token
-
-If you need to revoke the token at any time:
-
-* Go back to the **API Tokens** page in the Okta Admin Console.
-
-* Find the token you want to revoke and click on the **Revoke** button next to it.
+<Frame as="div">
+  <Icon icon="rocket-launch" />  Hurray! You are Logged in Successfully
+</Frame>
 
 ## FAQ
