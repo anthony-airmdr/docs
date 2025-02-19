@@ -3,33 +3,119 @@ title: "Okta SSO Set-up and Configuration"
 description: "AirMDR supports Okta single sign-on to authenticate users for access to the AirMDR UI."
 ---
 
-Okta Single Sign-On (SSO) can authenticate access to various applications by integrating it with your application. Here’s a step-by-step guide to set-up Okta SSO authentication.
-AirMDR supports the Okta single sign-on (SSO) method for authenticating users and granting them access to the user interface
-.
+### Overview
 
-## Create Okta API Token
+Okta Single Sign-On (SSO) can authenticate access to various applications by integrating it with your application. Here’s a step-by-step guide to set up Okta SSO authentication.
+AirMDR supports the Okta single sign-on (SSO) method for authenticating users and granting them access to the user interface.
+
+### Pre-requisites:
+
+<Tip>
+  Prior to set-up, Super Admin must have the Okta Developer Account with Admin access.
+</Tip>
 
 * Login into the [Okta Admin Console](https://your-okta-domain.okta.com).
 
 * Enter your admin username and password, then click **Sign In**.
 
-![](/images/Okta-1.png)
+* Navigate to **Applications** → **Applications** and click **+Create Application** Icon.
+
+  ![](/image.png)
+
+* Create application Pop-up appears:
+
+<Check>
+  Provide the application name in the Name bar (*Mandatory*)
+
+  <Note>
+    You can change the application name later in the application settings.
+  </Note>
+</Check>
+
+<Check>
+  Choose an application type, and click **Create**.
+</Check>
+
+* Select the **Addons** tab, and enable the **SAML2** toggle button
+
+
+
+
+  image
 
 <Info>
-  The user must have access to create an Okta API token.&#x20;
+  Addons are plugins associated with an Application in Auth0.&#x20;
 
-  The list of RBACs (Role-Based Access Control) to create Okta API tokens are as follows:
 
-  * Super Admins
-
-  * Org Admins
-
-  * Group Admins
-
-  * Group Membership Admins
-
-  * Read Only Admins
+  These are SAML or WS-FED web apps used by the application, which Auth0 generates access tokens
 </Info>
+
+* **SAML2 Web App** Pop-up appears
+
+* In the **Settings** tab > **Application Callback URL** provide the AirMDR Service URL and click **Enable** at the bottom.
+
+<Tip>
+  To **Copy** the Service URL:
+
+  * Navigate on to the bottom left, click on the **User** > **Go to Admin dashboard** > **AirMDR System Organization** > **SSO SETTINGS**
+
+
+
+
+    **image**
+</Tip>
+
+* The **Usage** tab provides all the required credentials (SAML Protocol Configuration Parameters).
+
+
+
+
+  image
+
+### Set up and configure Okta SSO in AirMDR UI
+
+* Login into the AirMDR UI.
+
+* On the bottom left, click on the **User** and select **Go to Admin dashboard**.
+
+
+
+
+  image
+
+* Select the Organization for which SSO has to be set up.
+
+* Under the **SSO SETTINGS** tab, click **Edit**.
+
+
+
+
+  image
+
+* In the **Setup SSO** dropdown list, select **Yes, New Config**.
+
+
+
+
+  image
+
+* In the **SSO SETTINGS**, provide the SAML Protocol Configuration Parameters from Okta
+
+<Check>
+  - In the **Identity Provider (IdP) to use** dropdown list select **Custom**
+
+  -
+</Check>
+
+*
+
+*
+
+*
+
+*
+
+* Create Application in Okta
 
 * In the Okta Admin Console, click on **Security** in the top navigation bar.
 
@@ -39,11 +125,9 @@ AirMDR supports the Okta single sign-on (SSO) method for authenticating users an
 
 * Click the **Create Token** button.
 
-![](/Okta2.png)![](/images/Okta-2.png)
+![](/Okta2.png)
 
 * In the **Create Token** dialog box, enter a **Token Name** (e.g., "Companyname Okta API Token").
-
-![](/images/Okta-3.png)
 
 * Click **Create Token** to generate the new token.
 
