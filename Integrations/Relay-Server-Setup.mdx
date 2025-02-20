@@ -1,1 +1,74 @@
+---
+title: "Relay Server Setup"
+description: "Okta is an integrated identity and mobility management service."
+---
 
+Okta securely connects people to their applications from any device, anywhere, anytime. Okta integrates with existing directories, identity systems, and thousands of on-premises, cloud, and mobile applications. It runs on a secure, reliable, and extensively audited cloud-based platform.
+
+## Create Okta API Token
+
+* Login into the [Okta Admin Console](https://your-okta-domain.okta.com).
+
+* Enter your admin username and password, then click **Sign In**.
+
+![](/images/Okta-1.png)
+
+<Info>
+  The user must have access to create an Okta API token.&#x20;
+
+  The list of RBACs (Role-Based Access Control) to create Okta API tokens are as follows:
+
+  * Super Admins
+
+  * Org Admins
+
+  * Group Admins
+
+  * Group Membership Admins
+
+  * Read Only Admins
+</Info>
+
+* In the Okta Admin Console, click on **Security** in the top navigation bar.
+
+* From the dropdown, select **API**.
+
+* Under the **API** section, click on the **Tokens** tab.
+
+* Click the **Create Token** button.
+
+![](/Okta2.png)![](/images/Okta-2.png)
+
+* In the **Create Token** dialog box, enter a **Token Name** (e.g., "Companyname Okta API Token").
+
+![](/images/Okta-3.png)
+
+* Click **Create Token** to generate the new token.
+
+<Info>
+  After creation, Okta will display the new API token.
+</Info>
+
+<Warning>
+  This is the only time the token will be visible, so copy and store it securely (e.g., in a password manager).
+</Warning>
+
+* Click **Done** to finish the process.
+
+<Tip>
+  Now that you have your API token, you can use it to authenticate API requests.
+</Tip>
+
+<Check>
+  <Icon icon="envelope" /> Email the API token and the Okta Base URL to AirMDR.
+</Check>
+
+## Optional: Revoke an API Token
+
+If you need to revoke the token at any time:
+
+* Go back to the **API Tokens** page in the Okta Admin Console.
+
+* Find the token you want to revoke and click on the **Revoke** button next to it.
+
+## FAQ
