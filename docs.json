@@ -16,7 +16,7 @@
                 {
                     "group": "Integrations",
                     "pages": [
-                        "Integrations/Overview",
+                        "Integrations/overview",
                         "Integrations/Okta"
                     ]
                 }
