@@ -17,7 +17,13 @@
                     "group": "Integrations",
                     "pages": [
                         "Integrations/overview",
-                        "Integrations/Okta"
+                        {
+            "group": "Integrations",
+            "pages": [
+              "Integrations/Okta"
+            ]
+          }
+                        
                     ]
                 }
             ]
