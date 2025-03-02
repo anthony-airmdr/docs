@@ -7,9 +7,20 @@
       "light": "#07C983",
       "dark": "#0D9373"
     },
-    "favicon": "favicon.svg",
+    "favicon": "AirMDR.svg",
     "navigation": {
       "tabs": [
+          {
+          "tab": "Home",
+          "groups": [
+            {
+              "group": "Get Started",
+              "pages": [
+                "essentials/welcome"
+              ]
+            }
+          ]
+        },
           {
             "tab": "Integrations",
             "groups": [
