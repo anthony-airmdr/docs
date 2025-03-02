@@ -30,7 +30,8 @@
                     "group": "Integrations",
                     "pages": [
                         "Integrations/overview",
-                        "Integrations/Okta"                        
+                        "Integrations/Okta",
+                        "Integrations/cisco-AMP"
                     ]
                 }
             ]
