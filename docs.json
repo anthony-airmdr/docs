@@ -12,6 +12,7 @@
       "tabs": [
           {
           "tab": "Home",
+              "icon": "Home",
           "groups": [
             {
               "group": "Welcome",
@@ -23,6 +24,7 @@
         },
           {
             "tab": "Integrations",
+              "icon": "plug",
             "groups": [
                 {
                     "group": "Integrations",
@@ -41,6 +43,7 @@
         },
           {
           "tab": "Okta SSO Setup",
+              "icon": "block-brick",
           "groups": [
             {
               "group": "SSO to Authenticate Access",
