@@ -9,18 +9,42 @@ description: "Cisco AMP is an intelligence-powered, integrated, enterprise-class
 
 ## Cisco AMP Events Overview
 
-This Integration is used to retrieve detailed security event information from Cisco AMP, including threat details, affected systems, and timestamps. Use this skill to monitor security incidents, analyze threats, and maintain system integrity.
+This Integration retrieves detailed security event information from Cisco AMP, including threat details, affected systems, and timestamps. Use this skill to monitor security incidents, analyze threats, and maintain system integrity.
 
 ## Create Cisco AMP API Credentials
 
-1. Login to the [Cisco Security Cloud Sign On](https://console.amp.cisco.com/api_credentials).
+<Note>
+  To ingest the logs into AirMDR SIEM, User must follow the steps stated below to define API credentials for AirMDR
+</Note>
 
-2. Provide the necessary credentials and click Continue.
+<Steps>
+  <Step title="Step 1">
+    Login to the [Cisco Security Cloud Sign On](https://console.amp.cisco.com/api_credentials).
+  </Step>
 
-3.
+  <Step title="Step 2">
+    Provide the necessary credentials and click **Continue**.
+  </Step>
+
+  <Step title="Step 3">
+
+  </Step>
+</Steps>
+
+1.
+
+2. Provide the necessary credentials and click **Continue**.
+
+3. Click on **+ New API Credentials**.&#x20;
+
+4. Fill application name as \`airmdr-siem\`.
+
+5. Choose either *Read-Only* or *Read-Write* permission.
+
+6. Click **Create**.
 
 <Check>
-  <Icon icon="envelope" /> Email the API token and the Okta Base URL to AirMDR.
+  <Icon icon="envelope" /> Email the API Client Id and the API key to AirMDR.
 </Check>
 
 ## FAQ
