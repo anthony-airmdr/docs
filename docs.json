@@ -14,7 +14,7 @@
           "tab": "Home",
           "groups": [
             {
-              "group": "",
+              "group": "Welcome",
               "pages": [
                 "essentials/welcome"
               ]
