@@ -43,7 +43,8 @@
             {
               "group": "Single Sign ON (SSO) Setup",
               "pages": [
-                "essentials/Single-SignON-SSO-Setup",
+                  "essentials/SSO-Overview",
+                  "essentials/Single-SignON-SSO-Setup",
                 "essentials/Azure-AD-SSO-Setup"  
               ]
             }
