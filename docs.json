@@ -37,11 +37,11 @@
             ]
         },
           {
-          "tab": "Okta SSO Setup",
+          "tab": "Single Sign ON (SSO) Setup",
               "icon": "block-brick",
           "groups": [
             {
-              "group": "SSO to Authenticate Access",
+              "group": "Single Sign ON (SSO) Setup",
               "pages": [
                 "essentials/Single-SignON-SSO-Setup"
               ]
