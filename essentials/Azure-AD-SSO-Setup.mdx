@@ -1,66 +1,76 @@
 ---
-title: "Okta SSO Set-up and Configuration"
-description: "AirMDR supports Okta single sign-on to authenticate users for access to the AirMDR UI."
+title: "SAML Integration with Azure Active Directory"
+description: "AirMDR supports SAML (Security Assertion Markup Language) integration with Azure AD to enable Single Sign-On (SSO) functionality to authenticate users for access to the AirMDR UI."
 ---
 
 ### Overview
 
-Okta Single Sign-On (SSO) can authenticate access to various applications by integrating it with your application. Here’s a step-by-step guide to setting up Okta SSO authentication.
-
-AirMDR supports the Okta single sign-on (SSO) method for authenticating users and granting them access to the user interface.
+SAML (Security Assertion Markup Language) integration with Azure AD is used to enable Single Sign-On (SSO) functionality, allowing users to access multiple applications with just one set of credentials by securely transferring authentication and authorization information between Azure AD (acting as the Identity Provider) and other applications (acting as Service Providers).
 
 ### Pre-requisites
 
 <Tip>
-  Prior to set-up, Super Admin must have the Okta Developer Account with Admin access.
+  Prior to set-up, Super Admin must have the **Global Administrator** role in Azure AD.
 </Tip>
 
-* Login into the [Okta Admin Console](https://your-okta-domain.okta.com).
+<Steps>
+  <Step title="Step 1">
+    **Configure Azure AD as the Identity Provider**
 
-* Enter your admin username and password, then click **Sign In**.
+    1. Sign in to [Azure Portal](https://portal.azure.com/) with Azure AD administrator account.
 
-* Navigate to **Applications** → **Applications** and click **+Create Application** Icon.
+    2. In the left-hand navigation pane, select **"Microsoft Entra ID"**.
 
-![](/images/Okta-SSO-Setup/SSO-1.png)
+    3. Click **+** **Add** dropdown list and then select **"Enterprise application"**.
 
-* Create application Pop-up appears:
+    4. Choose the tab **"Create your own application”.**
 
-<Check>
-  Provide the application name in the Name bar (*Mandatory*)
+    5. Provide a name for your application, in the **"What's the name of your app?**" space.
 
-  <Note>
-    You can change the application name later in the application settings.
-  </Note>
-</Check>
+    6. Select **“Integrate any other application you don’t find in the gallery (Non-gallery)”**.
 
-<Check>
-  Choose an application type, and click **Create**.
-</Check>
+    7. Click **"Create"**.
 
-* Select the **Addons** tab, and enable the **SAML2** toggle button.
+           <img height="307" width="624" src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXc4ILVAE9aO6NJDUvx77iZ9qgpbiqbgPzCzdIRv6E2WGXsBg1BgZx5Bv46dMfb7vzj-gz9983pagOf-OrN_SpPQhHHQilmwVIIA2dV0-UMcXGmk4rjetpxXnhT4AJIgZ8O4c7iE0A?key=hgh9n1K5Q_8_kt4eiTwlrngA" />
+  </Step>
 
-![](/images/Okta-SSO-Setup/SSO-2.png)
+  <Step title="Step 2">
+    **Configure Single Sign-On (SSO)**
 
-<Info>
-  Addons are plugins associated with an Application in Auth0.&#x20;
+    1. Select "**Single sign-on"** from the left-hand menu on the application's overview page.
 
-  These are SAML or WS-FED web apps used by the application, which Auth0 generates access tokens
-</Info>
+    2. Choose the "**SAML"** option.
 
-* **SAML2 Web App** Pop-up appears
+    ![](/image.png)
+  </Step>
 
-* In the **Settings** tab > **Application Callback URL** provide the AirMDR Service URL and click **Enable** at the bottom.
+  <Step title="Step 3">
+    **Set Up Basic SAML Configuration**
 
-![](/images/Okta-SSO-Setup/SSO-3.png)
+    1.
+
+    <Accordion title="New Accordion" defaultOpen="false">
+
+    </Accordion>
+
+    1. Click the edit icon next to **“Basic SAML Configuration”**.
+
+
+
+
+
+    2. Enter the following &#x9;
+  </Step>
+
+  <Step title="Step 4">
+
+  </Step>
+</Steps>
 
 <Tip>
   To **Copy** the Service URL:
 
   * Navigate on to the bottom left, click on the **User** > **Go to Admin dashboard** > **AirMDR System Organization** > **SSO SETTINGS**
-
-
-
-
 
     ![](/images/Okta-SSO-Setup/SSO-4.png)
 </Tip>
