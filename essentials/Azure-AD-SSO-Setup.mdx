@@ -30,6 +30,8 @@ SAML (Security Assertion Markup Language) integration with Azure AD enable**s*
     6. Select **“Integrate any other application you don’t find in the gallery (Non-gallery)”**.
 
     7. Click **"Create"**.
+
+    /image
   </Step>
 
   <Step title="Step 2">
@@ -58,6 +60,8 @@ SAML (Security Assertion Markup Language) integration with Azure AD enable**s*
     <Tip>
       To **Copy** the Service URL:
 
+      * Login into the AirMDR UI.
+
       * Navigate on to the bottom left, click on the **User** > **Go to Admin dashboard** > **AirMDR System Organization** > **SSO SETTINGS**
 
       <Note>
@@ -70,69 +74,99 @@ SAML (Security Assertion Markup Language) integration with Azure AD enable**s*
     * Click "**Save"** after entering the necessary information.
   </Step>
 
-  <Step title="Step 4" />
+  <Step title="Step 4">
+    **Configure User Attributes and Claims**
+
+    * In the **“Attributes & Claims”** section, click the edit icon.
+
+    * Ensure that the necessary user attributes (e.g., email, name) are correctly mapped to the corresponding claims required by your application.
+
+    * Remove the name space URIs for **“givenname”** and **“surname”** and update the keys to **“firstname”** and **“lastname”**.
+
+    * Update the value for emailaddress to user.userprincipalname
+  </Step>
+
+  <Step title="Step 5">
+    **Download the SAML Signing Certificate**
+
+    * In the **“SAML Signing Certificate”** section, download the **“Certificate (Base64)” or Federation Metadata XML**.
+
+    <Info>
+      Certificate may be required by your application to verify the SAML token’s signature.
+    </Info>
+  </Step>
+
+  <Step title="Step 6">
+    **Enable AirMDR access to Azure AD metadata**
+
+    * Copy the **“Login URL and Microsoft Entra Identifier”** from the **“Set up \[Your Application Name]”** section.
+  </Step>
+
+  <Step title="Step 7">
+    **Set up and configure SSO in AirMDR UI**
+
+    * Log in to the [AirMDR](https://app.airmdr.com).
+
+    * On the bottom left, click on the **User** and select **Go to Admin dashboard**.
+
+    ![](/images/Okta-SSO-Setup/SSO-6.png)
+
+    * Select the Organization for which SSO has to be set up.
+
+    * Under the **SSO SETTINGS** tab, click **Edit**.
+
+    ![](/images/Okta-SSO-Setup/SSO-7.png)
+
+    * In the **Setup SSO** dropdown list, select **Yes, New Config**.
+
+    ![](/images/Okta-SSO-Setup/SSO-8.png)
+
+    * In the **SSO SETTINGS**, provide the SAML Protocol Configuration Parameters from Azure AD
+
+    <Check>
+      - In the **Identity Provider (IdP) to use** dropdown list select **Custom**
+
+      - Use **Upload** option to include the **Identity Provider Certificate** from Azure AD
+
+      - In the **Provide your SSO endpoint**, enter the Identity Provider **Login URL** from Azure AD
+
+      - In the **Use Issuer ID** dropdown, select **Yes** and provide **Issuer ID** from Azure AD
+
+      - In the **Provide your Issuer ID**, enter the **Microsoft Entra Identifier**
+    </Check>
+
+    * Click **Submit**. (SSO Authentication is successfully created for your account).
+  </Step>
+
+  <Step title="Step 8">
+    **Assign Users & Groups**
+
+    * Select **“Users and groups”** from the left-hand menu, assign users/groups who will use SSO.
+
+    * Click **“Add user/group”**, select the users or groups you want to assign to the application, and click **“Assign”**.
+
+    <Tip>
+      Configure **Conditional Access Policies** for security if needed.
+    </Tip>
+  </Step>
 </Steps>
-
-* The **Usage** tab provides all the required credentials (SAML Protocol Configuration Parameters).
-
-![](/images/Okta-SSO-Setup/SSO-5.png)
-
-### Set up and configure Okta SSO in AirMDR UI
-
-* Login into the AirMDR UI.
-
-* On the bottom left, click on the **User** and select **Go to Admin dashboard**.
-
-![](/images/Okta-SSO-Setup/SSO-6.png)
-
-* Select the Organization for which SSO has to be set up.
-
-* Under the **SSO SETTINGS** tab, click **Edit**.
-
-![](/images/Okta-SSO-Setup/SSO-7.png)
-
-* In the **Setup SSO** dropdown list, select **Yes, New Config**.
-
-![](/images/Okta-SSO-Setup/SSO-8.png)
-
-* In the **SSO SETTINGS**, provide the SAML Protocol Configuration Parameters from Okta
-
-<Check>
-  - In the **Identity Provider (IdP) to use** dropdown list select **Custom.**
-
-  - Use **Upload** option to include the **Identity Provider Certificate** from Okta.
-
-  - In the **Provide your SSO endpoint**, enter the Identity Provider Login URL from Okta.
-
-  - In the Use Issuer ID dropdown, select **Yes** and provide **Issuer ID** from Okta
-
-  ![](/images/Okta-SSO-Setup/SSO-9.png)
-</Check>
-
-* Click **Submit**. (SSO Okta SSO Authentication is successfully created for your account).
 
 ### To Evaluate Integration
 
-* Navigate to the AirMDR Login page, enter your **Email,** and click **Proceed to Login**.
+* Navigate to the [AirMDR Login](https://app.airmdr.com) page.
+
+* Enter the User **Email** ID assigned to the Azure SAML application, and click **Proceed to Login**.
 
 ![](/images/Okta-SSO-Setup/SSO-10.png)
 
-<Info>
-  As your SSO Okta SSO Authentication is successfully created for your account
-</Info>
-
-* The page will be redirected to the Okta URL provided as the **SSO Endpoint** in the **SSO SETTINGS**.
+* The page will be redirected to the Azure AD URL provided as the **SSO Endpoint** in the **SSO SETTINGS**.
 
 ![](/images/Okta-SSO-Setup/SSO-11.png)
 
-* Enter the credentials created in the **Okta** > **User Management**
+* Ensure that the test user can sign in successfully using Azure AD credentials.
 
-![](/images/Okta-SSO-Setup/SSO-12.png)
+* After successful login, the user should be redirected to [Test case](https://test-darryl.airmdr.com/casesv2) with a valid session
 
 <Frame as="div">
   <Icon icon="rocket-launch" />  Hurray! You are Logged in Successfully
 </Frame>
-
-![](/images/Okta-SSO-Setup/SSO-13.png)
-
-## FAQ
