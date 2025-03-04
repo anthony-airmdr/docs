@@ -5,7 +5,7 @@ description: "AirMDR supports SAML (Security Assertion Markup Language) integrat
 
 ### Overview
 
-SAML (Security Assertion Markup Language) integration with Azure AD is used to enable Single Sign-On (SSO) functionality, allowing users to access multiple applications with just one set of credentials by securely transferring authentication and authorization information between Azure AD (acting as the Identity Provider) and other applications (acting as Service Providers).
+SAML (Security Assertion Markup Language) integration with Azure AD enable**s** Single Sign-On (SSO) functionality. This allows users to access multiple applications with just one set of credentials by securely transferring authentication and authorization information between Azure AD (the Identity Provider) and AirMDR (Service Providers).
 
 ### Pre-requisites
 
@@ -30,8 +30,6 @@ SAML (Security Assertion Markup Language) integration with Azure AD is used to 
     6. Select **“Integrate any other application you don’t find in the gallery (Non-gallery)”**.
 
     7. Click **"Create"**.
-
-           <img height="307" width="624" src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXc4ILVAE9aO6NJDUvx77iZ9qgpbiqbgPzCzdIRv6E2WGXsBg1BgZx5Bv46dMfb7vzj-gz9983pagOf-OrN_SpPQhHHQilmwVIIA2dV0-UMcXGmk4rjetpxXnhT4AJIgZ8O4c7iE0A?key=hgh9n1K5Q_8_kt4eiTwlrngA" />
   </Step>
 
   <Step title="Step 2">
@@ -40,40 +38,48 @@ SAML (Security Assertion Markup Language) integration with Azure AD is used to 
     1. Select "**Single sign-on"** from the left-hand menu on the application's overview page.
 
     2. Choose the "**SAML"** option.
-
-    ![](/image.png)
   </Step>
 
   <Step title="Step 3">
     **Set Up Basic SAML Configuration**
 
-    1.
+    * Click the edit icon next to **“Basic SAML Configuration”**.
 
-    <Accordion title="New Accordion" defaultOpen="false">
 
-    </Accordion>
 
-    1. Click the edit icon next to **“Basic SAML Configuration”**.
+    * Provide the required specifications
 
 
 
 
+      <Icon icon="link" />
 
-    2. Enter the following &#x9;
+      **Identifier (Entity ID)**: This is typically a URL specific to your application.
+
+
+
+
+      <Icon icon="link" />
+
+      **Reply URL (Assertion Consumer Service URL)**: The URL where Azure AD will send the SAML token.
+
+    <Tip>
+      To **Copy** the Service URL:
+
+      * Navigate on to the bottom left, click on the **User** > **Go to Admin dashboard** > **AirMDR System Organization** > **SSO SETTINGS**
+
+      <Note>
+        Accessible by only Admins/Super Admins
+      </Note>
+
+      ![](/images/Okta-SSO-Setup/SSO-4.png)
+    </Tip>
+
+    * Click "**Save"** after entering the necessary information.
   </Step>
 
-  <Step title="Step 4">
-
-  </Step>
+  <Step title="Step 4" />
 </Steps>
-
-<Tip>
-  To **Copy** the Service URL:
-
-  * Navigate on to the bottom left, click on the **User** > **Go to Admin dashboard** > **AirMDR System Organization** > **SSO SETTINGS**
-
-    ![](/images/Okta-SSO-Setup/SSO-4.png)
-</Tip>
 
 * The **Usage** tab provides all the required credentials (SAML Protocol Configuration Parameters).
 
