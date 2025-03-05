@@ -2,6 +2,10 @@
     "$schema": "https://mintlify.com/docs.json",
     "theme": "maple",
     "name": "AirMDR",
+    "logo": {
+    "dark": "/logo/airmdr_logo.png",
+    "light": "/logo/airmdr_logo.png"
+  },
     "colors": {
       "primary": "#07C983",
       "light": "#07C983",
