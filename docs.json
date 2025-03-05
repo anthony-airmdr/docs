@@ -67,7 +67,7 @@
       }
     },
     "logo": {
-      "light": "/images/airmdr_logo.png",
+      "light": "/logo/airmdr_logo.png",
       "dark": "/images/airmdr_logo.png"
     },
     "navbar": {
