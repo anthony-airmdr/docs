@@ -72,7 +72,7 @@
     },
     "logo": {
       "light": "/logo/airmdr_logo.png",
-      "dark": "/logo/airmdr_logo.png"
+      "dark": "/images/AirMDR-Dark.png"
     },
     "navbar": {
       "links": [
