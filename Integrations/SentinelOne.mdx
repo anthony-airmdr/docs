@@ -1,51 +1,59 @@
 ---
-title: "Datadog "
-description: "Datadog is a cloud-based monitoring, security, and analytics platform that provides real-time visibility into applications, infrastructure, logs, and security metrics. It helps organizations detect issues, optimize performance, and enhance security."
+title: "SentinelOne"
+description: "SentinelOne is a cloud-based cybersecurity platform that helps protect against cyber threats such as malware, ransomware, and advanced persistent threats (APTs)."
 ---
 
 ### Pre-requisites
 
 <Tip>
-  Prior to set-up, Super Admin must have the Okta Developer Account with Admin access.
+  User account with the privileges to generate an API token.
 </Tip>
 
-* Login into the [Okta Admin Console](https://your-okta-domain.okta.com).
-
-### Generate Datadog API Key and Application Key
+### Generate, Verify & Set-up SentinelOne API
 
 <Steps>
   <Step title="Step 1">
-    1. Login to the [Datadog](https://app.datadoghq.com/) Account.
+    1. Log in to your [**SentinelOne Management Console**](https://console.mobile.sentinelone.net/#!/en/login) as an **Admin**.
 
     2. Provide the necessary credentials (**email** and **password**), and click **Sign In**.
-
-       ![](/images/Datadog8.png)
   </Step>
 
   <Step title="Step 2">
-    1. After logging in, click on your profile icon (bottom-left corner).
+    **Create New Service User**
 
-    2. Select **Organization Settings**, click on **API Keys**.
+    1. Navigate to **Settings** and select **Users** tab.
 
-       ![](/images/Datadog.png)
+    2. In the left navigation pane, select **Service Users**.
+
+    3. In the **Actions** drop-down list, click on **Create New Service User**.
+
+    4. Provide the mandatory fields and click **Next**
+
+
+
+
+       \* Name (Preferably **AirMDR**)
+
+
+
+
+       \* Expiration Date&#x20;
+
+    <Tip>
+      **It is recommend the duration equal to the contract, but it depends on how often you wish to re-issue the token.** &#x20;
+
+      **Account "View Only" access limits the risk.**&#x20;
+    </Tip>
   </Step>
 
   <Step title="Step 3">
-    **Create an API Key**
+    **Assign Scope of Access & Generate API Token**
 
-    1. Click on **+ New Key** button.
+    1. To setup the access to your site, select **Site** icon under "**Select Scope of Access**".
 
-       ![](/images/Datadog2.png)
+    2. Set access to **Viewer**, and click **Create User**.
 
-    2. Enter a **Name** for the New API Key (e.g., `Test-API-Key`).
-
-       ![](/images/Datadog3.png)
-
-    3. Click **Create Key**.
-
-    4. **Copy** and securely store the generated **API Key** (you won’t be able to see it again).
-
-       ![](/images/Datadog4.png)
+    3. **Copy** and securely store the API token.
 
     📌 **Note:** API Keys are used for authentication when sending logs, metrics, and traces to Datadog.
   </Step>
@@ -57,23 +65,19 @@ description: "Datadog is a cloud-based monitoring, security, and analytics platf
 
     2. Select **Organization Settings**, click on **Application Keys**.
 
-       ![](/images/Datadog5.png)
-
     3. Click **New Key**.
 
     4. Enter a name for the Application Key (e.g., `Test-Application-Key`).
 
     5. Click **Create Key**.
 
-       ![](/images/Datadog6.png)
-
     6. **Copy** and securely store the **Application Key**.
-
-       ![](/images/Datadog7.png)
 
     📌 **Note:** Application Keys are used for **making authenticated API requests** to Datadog (e.g., retrieving logs, dashboards, or managing configurations).
   </Step>
 </Steps>
+
+
 
 ### Configure Datadog API in AirMDR Integrations Dashboard
 
@@ -81,13 +85,7 @@ description: "Datadog is a cloud-based monitoring, security, and analytics platf
 
    ![](/images/Datadog11.png)
 
-2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations**
-
-
-
-
-
-   &#x20;&#x20;
+2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations** &#x20;
 
    ![](/images/Datadog9.png)
 
