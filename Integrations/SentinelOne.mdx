@@ -29,13 +29,7 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
 
     4. Provide the mandatory fields and click **Next**
 
-
-
-
        \* Name (Preferably **AirMDR**)
-
-
-
 
        \* Expiration Date&#x20;
 
@@ -53,35 +47,52 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
 
     2. Set access to **Viewer**, and click **Create User**.
 
-    3. **Copy** and securely store the API token.
-
-    📌 **Note:** API Keys are used for authentication when sending logs, metrics, and traces to Datadog.
+    3. **Copy** and securely store the API token (you won’t be able to see it again).
   </Step>
 
   <Step title="Step 4">
-    **Create an Application Key**
+    **Test Scope Restrictions**
 
-    1. Click on your profile icon (bottom-left corner).
+    After verifying access, test if the scope restrictions work:
 
-    2. Select **Organization Settings**, click on **Application Keys**.
+    **Test Threat Retrieval**
 
-    3. Click **New Key**.
+    ```
 
-    4. Enter a name for the Application Key (e.g., `Test-Application-Key`).
+    curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/threats" \
+         -H "Authorization: ApiToken <your_api_token>" \
+         -H "Content-Type: application/json"
+    ```
 
-    5. Click **Create Key**.
+    * If the user has **site-specific access**, it should return threats only for that site.
 
-    6. **Copy** and securely store the **Application Key**.
+    * If restricted, it should return an **empty list or 403 error**.
 
-    📌 **Note:** Application Keys are used for **making authenticated API requests** to Datadog (e.g., retrieving logs, dashboards, or managing configurations).
+    **Test Device Access**
+
+    ```
+
+    curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/agents" \
+         -H "Authorization: ApiToken <your_api_token>" \
+         -H "Content-Type: application/json"
+    ```
+
+    * This verifies if the user can retrieve **device information** based on the assigned scope.
+
+    **Troubleshooting API Access Issues**
+
+    | Error Code              | Possible Issue           | Solution                  |
+    | ----------------------- | ------------------------ | ------------------------- |
+    | `401 Unauthorized`      | Invalid API token        | Regenerate the API token  |
+    | `403 Forbidden`         | Insufficient permissions | Adjust user role or scope |
+    | `404 Not Found`         | Incorrect API endpoint   | Check API documentation   |
+    | `429 Too Many Requests` | Rate limit exceeded      | Wait and retry            |
   </Step>
 </Steps>
 
+### Configure SentinelOne API in AirMDR Integrations Dashboard
 
-
-### Configure Datadog API in AirMDR Integrations Dashboard
-
-1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login**
+1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login.**
 
    ![](/images/Datadog11.png)
 
@@ -93,26 +104,36 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
 
    <Icon icon="magnifying-glass" />
 
-   &#x20;icon, enter the keyword "**Datadog**", select the **Connections** tab, and click **Create**.
+   &#x20;icon, enter the keyword "**SentinelOne**", select the **Connections** tab, and click **Create**.
 
-   ![](/images/Datadog12.png)
+4. Enter the generated **API token** and **SentinelOne URL** in the Authentication Details field params, and click **Create.**
 
-4. Enter the generated **API Key** and **Application Key** in the Authentication Details field params, and click **Create.**
+### Evaluate SentinelOne API Test Scope Restrictions
 
-   ![](/images/Datadog13.png)
+Open **Postman** or **cURL** and run the following command to check if your API Access is working:
 
-### Evaluate Datadog API & Application Keys
-
-Open **Postman** or **cURL** and run the following command to check if your API Key is working:
+**Test Threat Retrieval**
 
 ```
-curl -X GET "https://api.datadoghq.com/api/v1/validate" \
-     -H "Content-Type: application/json" \
-     -H "DD-API-KEY: your_api_key_here"
+
+curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/threats" \
+     -H "Authorization: ApiToken <your_api_token>" \
+     -H "Content-Type: application/json"
 ```
 
-Response
+* If the user has **site-specific access**, it should return threats only for that site.
+
+* If restricted, it should return an **empty list or 403 error**.
+
+**Test Device Access**
 
 ```
-{"valid": true}
+
+curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/agents" \
+     -H "Authorization: ApiToken <your_api_token>" \
+     -H "Content-Type: application/json"
 ```
+
+* This verifies if the user can retrieve **device information** based on the assigned scope.
+
+**Troubleshooting API Access Issues**
