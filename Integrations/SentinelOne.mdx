@@ -1,0 +1,112 @@
+---
+title: "Datadog "
+description: "Datadog is a cloud-based monitoring, security, and analytics platform that provides real-time visibility into applications, infrastructure, logs, and security metrics. It helps organizations detect issues, optimize performance, and enhance security."
+---
+
+### Generate Datadog API Key and Application Key
+
+<Steps>
+  <Step title="Step 1">
+    1. Login to the [Datadog](https://app.datadoghq.com/) Account.
+
+    2. Provide the necessary credentials (**email** and **password**), and click **Sign In**.
+
+       ![](/images/Datadog8.png)
+  </Step>
+
+  <Step title="Step 2">
+    1. After logging in, click on your profile icon (bottom-left corner).
+
+    2. Select **Organization Settings**, click on **API Keys**.
+
+       ![](/images/Datadog.png)
+  </Step>
+
+  <Step title="Step 3">
+    **Create an API Key**
+
+    1. Click on **+ New Key** button.
+
+       ![](/images/Datadog2.png)
+
+    2. Enter a **Name** for the New API Key (e.g., `Test-API-Key`).
+
+       ![](/images/Datadog3.png)
+
+    3. Click **Create Key**.
+
+    4. **Copy** and securely store the generated **API Key** (you won’t be able to see it again).
+
+       ![](/images/Datadog4.png)
+
+    📌 **Note:** API Keys are used for authentication when sending logs, metrics, and traces to Datadog.
+  </Step>
+
+  <Step title="Step 4">
+    **Create an Application Key**
+
+    1. Click on your profile icon (bottom-left corner).
+
+    2. Select **Organization Settings**, click on **Application Keys**.
+
+       ![](/images/Datadog5.png)
+
+    3. Click **New Key**.
+
+    4. Enter a name for the Application Key (e.g., `Test-Application-Key`).
+
+    5. Click **Create Key**.
+
+       ![](/images/Datadog6.png)
+
+    6. **Copy** and securely store the **Application Key**.
+
+       ![](/images/Datadog7.png)
+
+    📌 **Note:** Application Keys are used for **making authenticated API requests** to Datadog (e.g., retrieving logs, dashboards, or managing configurations).
+  </Step>
+</Steps>
+
+### Configure Datadog API in AirMDR Integrations Dashboard
+
+1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login**
+
+   ![](/images/Datadog11.png)
+
+2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations**
+
+
+
+
+
+   &#x20;&#x20;
+
+   ![](/images/Datadog9.png)
+
+3. Use the search&#x20;
+
+   <Icon icon="magnifying-glass" />
+
+   &#x20;icon, enter the keyword "**Datadog**", select the **Connections** tab, and click **Create**.
+
+   ![](/images/Datadog12.png)
+
+4. Enter the generated **API Key** and **Application Key** in the Authentication Details field params, and click **Create.**
+
+   ![](/images/Datadog13.png)
+
+### Evaluate Datadog API & Application Keys
+
+Open **Postman** or **cURL** and run the following command to check if your API Key is working:
+
+```
+curl -X GET "https://api.datadoghq.com/api/v1/validate" \
+     -H "Content-Type: application/json" \
+     -H "DD-API-KEY: your_api_key_here"
+```
+
+Response
+
+```
+{"valid": true}
+```
