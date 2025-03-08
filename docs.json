@@ -32,7 +32,8 @@
                         "Integrations/overview",
                         "Integrations/cisco-AMP",
                         "Integrations/Datadog",
-                        "Integrations/Okta"
+                        "Integrations/Okta",
+                        "Integrations/SentinelOne"
                         
                     ]
                 }
