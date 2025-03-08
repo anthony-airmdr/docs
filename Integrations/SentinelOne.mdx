@@ -49,45 +49,6 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
 
     3. **Copy** and securely store the API token (you won’t be able to see it again).
   </Step>
-
-  <Step title="Step 4">
-    **Test Scope Restrictions**
-
-    After verifying access, test if the scope restrictions work:
-
-    **Test Threat Retrieval**
-
-    ```
-
-    curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/threats" \
-         -H "Authorization: ApiToken <your_api_token>" \
-         -H "Content-Type: application/json"
-    ```
-
-    * If the user has **site-specific access**, it should return threats only for that site.
-
-    * If restricted, it should return an **empty list or 403 error**.
-
-    **Test Device Access**
-
-    ```
-
-    curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/agents" \
-         -H "Authorization: ApiToken <your_api_token>" \
-         -H "Content-Type: application/json"
-    ```
-
-    * This verifies if the user can retrieve **device information** based on the assigned scope.
-
-    **Troubleshooting API Access Issues**
-
-    | Error Code              | Possible Issue           | Solution                  |
-    | ----------------------- | ------------------------ | ------------------------- |
-    | `401 Unauthorized`      | Invalid API token        | Regenerate the API token  |
-    | `403 Forbidden`         | Insufficient permissions | Adjust user role or scope |
-    | `404 Not Found`         | Incorrect API endpoint   | Check API documentation   |
-    | `429 Too Many Requests` | Rate limit exceeded      | Wait and retry            |
-  </Step>
 </Steps>
 
 ### Configure SentinelOne API in AirMDR Integrations Dashboard
@@ -138,11 +99,9 @@ curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/agents" \
 
 **Troubleshooting API Access Issues**
 
-    | Error Code              | Possible Issue           | Solution                  |
-    | ----------------------- | ------------------------ | ------------------------- |
-    | `401 Unauthorized`      | Invalid API token        | Regenerate the API token  |
-    | `403 Forbidden`         | Insufficient permissions | Adjust user role or scope |
-    | `404 Not Found`         | Incorrect API endpoint   | Check API documentation   |
-    | `429 Too Many Requests` | Rate limit exceeded      | Wait and retry            |
-
-**Troubleshooting API Access Issues**
+| Error Code              | Possible Issue           | Solution                  |
+| ----------------------- | ------------------------ | ------------------------- |
+| `401 Unauthorized`      | Invalid API token        | Regenerate the API token  |
+| `403 Forbidden`         | Insufficient permissions | Adjust user role or scope |
+| `404 Not Found`         | Incorrect API endpoint   | Check API documentation   |
+| `429 Too Many Requests` | Rate limit exceeded      | Wait and retry            |
