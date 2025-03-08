@@ -137,3 +137,12 @@ curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/agents" \
 * This verifies if the user can retrieve **device information** based on the assigned scope.
 
 **Troubleshooting API Access Issues**
+
+    | Error Code              | Possible Issue           | Solution                  |
+    | ----------------------- | ------------------------ | ------------------------- |
+    | `401 Unauthorized`      | Invalid API token        | Regenerate the API token  |
+    | `403 Forbidden`         | Insufficient permissions | Adjust user role or scope |
+    | `404 Not Found`         | Incorrect API endpoint   | Check API documentation   |
+    | `429 Too Many Requests` | Rate limit exceeded      | Wait and retry            |
+
+**Troubleshooting API Access Issues**
