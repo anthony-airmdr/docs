@@ -1,63 +1,97 @@
 ---
-title: "SentinelOne"
-description: "SentinelOne is a cloud-based cybersecurity platform that helps protect against cyber threats such as malware, ransomware, and advanced persistent threats (APTs)."
+title: "Microsoft Defender for Endpoint"
+description: "Microsoft Defender for Endpoint (MDE) is a comprehensive security solution that protects endpoints, identities, cloud workloads, and networks from cyber threats."
 ---
 
 ### Pre-requisites
 
 <Tip>
-  User account with the privileges to generate an API token.
+  User organization must have an eligible **Defender for Endpoint** license.
 </Tip>
 
-### Generate SentinelOne API
+### Set Up App Registrations in Azure Portal
+
+App registrations in **Microsoft Entra ID (Azure AD)** allow applications to authenticate and access Microsoft resources securely.
 
 <Steps>
   <Step title="Step 1">
-    1. Log in to your [**SentinelOne Management Console**](https://console.mobile.sentinelone.net/#!/en/login) as an **Admin**.
+    **Sign in to Azure Portal**
 
-    2. Provide the necessary credentials (**email** and **password**), and click **Sign In**.
+    1. Log in to your [**Azure Portal**](https://portal.azure.com).
+
+    2. Go to **Microsoft Entra ID** (formerly Azure AD).
+
+    3. In the left menu, click **App registrations**.
   </Step>
 
   <Step title="Step 2">
-    **Create New Service User**
+    **Register a New Application**
 
-    1. Navigate to **Settings** and select **Users** tab.
+    1. Click **+ New registration**.
 
-    2. In the left navigation pane, select **Service Users**.
+    2. Provide the mandatory details:
 
-       ![](/images/SentinelOne2.png)
+       \* **Name**: Enter a name for your app (e.g., `airmdr-defender-atp`)
 
-    3. In the **Actions** drop-down list, click on **Create New Service User**.
+       \* **Supported Account Types**: Select "**Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant)**" option
 
-       ![](/images/SentinelOne3.png)
-
-    4. Provide the mandatory fields and click **Next**\* Name (Preferably **AirMDR**)\* Expiration Date&#x20;
-
-       ![](/images/SentinelOne4.png)
+    3. Click **Register**.
 
     <Tip>
-      **It is recommended that the duration be equal to the contract, but it depends on how often you wish to re-issue the token.** &#x20;
-
-      **Account "View Only" access limits the risk.**&#x20;
+      **Redirect URI (Optional)**: If your app uses authentication, enter a URL (e.g., `https://myapp.com/auth`).
     </Tip>
   </Step>
 
   <Step title="Step 3">
-    **Assign Scope of Access & Generate API Token**
+    **Get Application (Client) ID and Tenant ID**
 
-    1. To setup the access to your site, select **Site** icon under "**Select Scope of Access**".
+    1. After successful registration, you will see the **App Overview** page.
 
-    2. Set access to **Viewer**, and click **Create User**.
+    <Check>
+      Copy **Application (Client) ID** – Identifies your app.
+    </Check>
 
-       ![](/images/SentinelOne5.png)
+    <Check>
+      Copy **Directory (Tenant) ID** – Identifies your Azure AD tenant.
+    </Check>
+  </Step>
 
-    3. **Copy** and securely store the API token (you won’t be able to see it again).
+  <Step title="Step 4">
+    **Configure API Permissions**
 
-       ![](/images/SentinelOne6.png)
+    1. In the app's **Overview page**, go to **API Permissions**.
+
+    2. Click **+ Add a permission** → Choose the API you want access to (e.g., **Microsoft Graph**).
+
+    3. Select the required permissions (e.g., `User.Read`, `Mail.Read`).
+
+    4. Click **Add permissions**.
+
+    5. If required, click **Grant admin consent** to allow access.
+  </Step>
+
+  <Step title="Step 5">
+    **Create a Client Secret (For Authentication)**
+
+    1. Go to **Certificates & secrets**.
+
+    2. Click **+ New client secret**.
+
+    3. Enter a description (e.g., `MySecretKey`) and set expiration.
+
+    4. Click **Add**.
+
+    5. Copy the **Value** (Client Secret) – It won’t be shown again!
+  </Step>
+
+  <Step title="Step 6">
+    <Check>
+      &#x20;<Icon icon="envelope" /> Email the Tenant ID, Client ID and the Client Secret to AirMDR or self Configure MDE in AirMDR Integrations Dashboard.
+    </Check>
   </Step>
 </Steps>
 
-### Configure SentinelOne API in AirMDR Integrations Dashboard
+### Configure Microsoft Defender for Endpoint in AirMDR Integrations Dashboard
 
 1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login.**
 
@@ -67,48 +101,101 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
 
    ![](/images/Datadog9.png)
 
-3. Use the search option, enter the keyword "**SentinelOne**", select the **Connections** tab, and click **Create**.
+3. Use the search option, enter the keyword "**Microsoft Defender for Endpoint**", select the **Connections** tab, and click the **+ Create** icon.
 
-   ![](/images/SentinelOne.png)
+4. Enter the generated **Tenant ID, Client ID** and the **Client Secret** in the Authentication Details field params, and click **Create.**
 
-4. Enter the generated **API token** and **SentinelOne URL** in the Authentication Details field params, and click **Create.**
+### Evaluate Microsoft Defender for Endpoint (MDE)
 
-   ![](/images/SentinelOne1.png)
+### Pre-requisites
 
-### Evaluate SentinelOne API Test Scope Restrictions
+<Check>
+  **Azure App Registration** with API permissions for **Defender for Endpoint**.
+</Check>
 
-Open **cURL** and run the following command to check if your API Access is working:
+<Check>
+  **Client ID, Tenant ID, and Client Secret**.
+</Check>
 
-**Test Threat Retrieval**
+<Steps>
+  <Step title="Step 1">
+    **Obtain an Access Token**
 
-```
+    Open **cURL** and run the following command to check if your API Access is working:
 
-curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/threats" \
-     -H "Authorization: ApiToken <your_api_token>" \
-     -H "Content-Type: application/json"
-```
+    MDE uses **OAuth 2.0 authentication**. First, request an access token from **Microsoft Entra ID (Azure AD)**:
 
-* If the user has **site-specific access**, it should return threats only for that site.
+    ```
 
-* If restricted, it should return an **empty list or 403 error**.
+    curl -X POST "https://login.microsoftonline.com/<tenant_id>/oauth2/v2.0/token" \
+         -H "Content-Type: application/x-www-form-urlencoded" \
+         -d "client_id=<client_id>" \
+         -d "client_secret=<client_secret>" \
+         -d "grant_type=client_credentials" \
+         -d "scope=https://api.security.microsoft.com/.default"
+    ```
 
-**Test Device Access**
+    **Replace:**
 
-```
+    * `<tenant_id>` – Your Azure Directory (Tenant) ID.
 
-curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/agents" \
-     -H "Authorization: ApiToken <your_api_token>" \
-     -H "Content-Type: application/json"
-```
+    * `<client_id>` – Your App Registration **Client ID**.
 
-* This verifies if the user can retrieve **device information** based on the assigned scope.
+    * `<client_secret>` – Your App Registration **Client Secret**.
 
-**Troubleshooting API Access Issues**
+    **Expected Response (Success)**:
 
-| Error Code              | Possible Issue           | Solution                  |
-| ----------------------- | ------------------------ | ------------------------- |
-| `401 Unauthorized`      | Invalid API token        | Regenerate the API token  |
-| `403 Forbidden`         | Insufficient permissions | Adjust user role or scope |
-| `404 Not Found`         | Incorrect API endpoint   | Check API documentation   |
-| `429 Too Many Requests` | Rate limit exceeded      | Wait and retry            |
+    ```json
 
+    {
+      "token_type": "Bearer",
+      "expires_in": 3599,
+      "access_token": "eyJ0eXAiOiJKV1QiLCJhb..."
+    }
+    ```
+
+    * This verifies if the user can retrieve **device information** based on the assigned scope.
+  </Step>
+
+  <Step title="Step 2">
+    **Test API Access with MDE**
+
+    Once you have the `access_token`, use it in API calls.
+
+    * **To Get Device List**
+
+    ```
+
+    curl -X GET "https://api.security.microsoft.com/api/machines" \
+         -H "Authorization: Bearer <access_token>" \
+         -H "Content-Type: application/json"
+    ```
+
+    **Expected Response:**
+    A JSON list of devices onboarded to Defender for Endpoint.
+
+    * **To Get Alerts**
+
+    ```
+
+    curl -X GET "https://api.security.microsoft.com/api/alerts" \
+         -H "Authorization: Bearer <access_token>" \
+         -H "Content-Type: application/json"
+    ```
+
+    **Expected Response:**
+
+    A list of security alerts detected by Microsoft Defender.
+
+
+  </Step>
+</Steps>
+
+**Troubleshooting Authentication Issues**
+
+| Error Code                  | Possible Issue               | Solution                            |
+| --------------------------- | ---------------------------- | ----------------------------------- |
+| `401 Unauthorized`          | Invalid token                | Regenerate token, check credentials |
+| `403 Forbidden`             | Insufficient API permissions | Grant admin consent in Azure Portal |
+| `400 Bad Request`           | Incorrect request format     | Verify API endpoint and headers     |
+| `500 Internal Server Error` | Service issue                | Retry later, check Defender status  |
