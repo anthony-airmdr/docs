@@ -90,9 +90,12 @@ description: "Datadog is a cloud-based monitoring, security, and analytics platf
 Open **Postman** or **cURL** and run the following command to check if your API Key is working:
 
 ```
-curl -X GET "https://api.datadoghq.com/api/v1/validate" \
-     -H "Content-Type: application/json" \
-     -H "DD-API-KEY: your_api_key_here"
+
+curl -X GET 'https://api.datadoghq.com/api/v2/users?page[size]=1&page[offset]=1' \
+-H 'Content-Type: application/json' \
+-H 'DD-API-KEY: your_api_key_here' \
+-H 'DD-APPLICATION-KEY: your_application_key_here' \
+-H 'Accept: application/json'
 ```
 
 Response
