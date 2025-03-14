@@ -32,6 +32,7 @@
                         "Integrations/overview",
                         "Integrations/cisco-AMP",
                         "Integrations/Datadog",
+                        "Integrations/Duo",
                         "Integrations/Microsoft-Defender",
                         "Integrations/Okta",
                         "Integrations/SentinelOne"
