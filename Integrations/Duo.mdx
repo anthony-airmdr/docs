@@ -1,0 +1,213 @@
+---
+title: "Duo"
+description: "Microsoft Defender for Endpoint (MDE) is a comprehensive security solution that protects endpoints, identities, cloud workloads, and networks from cyber threats."
+---
+
+### Pre-requisites
+
+<Tip>
+  User organization must have an eligible **Defender for Endpoint** license.
+</Tip>
+
+### Set Up App Registrations in Azure Portal
+
+App registrations in **Microsoft Entra ID (Azure AD)** allow applications to authenticate and access Microsoft resources securely.
+
+<Steps>
+  <Step title="Step 1">
+    1. Log in to your [**Azure Portal**](https://portal.azure.com).
+
+    2. Go to **Microsoft Entra ID** (formerly Azure AD).
+
+    3. In the left menu, click **App registrations**.
+  </Step>
+
+  <Step title="Step 2">
+    **Register a New Application**
+
+    1. Click **+ New registration**.
+
+    2. Provide the mandatory details: (**Name**: Enter a name for your app (e.g., `airmdr-defender-atp`) and **Supported Account Types**: Select "*Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant)*" option).
+
+       ![](/images/MDE3.png)
+
+    3. Click **Register**.
+
+    <Tip>
+      **Redirect URI (Optional)**: If your app uses authentication, enter a URL (e.g., `https://myapp.com/auth`).
+    </Tip>
+  </Step>
+
+  <Step title="Step 3">
+    **Get Application (Client) ID and Tenant ID**
+
+    1. After successful registration, you will see the **App Overview** page.
+
+    <Check>
+      Copy **Application (Client) ID** – Identifies your app.
+    </Check>
+
+    <Check>
+      Copy **Directory (Tenant) ID** – Identifies your Azure AD tenant.
+    </Check>
+  </Step>
+
+  <Step title="Step 4">
+    **Configure API Permissions**
+
+    1. In the application Overview page left navigation pane, select **Manage** dropdown.
+
+    2. Click **API Permissions**.
+
+    3. Click **+ Add a permission**&#x20;
+
+    4. Search the API "**WindowsDefenderATP**".
+
+       ![](/images/MDE4.png)
+
+    5. Select the required permissions (`Alert.Read.All`, `File.Read.All`,`IP.Read.All`,`Machine.Read.All`,`SecurityRecommendation.Read.All`,`Software.Read.All`,`URL.Read.All`,`User.Read.All`,`Vulnerability.Read.All`,`Alert.ReadWrite.All`,`Machine.ReadWrite.All`).
+
+    6. Click **Add permissions**.
+
+    7. Click **API permissions**, select **Yes** for **Grant admin consent confirmation** to allow access.
+
+       ![](/images/MDE5.png)
+  </Step>
+
+  <Step title="Step 5">
+    **Create a Client Secret (For Authentication)**
+
+    1. In the application Overview page left navigation pane, select **Manage** dropdown.
+
+    2. Click **Certificates & secrets**.
+
+    3. Click **+ New client secret**.
+
+    /image
+
+    1. Enter a description (e.g., `MySecretKey`) and set expiration.
+
+    2. Click **Add**.
+
+    <Warning>
+      Copy and secure the **Value** (**Client Secret**) immediately – (It won’t be shown again!)
+    </Warning>
+  </Step>
+
+  <Step title="Step 6">
+    <Check>
+      &#x20;<Icon icon="envelope" /> Email the **Tenant ID**, **Client ID** and the **Client Secret** to AirMDR or self Configure MDE in AirMDR Integrations Dashboard.
+    </Check>
+  </Step>
+</Steps>
+
+### Configure Microsoft Defender for Endpoint in AirMDR Integrations Dashboard
+
+1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login.**
+
+   ![](/images/Datadog11.png)
+
+2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**
+
+   ![](/images/Datadog9.png)
+
+3. Use the search option, enter the keyword "**Microsoft Defender for Endpoint**", select the **Connections** tab, and click the **+ Create** icon.
+
+   ![](/images/MDE.png)
+
+4. Enter the generated **Tenant ID, Client ID** and the **Client Secret** in the Authentication Details field params, and click **Create.**
+
+   ![](/images/MDE2.png)
+
+### Evaluate Microsoft Defender for Endpoint (MDE)
+
+### Pre-requisites
+
+<Check>
+  **Azure App Registration** with API permissions for **Defender for Endpoint**.
+</Check>
+
+<Check>
+  **Client ID, Tenant ID, and Client Secret**.
+</Check>
+
+<Steps>
+  <Step title="Step 1">
+    **Obtain an Access Token**
+
+    Open **cURL** and run the following command to check if your API Access is working:
+
+    MDE uses **OAuth 2.0 authentication**. First, request an access token from **Microsoft Entra ID (Azure AD)**:
+
+    ```
+
+    curl -X POST "https://login.microsoftonline.com/<tenant_id>/oauth2/v2.0/token" \
+         -H "Content-Type: application/x-www-form-urlencoded" \
+         -d "client_id=<client_id>" \
+         -d "client_secret=<client_secret>" \
+         -d "grant_type=client_credentials" \
+         -d "scope=https://api.security.microsoft.com/.default"
+    ```
+
+    **Replace:**
+
+    * `<tenant_id>` – Your Azure Directory (Tenant) ID.
+
+    * `<client_id>` – Your App Registration **Client ID**.
+
+    * `<client_secret>` – Your App Registration **Client Secret**.
+
+    **Expected Response (Success)**:
+
+    ```json
+
+    {
+      "token_type": "Bearer",
+      "expires_in": 3599,
+      "access_token": "eyJ0eXAiOiJKV1QiLCJhb..."
+    }
+    ```
+
+    * This verifies if the user can retrieve **device information** based on the assigned scope.
+  </Step>
+
+  <Step title="Step 2">
+    **Test API Access with MDE**
+
+    Once you have the `access_token`, use it in API calls.
+
+    * **To Get Device List**
+
+    ```
+
+    curl -X GET "https://api.security.microsoft.com/api/machines" \
+         -H "Authorization: Bearer <access_token>" \
+         -H "Content-Type: application/json"
+    ```
+
+    **Expected Response:**
+    A JSON list of devices onboarded to Defender for Endpoint.
+
+    * **To Get Alerts**
+
+    ```
+
+    curl -X GET "https://api.security.microsoft.com/api/alerts" \
+         -H "Authorization: Bearer <access_token>" \
+         -H "Content-Type: application/json"
+    ```
+
+    **Expected Response:**
+
+    A list of security alerts detected by Microsoft Defender.
+
+    **Troubleshooting Authentication Issues**
+
+    | Error Code                  | Possible Issue               | Solution                            |
+    | --------------------------- | ---------------------------- | ----------------------------------- |
+    | `401 Unauthorized`          | Invalid token                | Regenerate token, check credentials |
+    | `403 Forbidden`             | Insufficient API permissions | Grant admin consent in Azure Portal |
+    | `400 Bad Request`           | Incorrect request format     | Verify API endpoint and headers     |
+    | `500 Internal Server Error` | Service issue                | Retry later, check Defender status  |
+  </Step>
+</Steps>
