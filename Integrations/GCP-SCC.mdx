@@ -1,49 +1,79 @@
 ---
-title: "Google Command Center - Security Command Center"
-description: "Duo Security is a cloud-based multi-factor authentication (MFA) and access security platform that helps protect applications and networks by requiring users to verify their identity using multiple authentication methods before granting access."
+title: "Google Cloud Platform - Security Command Center"
+description: "Security Command Center (SCC) is Google Cloud’s centralized security and risk management platform. It helps detect, investigate, and remediate security threats, vulnerabilities, and misconfigurations across Google Cloud resources."
 ---
 
 ### Pre-requisites
 
-<Tip>
-  User Organization must have valid credentials to access the [Duo Admin Panel](https://admin.duosecurity.com/).
-</Tip>
+<Check>
+  User Organization must define **Owner** or **Security Admin** role (`roles/owner` or `roles/securitycenter.admin`) in your GCP organization.
+</Check>
 
-### Generate Duo Security Admin API
+<Check>
+  User must have **Organization Admin** permissions to enable services at the organization level.
+</Check>
 
-The Admin API allows you to programmatically create, retrieve, update, and delete users, phones, hardware tokens, admins, applications, and more
+### Enable Security Command Center
+
+Enabling Security Command Center will actively monitor your GCP environment for threats and vulnerabilities
 
 <Steps>
   <Step title="Step 1">
-    1. Log in to your [Duo Admin Panel](https://admin.duosecurity.com/).\
-       \
-       ![images/Duo8.png](/images/Duo8.png)
-    2. Navigate to **Applications** → **Protect an Application**.\
-       \
-       ![images/Duo1.png](/images/Duo1.png)
+    1. Log in to your [Google Cloud Console](https://console.cloud.google.com/welcome).
+    2. Click on the left navigation menu (hamburger icon).
+    3. Select the "Security" tab.
+    4. To select the **organization** where you want to enable SCC, click on **Select a project** > **ALL**.
+
+       <Note>
+         Organization is displayed at the top-level and all the projects are indented
+       </Note>
+    5. Copy the organization **ID **displayed next to the Name of the organization.
   </Step>
   <Step title="Step 2">
-    **Generate Admin API Credentials**
+    **Enable Security Command Center API**
 
-    1. Search for the type of integration "Admin API".
-    2. Click **Protect** to the far-right to configure the Auth API.\
-       \
-       ![images/Duo2.png](/images/Duo2.png)
-    3. Scroll down to the Permissions section.
-    4. Select the required permissions (`Grant read information` , `Grant read log`, and `Grant read resource` .
-    5. Click **Save Changes**.\
-       \
-       ![images/Duo3.png](/images/Duo3.png)
-    6. In the Details section, copy and secure the **Integration Key (ikey)** – Identifies your app, **Secret Key (skey)** – A secure credential, and **API Hostname** – URL to interact with Duo.\
-       \
-       ![images/Duo4.png](/images/Duo4.png)
+    1. In the **Navigation menu**, go to **APIs & Services** → **Library**.
+    2. Search for **Security Command Center API**.
+    3. Click **Enable**.
   </Step>
-  <Step title="Step 3">
-    <Check>
-      <Icon icon="envelope" /> Email the **Integration Key (ikey)**, **Secret Key (skey)** and the **API Hostname URL** to AirMDR or self Configure Duo Security in AirMDR Integrations Dashboard.
-    </Check>
+  <Step title="Select Service Tier">
+    1. Select your organization, and enter keyword "Security" in the search bar.
+    2. Select the **Security Command Center **in the search results**.**
+    3. Click on "**GET THE SECURITY COMMAND CENTER**"
+    4. Select Service Tier, preferably **Premium (Paid)** for your organization.
+    5. Click **Next**.
+    6. On the next page, review the detection you want to enable.
+
+       <Tip>
+         AirMDR recommends selecting all.
+       </Tip>
+  </Step>
+  <Step title="Configure Security Sources">
+    1. **Set Up Built-in Security Services**
+       - SCC integrates with:
+         - **Security Health Analytics**
+         - **Event Threat Detection**
+         - **VM Threat Detection**
+         - **Container Threat Detection**
+       - Configure these services based on your security requirements.
+
+         <Warning>
+           **Event Threat Detection **is mandatory.
+         </Warning>
+    2. **Enable Third-Party Integrations (Optional)**
+       - Navigate to **Integrations** and configure security tools like **SIEM**, **Threat Intelligence**, etc.
+    3. Click **Next**.
+    4. On the next page, click **Grant roles automatically** to complete the setup.
+
+    <Info>
+      You can view your findings in the findings tab on the left side.
+    </Info>
   </Step>
 </Steps>
+
+### Configure Duo Security Admin API in AirMDR Integrations Dashboard
+
+1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login.**
 
 ### Configure Duo Security Admin API in AirMDR Integrations Dashboard
 
