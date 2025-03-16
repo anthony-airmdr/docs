@@ -15,19 +15,22 @@ description: "Security Command Center (SCC) is Google Cloud’s centralized secu
 
 ### Enable Security Command Center
 
-Enabling Security Command Center will actively monitor your GCP environment for threats and vulnerabilities
+Enabling Security Command Center will actively monitor your GCP environment for threats and vulnerabilities.
 
 <Steps>
   <Step title="Access GCC">
     1. Log in to your [Google Cloud Console](https://console.cloud.google.com/welcome).
     2. Click on the left navigation menu (hamburger icon).
-    3. Select the "Security" tab.
+    3. Select the "Security" tab.\
+       \
+       ![images/GCPSCC2.png](/images/GCPSCC2.png)
     4. To select the **organization** where you want to enable SCC, click on **Select a project** > **ALL**.
 
        <Note>
          Organization is displayed at the top-level and all the projects are indented
        </Note>
-    5. Copy the organization **ID** displayed next to the organization's Name.
+    5. Copy the organization **ID** displayed next to the organization's Name.\
+       ![images/GCPSCC7.png](/images/GCPSCC7.png)
   </Step>
   <Step title="Enable Security Command Center API">
     1. In the **Navigation menu**, go to **APIs & Services** → **Library**.
@@ -36,19 +39,20 @@ Enabling Security Command Center will actively monitor your GCP environment for 
   </Step>
   <Step title="Select Service Tier">
     1. Select your organization, and enter keyword "Security" in the search bar.
-    2. Select the **Security Command Center**.
-    3. Click on "**GET THE SECURITY COMMAND CENTER**"
+    2. Select the **Security Command Center**.\
+       ![images/GCPSCC3.png](/images/GCPSCC3.png)
+    3. Click on "**GET THE SECURITY COMMAND CENTER**".
     4. Select Service Tier, preferably **Premium (Paid)** for your organization.\
        \
        **SCC Editions: Standard vs. Premium**
 
-       |                                  |                 |                |
+       | Feature                          | Standard (Free) | Premium (Paid) |
        | -------------------------------- | --------------- | -------------- |
-       |                                  | ✅ Basic         | ✅ Advanced     |
-       |                                  | ❌ No            | ✅ Yes          |
-       |                                  | ❌ No            | ✅ Yes          |
-       |                                  | ❌ No            | ✅ Yes          |
-       |                                  | ❌ No            | ✅ Yes          |
+       | Security Health Analytics        | ✅ Basic         | ✅ Advanced     |
+       | Event Threat Detection           | ❌ No            | ✅ Yes          |
+       | Container & VM Threat Detection  | ❌ No            | ✅ Yes          |
+       | Continuous Compliance Monitoring | ❌ No            | ✅ Yes          |
+       | Automated Security Insights      | ❌ No            | ✅ Yes          |
     5. Click **Next**.
     6. On the next page, review the detection you want to enable.
 
@@ -93,7 +97,7 @@ Enabling Security Command Center will actively monitor your GCP environment for 
        - Go to [Google Cloud Console](https://console.cloud.google.com/welcome) with the same credentials used to log in.
        - Click **Select a project** → **New Project**.
        - Enter:
-         - **Project Name** (e.g., `AirMDR`).
+         - **Project Name** (e.g., `AirMDR`)
          - **Organization** (if applicable).
        - Click **Create**.
   </Step>
@@ -142,7 +146,9 @@ Enabling Security Command Center will actively monitor your GCP environment for 
 
     1. Go to [Google Cloud Console](https://console.cloud.google.com/welcome) → **Organization in the top left corner**.
     2. Select **AirMDR** project.
-    3. Go to **IAM & Admin** → **VIEW BY PRINCIPALS** → **GRANT ACCESS**.
+    3. Go to **IAM & Admin** → **VIEW BY PRINCIPALS** → **GRANT ACCESS**.\
+       \
+       ![images/GCPSCC6.png](/images/GCPSCC6.png)
     4. Search and select `airmdr-agent`.
     5. Click **Add**.\
        or
@@ -166,11 +172,9 @@ Enabling Security Command Center will actively monitor your GCP environment for 
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**\
    \
    ![images/Duo7.png](/images/Duo7.png)
-3. Use the search option, enter the keyword "**Google Cloud Provider**", select the **Connections** tab, and click the **\+ Create** icon.
-4. Enter the generated **organization ID,** provide the contents of the JSON file with Service Account credentials in the Authentication Details field params, and click **Create.**
-
-### Test the Integration
-
-- Attempt login with a user enrolled in Duo.
-- Check if **push notifications**, **SMS**, or **OTP codes** work.
-- Monitor API logs in the **Duo Admin Dashboard**.
+3. Use the search option, enter the keyword "**Google Cloud Provider**", select the **Connections** tab, and click the **\+ Create** icon.\
+   \
+   ![images/GCPSCC5.png](/images/GCPSCC5.png)
+4. Enter the generated **organization ID,** provide the contents of the JSON file with Service Account credentials in the Authentication Details field params, and click **Create.**\
+   \
+   ![images/GCPSCC4.png](/images/GCPSCC4.png)
