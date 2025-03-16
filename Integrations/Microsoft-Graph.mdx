@@ -25,13 +25,16 @@ Setting up the **Microsoft Graph API** involves a few steps, including registeri
 <Steps>
   <Step title="Register an App in Azure AD">
     1. Go to [Azure Portal](https://portal.azure.com/).
-    2. Search and select "Microsoft Entra ID" in the search bar.
+    2. Search and select "Microsoft Entra ID" in the search bar.\
+       ![images/MSGraph3.png](/images/MSGraph3.png)
     3. Navigate to **Manage** → **App registrations.**
-    4. Click **\+ New registration.**
+    4. Click **\+ New registration.**\
+       ![images/MSGraph4.png](/images/MSGraph4.png)
     5. Provide:
        - **Name**: e.g., "graphapi-client-airmdr"
        - **Supported account types**: Choose "**Accounts in any identity provider or organizational directory (for authenticating users with user flows)**"
-    6. Click **Register.**
+    6. Click **Register.**\
+       ![images/MSGraph5.png](/images/MSGraph5.png)
 
        <Note>
          Post successful registration, the application must open automatically if not
@@ -45,15 +48,18 @@ Setting up the **Microsoft Graph API** involves a few steps, including registeri
     1. Go to **Manage** → **API Permissions** in the app settings.
     2. Click **\+ Add a permission.**
     3. Select **Microsoft Graph.**
-    4. Choose **Application permissions**.
+    4. Choose **Application permissions**.\
+       ![images/MSGraph6.png](/images/MSGraph6.png)
     5. Select the required permissions (`User.Read` , `User.Read.All` , `User.ReadBasic.All` , `SecurityEvents.Read.All` , `SecurityAlert.Read.All` , `SecurityIncident.Read.All` , `SecurityActions.Read.All` , `AuditLog.Read.All` , `Directory.Read.All`
     6. Click on **Add Permissions**.
-    7. In API permissions, click **Grant admin consent**.
+    7. In API permissions, click **Grant admin consent**.\
+       ![images/MSGraph7.png](/images/MSGraph7.png)
   </Step>
   <Step title="Create Client Secret (For Authentication)">
     1. Go to **Manage** → **Certificates & secrets.**
     2. Select **Client Secrets** tab.
-    3. Click **\+ New client secret.**
+    3. Click **\+ New client secret.**\
+       ![images/MSGraph8.png](/images/MSGraph8.png)
     4. Add a **description** and **expiration period.**
     5. Click **Create**.
 
@@ -87,5 +93,9 @@ Setting up the **Microsoft Graph API** involves a few steps, including registeri
    ![](/images/Datadog11.png)
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**\
    ![images/Duo7.png](/images/Duo7.png)
-3. Use the search option, enter the keyword "**Microsoft Graph**", select the **Connections** tab, and click the **\+ Create** icon.
-4. Enter the generated **Tenant ID, Client ID** and the **Client Secret** in the Authentication Details field params, and click **Create.**
+3. Use the search option, enter the keyword "**Microsoft Graph**", select the **Connections** tab, and click the **\+ Create** icon.\
+   \
+   ![images/MSGraph2.png](/images/MSGraph2.png)
+4. Enter the generated **Tenant ID, Client ID** and the **Client Secret** in the Authentication Details field params, and click **Create.**\
+   \
+   ![images/MSGraph1.png](/images/MSGraph1.png)
