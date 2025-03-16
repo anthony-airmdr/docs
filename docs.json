@@ -34,6 +34,7 @@
                         "Integrations/Datadog",
                         "Integrations/Duo",
                         "Integrations/GCP-SCC",
+                        "Integrations/GitHub",
                         "Integrations/Microsoft-Defender",
                         "Integrations/Okta",
                         "Integrations/SentinelOne"
