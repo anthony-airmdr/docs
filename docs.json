@@ -36,6 +36,7 @@
                         "Integrations/GCP-SCC",
                         "Integrations/GitHub",
                         "Integrations/Microsoft-Defender",
+                        "Integrations/Microsoft-Graph",
                         "Integrations/Okta",
                         "Integrations/SentinelOne"
                         
