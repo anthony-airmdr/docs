@@ -18,7 +18,7 @@ description: "Security Command Center (SCC) is Google Cloud’s centralized secu
 Enabling Security Command Center will actively monitor your GCP environment for threats and vulnerabilities
 
 <Steps>
-  <Step title="Step 1">
+  <Step title="Access GCC">
     1. Log in to your [Google Cloud Console](https://console.cloud.google.com/welcome).
     2. Click on the left navigation menu (hamburger icon).
     3. Select the "Security" tab.
@@ -27,20 +27,28 @@ Enabling Security Command Center will actively monitor your GCP environment for 
        <Note>
          Organization is displayed at the top-level and all the projects are indented
        </Note>
-    5. Copy the organization **ID **displayed next to the Name of the organization.
+    5. Copy the organization **ID** displayed next to the organization's Name.
   </Step>
-  <Step title="Step 2">
-    **Enable Security Command Center API**
-
+  <Step title="Enable Security Command Center API">
     1. In the **Navigation menu**, go to **APIs & Services** → **Library**.
     2. Search for **Security Command Center API**.
     3. Click **Enable**.
   </Step>
   <Step title="Select Service Tier">
     1. Select your organization, and enter keyword "Security" in the search bar.
-    2. Select the **Security Command Center **in the search results**.**
+    2. Select the **Security Command Center **
     3. Click on "**GET THE SECURITY COMMAND CENTER**"
-    4. Select Service Tier, preferably **Premium (Paid)** for your organization.
+    4. Select Service Tier, preferably **Premium (Paid)** for your organization.\
+       \
+       **SCC Editions: Standard vs. Premium**
+
+       | **Feature**                      | **Standard (Free)** | **Premium (Paid)** |
+       | -------------------------------- | --------------- | -------------- |
+       | **Security Health Analytics**    | ✅ Basic         | ✅ Advanced     |
+       | **Event Threat Detection**       | ❌ No            | ✅ Yes          |
+       | **Container & VM Threat Detection** | ❌ No            | ✅ Yes          |
+       | **Continuous Compliance Monitoring** | ❌ No            | ✅ Yes          |
+       | **Automated Security Insights**  | ❌ No            | ✅ Yes          |
     5. Click **Next**.
     6. On the next page, review the detection you want to enable.
 
@@ -58,7 +66,7 @@ Enabling Security Command Center will actively monitor your GCP environment for 
        - Configure these services based on your security requirements.
 
          <Warning>
-           **Event Threat Detection **is mandatory.
+           \*\*Event Threat Detection \*\*is mandatory.
          </Warning>
     2. **Enable Third-Party Integrations (Optional)**
        - Navigate to **Integrations** and configure security tools like **SIEM**, **Threat Intelligence**, etc.
@@ -71,9 +79,80 @@ Enabling Security Command Center will actively monitor your GCP environment for 
   </Step>
 </Steps>
 
-### Configure Duo Security Admin API in AirMDR Integrations Dashboard
+### Create a Service Account
 
-1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login.**
+<Steps>
+  <Step title="Open Google Cloud Console">
+    1. Go to [Google Cloud Console](https://console.cloud.google.com/welcome).
+    2. Select your **project**. For example: AirMDR
+
+       <Check>
+         Project (Service account) is mandatory to enable API. 
+       </Check>
+    3. Create a project, if there is no existing
+       - Go to [Google Cloud Console](https://console.cloud.google.com/welcome) with the same credentials used to log in.
+       - Click **Select a project** → **New Project**.
+       - Enter:
+         - **Project Name** (e.g., `AirMDR`).
+         - **Organization** (if applicable).
+       - Click **Create**.
+  </Step>
+  <Step title="Create a Service Account">
+    1. Go to **Google Cloud Console**.
+    2. Select **AirMDR **project.
+    3. Open **APIs & Services** → Go to **Credentials **→ Create Credentials → Click **Service Accounts**.
+    4. Click **Create Service Account**.
+    5. Enter the required information:
+       - **Service Account Name:** (e.g., `airmdr-agent`)
+       - **Service Account ID :** (e.g., `airmdr-agent`)
+       - Click **Create and Continue**.
+    6. **Generate a Key File**
+       - In the **Service Accounts list**, click on the created service account
+       - Go to **Keys** → **Add Key** → **Create new key**
+       - Choose **JSON**, then **Create**
+       - A `.json` key file will be downloaded.
+
+         <Warning>
+           Make sure to copy and save the JSON Key file securely
+         </Warning>
+    7. **Assign IAM Roles**
+
+       <Info>
+         By default, the Owner role will be applied to this service account based on inheritance from the project
+       </Info>
+       - Add roles as required for **Security Command Center**:
+         - **Security Admin (**`roles/securitycenter.admin`**)** → Allows managing SCC.
+         - **Viewer (**`roles/viewer`**)** → Grants read access.
+         - **Security Analyst (**`roles/securitycenter.analyst`**)** → (Optional) For security monitoring.
+         - **Pub/Sub Publisher (**`roles/pubsub.publisher`**)** → (Optional) For security alerts.
+       - Click **Continue** → **Done**.
+
+         <Check>
+           When finished, you should have a service account named **airmdr-agent**, credentials for this service account in a JSON file saved to your host.
+         </Check>
+  </Step>
+  <Step title="Enable Security Command Center API">
+    1. Go to [Google Cloud Console](https://console.cloud.google.com/welcome).
+    2. Select **AirMDR **project, go to **APIs & Services** → **Enabled APIs & Services**.
+    3. Search for **Security Command Center API **from the **Library **page.
+    4. Click **Enable**.
+  </Step>
+  <Step title="Assign the Required IAM Role">
+    The **Security Command Center Viewer** role (`roles/securitycenter.viewer`) allows the service account to **read SCC findings**.
+
+    1. Go to [Google Cloud Console](https://console.cloud.google.com/welcome) → **Organization in the top left corner**.
+    2. Select **AirMDR **project.
+    3. Go to **IAM & Admin** → **VIEW BY PRINCIPALS **→ **GRANT ACCESS**.
+    4. Search and select `airmdr-agent`.
+    5. Click **Add**.\
+       or
+    6. Enter the client **service account email** (e.g., `scc-service-account@my-security-project.iam.gserviceaccount.com`).
+    7. Assign the role:
+       - **Security Command Center Viewer (**`roles/securitycenter.viewer`**)**
+    8. Click **Save**.
+  </Step>
+</Steps>
+
 
 ### Configure Duo Security Admin API in AirMDR Integrations Dashboard
 
