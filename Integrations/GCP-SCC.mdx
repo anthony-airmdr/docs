@@ -42,13 +42,13 @@ Enabling Security Command Center will actively monitor your GCP environment for 
        \
        **SCC Editions: Standard vs. Premium**
 
-       | **Feature**                      | **Standard (Free)** | **Premium (Paid)** |
+       |                                  |                 |                |
        | -------------------------------- | --------------- | -------------- |
-       | **Security Health Analytics**    | ✅ Basic         | ✅ Advanced     |
-       | **Event Threat Detection**       | ❌ No            | ✅ Yes          |
-       | **Container & VM Threat Detection** | ❌ No            | ✅ Yes          |
-       | **Continuous Compliance Monitoring** | ❌ No            | ✅ Yes          |
-       | **Automated Security Insights**  | ❌ No            | ✅ Yes          |
+       |                                  | ✅ Basic         | ✅ Advanced     |
+       |                                  | ❌ No            | ✅ Yes          |
+       |                                  | ❌ No            | ✅ Yes          |
+       |                                  | ❌ No            | ✅ Yes          |
+       |                                  | ❌ No            | ✅ Yes          |
     5. Click **Next**.
     6. On the next page, review the detection you want to enable.
 
@@ -149,11 +149,11 @@ Enabling Security Command Center will actively monitor your GCP environment for 
     6. Enter the client **service account email** (e.g., `scc-service-account@my-security-project.iam.gserviceaccount.com`).
     7. Assign the role:
        - **Security Command Center Viewer (**`roles/securitycenter.viewer`**)**
-    8. Click **Save**. 
+    8. Click **Save**.
   </Step>
   <Step title="Service Account">
     <Check>
-      <Icon icon="envelope" /> Email the service account `.json` file and the **Organization_ID** to the AirMDR operations team mailto:mdr-ops@airmdr.com or self-configure in AirMDR Integrations Dashboard.
+      <Icon icon="envelope" /> Email the service account `.json` file and the **Organization_ID** to the AirMDR operations team mailto:[mdr-ops@airmdr.com](mailto:mdr-ops@airmdr.com) or self-configure in AirMDR Integrations Dashboard.
     </Check>
   </Step>
 </Steps>
@@ -166,11 +166,8 @@ Enabling Security Command Center will actively monitor your GCP environment for 
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**\
    \
    ![images/Duo7.png](/images/Duo7.png)
-3. Use the search option, enter the keyword "**Google Cloud Provider**", select the **Connections** tab, and click the **\+ Create** icon.\
-   \
-   ![images/Duo6.png](/images/Duo6.png)
-4. Enter the generated **Integration Key (ikey)**, **Secret Key (skey)** and the **API Hostname URL** in the Authentication Details field params, and click **Create.**\
-   ![images/Duo5.png](/images/Duo5.png)
+3. Use the search option, enter the keyword "**Google Cloud Provider**", select the **Connections** tab, and click the **\+ Create** icon.
+4. Enter the generated **organization ID,** provide the contents of the JSON file with Service Account credentials in the Authentication Details field params, and click **Create.**
 
 ### Test the Integration
 
