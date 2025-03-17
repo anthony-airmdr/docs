@@ -54,6 +54,36 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
   </Step>
 </Steps>
 
+### Fetch Alerts from SentinelOne via API
+
+<Steps>
+  <Step title="Create a New User Role with Necessary Permissions:">
+    1. Log in to your **SentinelOne Management Console** as an **Admin**.
+    2. Navigate to **Settings** > **Users** > **Roles**.
+    3. Duplicate the existing **Viewer** role to create a new role, e.g., **API Access Role**.
+    4. Assign the following permissions to this new role:
+       - **Endpoints**: Remote Shell, Initiate Scan, File Fetch, Fetch Logs, and Search on Deep Visibility.
+       - **Endpoint Threat**: Fetch Threat File.
+    5. Click **Save** to apply the changes.
+  </Step>
+  <Step title="Create a New User Account:">
+    1. Navigate to **Settings** > **Users** and click on **New User**.
+    2. Fill in the user details, such as **Full Name** and **Email Address**.
+    3. Assign the previously created **API Access Role** to this user.
+    4. Ensure that the **Can generate API Token** option is enabled for this user.
+    5. Click **Save** to create the user account.
+  </Step>
+  <Step title="Generate an API Token:">
+    1. Log in to the SentinelOne Management Console using the newly created user account.
+    2. Click on your username in the top-right corner and select **My User**.
+    3. Click on **Generate API Token**.
+
+    <Warning>
+      **Copy **and securely store the generated token, as it will be required for API authentication.
+    </Warning>
+  </Step>
+</Steps>
+
 ### Configure SentinelOne API in the AirMDR Integrations Dashboard
 
 1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials, and click **Login.**
