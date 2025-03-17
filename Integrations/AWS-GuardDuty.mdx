@@ -109,25 +109,73 @@ description: "AWS GuardDuty is a threat detection service that continuously moni
 
        <Warning>
          Issues you can run into:
-         - Principal did not have access to the KMS key
+         - Principal did not have access to the KMS key.
        </Warning>
+  </Step>
+  <Step title="Set Up an IAM Role for API Access in AWS">
+    If you need to grant **secure API access** to AWS services (e.g., EC2, Lambda, or third-party applications), you must create an **IAM role** with the right permissions.
 
-    <Check>
-      Ensure **GuardDuty is enabled** in your AWS account.
-    </Check>
-    <Check>
-      An **Amazon S3 bucket** exists for storing findings
-    </Check>
-    <Check>
-      Proper **IAM permissions** for GuardDuty to write to the S3 bucket.
-    </Check>
-    
+    <Steps>
+      <Step title="Create an IAM Role">
+        - **Sign in** to the [AWS IAM Console](https://console.aws.amazon.com/iam/).
+        - Click **"Roles"** → **"Create Role"**.
+        - **Select a trusted entity**:
+          - If AWS services (e.g., EC2, Lambda) need API access → Choose **AWS Service**.
+          - If a third-party app needs access → Choose **Web Identity or OpenID Connect**.
+          - If another AWS account needs access → Choose **Another AWS Account**.
+        - Click **Next**.
+      </Step>
+      <Step title="Attach API Permissions">
+        Choose a predefined **AWS Managed Policy** or create a custom one:
+
+        - **Full API Access** → `AdministratorAccess` (Not recommended for security).
+        - **Read-Only API Access** → `ReadOnlyAccess`.
+        - **GuardDuty API Access** → `AmazonGuardDutyFullAccess`.
+      </Step>
+      <Step title="Create User and Retrieve Credentials">
+        1. Review the permissions and user details.
+        2. Create the user.
+        3. Download the .csv file containing the **access key ID** and **secret access key**
+
+           <Warning>
+             Securely save and share these credentials with the AirMDR operations team to allow monitoring.
+           </Warning>
+      </Step>
+    </Steps>
   </Step>
 </Steps>
 
-### Configure **GitHub Personal Access Token (PAT)** in AirMDR Integrations Dashboard
+### Setting Up AWS CloudTrail for Security & Auditing
 
-1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login.**
+AWS **CloudTrail** is a service that logs all API actions taken in your AWS account. It helps with **security auditing, compliance, and operational troubleshooting**.
+
+1. **Sign in** to the same [AWS IAM Console](https://console.aws.amazon.com/iam/) created for AWS GuardDuty.
+2. Click Permissions → **Add Permissions**.
+3. Select the Permission options → **Attach policies directly**.
+4. Search for the keyword "CloudTrial" and select **AWSCloudTrail_ReadOnlyAccess**.
+5. Review the Permission summary.
+6. Click **Add Permissions**.
+
+### Mapping AWS CloudTrail Logs into Amazon Athena
+
+### Pre-requisites
+
+<Check>
+  **CloudTrail is enabled** and it logs to an **S3 bucket**.
+</Check>
+
+<Check>
+  **Athena is enabled** in your AWS account.
+</Check>
+
+1. Open the Cloud trail in AWS and then Select **Event History**.
+2. Select **Create Athena Table** (top right corner).
+3. A pop-up opens, and select the S3 bucket in the storage location.
+4. Click **Create Table**.
+
+### Configure AWS in the AirMDR Integrations Dashboard
+
+1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials, and click **Login.**
 
    ![](/images/Datadog11.png)
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**\
