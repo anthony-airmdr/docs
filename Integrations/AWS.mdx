@@ -16,9 +16,9 @@ description: "AWS GuardDuty is a threat detection service that continuously moni
     5. Click **"Enable GuardDuty"**.
   </Step>
   <Step title="Set Up an S3 Bucket for Log Storage in AWS">
-    1. **Go to S3 Console:** [AWS S3 Console](https://s3.console.aws.amazon.com/s3/home)
+    1. Go to S3 Console: [AWS S3 Console](https://s3.console.aws.amazon.com/s3/home)
     2. Click **"Create bucket"**.
-    3. **Enter a unique bucket name** (e.g., `my-security-logs-bucket`).
+    3. Enter a unique bucket name (e.g., `my-security-logs-bucket`).
     4. Choose the **AWS Region** where you want to store logs.
 
        <Note>
@@ -28,8 +28,6 @@ description: "AWS GuardDuty is a threat detection service that continuously moni
     6. Configure the bucket with appropriate policies and permissions to allow GuardDuty to write logs to it.
     7. Attach a bucket policy that grants GuardDuty permission to write logs to the bucket.\
        Example Policy
-
-       :
 
        ```
        
