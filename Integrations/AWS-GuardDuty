@@ -1,0 +1,65 @@
+---
+title: "AWS"
+description: "A GitHub Personal Access Token (PAT) is a secure authentication method used to access GitHub's API, repositories, and other services without using a password. It acts as a substitute for your password when performing operations like cloning repositories, pushing code, or accessing GitHub APIs from scripts or third-party applications."
+---
+
+### Pre-requisites
+
+<Check>
+  **Set up a new GitHub account**:
+
+  - Create a new [GitHub](https://github.com/join) account, to avoid an outage to existing organization GitHub users, as a new PAT will be generated.
+</Check>
+
+<Check>
+  **Mandatory Organization Invite to new users to join GitHub**
+
+  - Ensure the new user is invited to the organization. The new user must accept the invitation only to join the organization and the relevant team.
+</Check>
+
+### **Generate GitHub Personal Access Token (PAT)**
+
+GitHub PAT increases Security, Fine-Grained Permissions, and fulfills the GitHub compliance policy for HTTPS Authentication.
+
+<Steps>
+  <Step title="Access GitHub">
+    1. Login with [GitHub](https://github.com) with new user credentials.
+    2. Navigate to [GitHub → Developer Settings](https://github.com/settings/tokens).
+  </Step>
+  <Step title="Generate a Personal Access Token">
+    1. Select [Personal access tokens](https://github.com/settings/personal-access-tokens) drop-down in the left navigation pane.
+    2. Click **"Generate new token"** (or **"Generate new token (classic)"** for older versions).\
+       ![images/GitHub4.png](/images/GitHub4.png)
+    3. Provide a **Token name** (descriptive name, For Example: "Team Activity Access").
+    4. **Select Expiration:**
+       - Choose a token lifespan or set it to "Never Expiration".\
+         ![images/GitHub5.png](/images/GitHub5.png)
+    5. **Set Permissions:**
+       - Choose scopes and define the following permissions:
+         - `repo` (Full control of private repositories)
+         - `read:org` (Read-only access to organization, teams, and membership)
+         - `read:user` (Read-only access to profile information)
+    6. **Generate and Copy the Token:**
+
+       <Warning>
+         Once created, copy and store it securely (you won’t be able to see it again).
+       </Warning>
+  </Step>
+  <Step title="Securely share GitHub PAT">
+    <Check>
+      <Icon icon="envelope" /> Share the token via a secured method to the AirMDR operations team or self-configure in the AirMDR Integrations Dashboard.
+    </Check>
+  </Step>
+</Steps>
+
+### Configure **GitHub Personal Access Token (PAT)** in AirMDR Integrations Dashboard
+
+1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login.**
+
+   ![](/images/Datadog11.png)
+2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**\
+   ![images/Duo7.png](/images/Duo7.png)
+3. Use the search option, enter the keyword "**GitHub**", select the **Connections** tab, and click the **\+ Create** icon.\
+   ![images/GitHub.png](/images/GitHub.png)
+4. Enter the generated **organization ID,** provide the contents of the JSON file with Service Account credentials in the Authentication Details field params, and click **Create.**\
+   ![images/GitHub2.png](/images/GitHub2.png)
