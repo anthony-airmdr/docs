@@ -17,41 +17,46 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
     2. Provide the necessary credentials (**email** and **password**), and click **Sign In**.
   </Step>
   <Step title="Step 2">
-    **Create New Service User**
+    **Create a New Service User**
 
-    1. Navigate to **Settings** and select **Users** tab.
+    1. Navigate to **Settings** and select the **Users** tab.
     2. In the left navigation pane, select **Service Users**.
 
        ![](/images/SentinelOne2.png)
     3. In the **Actions** drop-down list, click on **Create New Service User**.
 
        ![](/images/SentinelOne3.png)
-    4. Provide the mandatory fields and click **Next**\* Name (Preferably **AirMDR**)\* Expiration Date 
+    4. Provide the mandatory fields and click **Next**\
+       \* Name: (Preferably **AirMDR**)\
+       \* Expiration Date
+    5. Click **Next**.
 
        ![](/images/SentinelOne4.png)
 
     <Tip>
-      **It is recommended that the duration be equal to the contract, but it depends on how often you wish to re-issue the token.**  
+      **It is recommended that the duration be equal to the contract, but it depends on how often you wish to re-issue the token.** 
 
-      **Account "View Only" access limits the risk.** 
+      **Account "View Only" access limits the risk.**
     </Tip>
   </Step>
   <Step title="Step 3">
     **Assign Scope of Access & Generate API Token**
 
-    1. To setup the access to your site, select **Site** icon under "**Select Scope of Access**".
+    1. To set up access to your site, select the **Site** icon under "**Select Scope of Access**".
     2. Set access to **Viewer**, and click **Create User**.
 
        ![](/images/SentinelOne5.png)
-    3. **Copy** and securely store the API token (you won’t be able to see it again).
 
+       <Warning>
+         **Copy** and securely store the API token (you won’t be able to see it again).
+       </Warning>
        ![](/images/SentinelOne6.png)
   </Step>
 </Steps>
 
-### Configure SentinelOne API in AirMDR Integrations Dashboard
+### Configure SentinelOne API in the AirMDR Integrations Dashboard
 
-1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login.**
+1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials, and click **Login.**
 
    ![](/images/Datadog11.png)
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**
@@ -93,9 +98,9 @@ curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/agents" \
 
 **Troubleshooting API Access Issues**
 
-| Error Code            | Possible Issue           | Solution                  |
-| --------------------- | ------------------------ | ------------------------- |
-|                       | Invalid API token        | Regenerate the API token  |
-|                       | Insufficient permissions | Adjust user role or scope |
-|                       | Incorrect API endpoint   | Check API documentation   |
-|                       | Rate limit exceeded      | Wait and retry            |
+| Error Code | Possible Issue           | Solution                  |
+| ---------- | ------------------------ | ------------------------- |
+|            | Invalid API token        | Regenerate the API token  |
+|            | Insufficient permissions | Adjust user role or scope |
+|            | Incorrect API endpoint   | Check API documentation   |
+|            | Rate limit exceeded      | Wait and retry            |
