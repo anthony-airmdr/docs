@@ -103,17 +103,25 @@ description: "AWS GuardDuty is a threat detection service that continuously moni
     <Check>
       Proper **IAM permissions** for GuardDuty to write to the S3 bucket.
     </Check>
-    <Steps>
-      <Step title="Configure Findings Export">
-        1. Go to your [AWS GuardDuty Console](https://console.aws.amazon.com/guardduty/).
-        2. In the settings, enable the export of findings to your S3 bucket.
-        3. Specify the S3 bucket ARN and KMS key ARN of the same region.
+    1. Go to your [AWS GuardDuty Console](https://console.aws.amazon.com/guardduty/).
+    2. In the settings, enable the export of findings to your S3 bucket.
+    3. Specify the S3 bucket ARN and KMS key ARN of the same region.
 
-           <Info>
-             Sample S3 ARN Key: arn:aws:s3::: bucket name .
-           </Info>
-      </Step>
-    </Steps>
+       <Warning>
+         Issues you can run into:
+         - Principal did not have access to the KMS key
+       </Warning>
+
+    <Check>
+      Ensure **GuardDuty is enabled** in your AWS account.
+    </Check>
+    <Check>
+      An **Amazon S3 bucket** exists for storing findings
+    </Check>
+    <Check>
+      Proper **IAM permissions** for GuardDuty to write to the S3 bucket.
+    </Check>
+    
   </Step>
 </Steps>
 
