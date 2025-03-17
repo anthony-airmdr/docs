@@ -1,54 +1,72 @@
 ---
-title: "AWS"
-description: "A GitHub Personal Access Token (PAT) is a secure authentication method used to access GitHub's API, repositories, and other services without using a password. It acts as a substitute for your password when performing operations like cloning repositories, pushing code, or accessing GitHub APIs from scripts or third-party applications."
+title: "AWS GuardDuty"
+description: "AWS GuardDuty is a threat detection service that continuously monitors your AWS accounts and workloads for malicious activity and unauthorized behavior. It helps you identify and respond to potential security threats."
 ---
 
-### Pre-requisites
-
-<Check>
-  **Set up a new GitHub account**:
-
-  - Create a new [GitHub](https://github.com/join) account, to avoid an outage to existing organization GitHub users, as a new PAT will be generated.
-</Check>
-
-<Check>
-  **Mandatory Organization Invite to new users to join GitHub**
-
-  - Ensure the new user is invited to the organization. The new user must accept the invitation only to join the organization and the relevant team.
-</Check>
-
-### **Generate GitHub Personal Access Token (PAT)**
-
-GitHub PAT increases Security, Fine-Grained Permissions, and fulfills the GitHub compliance policy for HTTPS Authentication.
+### **Setup AWS GuardDuty**
 
 <Steps>
-  <Step title="Access GitHub">
-    1. Login with [GitHub](https://github.com) with new user credentials.
-    2. Navigate to [GitHub → Developer Settings](https://github.com/settings/tokens).
+  <Step title="Enable AWS GuardDuty">
+    1. Go to your AWS account.
+    2. Open the **GuardDuty console**: [AWS GuardDuty Console](https://console.aws.amazon.com/guardduty/).
+    3. In the **GuardDuty dashboard**, click **"Enable GuardDuty"**.
+    4. Choose whether to enable GuardDuty for:
+       - Your **current AWS account** (for a single account setup).
+       - **Multiple accounts** using AWS Organizations (if managing multiple accounts).
+    5. Click **"Enable GuardDuty"**.
   </Step>
-  <Step title="Generate a Personal Access Token">
-    1. Select [Personal access tokens](https://github.com/settings/personal-access-tokens) drop-down in the left navigation pane.
-    2. Click **"Generate new token"** (or **"Generate new token (classic)"** for older versions).\
-       ![images/GitHub4.png](/images/GitHub4.png)
-    3. Provide a **Token name** (descriptive name, For Example: "Team Activity Access").
-    4. **Select Expiration:**
-       - Choose a token lifespan or set it to "Never Expiration".\
-         ![images/GitHub5.png](/images/GitHub5.png)
-    5. **Set Permissions:**
-       - Choose scopes and define the following permissions:
-         - `repo` (Full control of private repositories)
-         - `read:org` (Read-only access to organization, teams, and membership)
-         - `read:user` (Read-only access to profile information)
-    6. **Generate and Copy the Token:**
+  <Step title="Set Up an S3 Bucket for Log Storage in AWS">
+    1. **Go to S3 Console:** [AWS S3 Console](https://s3.console.aws.amazon.com/s3/home)
+    2. Click **"Create bucket"**.
+    3. **Enter a unique bucket name** (e.g., `my-security-logs-bucket`).
+    4. Choose the **AWS Region** where you want to store logs.
 
-       <Warning>
-         Once created, copy and store it securely (you won’t be able to see it again).
-       </Warning>
+       <Note>
+         Make sure it is in the same region where GuardDuty is enabled.
+       </Note>
+    5. Click **"Create bucket"**.
+    6. Configure the bucket with appropriate policies and permissions to allow GuardDuty to write logs to it.
+    7. Attach a bucket policy that grants GuardDuty permission to write logs to the bucket.\
+       Example Policy:
+
+    
   </Step>
-  <Step title="Securely share GitHub PAT">
+  <Step title="Configure a KMS Key Policy for AWS GuardDuty">
+    AWS **KMS (Key Management Service)** is used to encrypt findings stored in Amazon S3 or other services.
+
+    1. Open the **AWS KMS Console** → [KMS Console](https://console.aws.amazon.com/kms/home).
+    2. Select an existing KMS Key.\
+       **or**
+    3. Click **"Create Key"**.
+    4. Select the **Symmetric** key.
+    5. Choose **Encrypt and Decrypt** as the key usage.
+    6. Click **Next**, give the key an alias (e.g., `GuardDutyKey`).
+    7. In the Key policy section, choose Edit
+    8. Add AWS GuardDuty service permissions to use your key
+       - Copy the following policy block and add it to the Statement list in your KMS key policy
+
+        
+    9. Review & click **Create Key**.
+  </Step>
+  <Step title="Enable GuardDuty Findings Export to Amazon S3">
+    ### Pre-requisites
+
     <Check>
-      <Icon icon="envelope" /> Share the token via a secured method to the AirMDR operations team or self-configure in the AirMDR Integrations Dashboard.
+      Ensure **GuardDuty is enabled** in your AWS account.
     </Check>
+    <Check>
+      An **Amazon S3 bucket** exists for storing findings
+    </Check>
+    <Check>
+      Proper **IAM permissions** for GuardDuty to write to the S3 bucket.
+    </Check>
+    <Steps>
+      <Step title="Configure Findings Export">
+        1. Go to your [AWS GuardDuty Console](https://console.aws.amazon.com/guardduty/).
+        2. In the settings, enable the export of findings to your S3 bucket.
+        3. Specify the S3 bucket ARN and KMS key ARN of the same region.
+      </Step>
+    </Steps>
   </Step>
 </Steps>
 
