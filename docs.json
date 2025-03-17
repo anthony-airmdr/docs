@@ -30,6 +30,7 @@
                     "group": "Integrations",
                     "pages": [
                         "Integrations/overview",
+                        "Integrations/AWS",
                         "Integrations/cisco-AMP",
                         "Integrations/Datadog",
                         "Integrations/Duo",
