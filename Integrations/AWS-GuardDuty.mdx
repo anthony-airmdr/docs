@@ -1,9 +1,9 @@
 ---
-title: "AWS GuardDuty"
+title: "Amazon Web Services"
 description: "AWS GuardDuty is a threat detection service that continuously monitors your AWS accounts and workloads for malicious activity and unauthorized behavior. It helps you identify and respond to potential security threats."
 ---
 
-### **Setup AWS GuardDuty**
+### **Setup AWS**
 
 <Steps>
   <Step title="Enable AWS GuardDuty">
@@ -27,7 +27,9 @@ description: "AWS GuardDuty is a threat detection service that continuously moni
     5. Click **"Create bucket"**.
     6. Configure the bucket with appropriate policies and permissions to allow GuardDuty to write logs to it.
     7. Attach a bucket policy that grants GuardDuty permission to write logs to the bucket.\
-       <u>Example Policy</u>:
+       Example Policy
+
+       :
 
        ```
        
@@ -106,6 +108,10 @@ description: "AWS GuardDuty is a threat detection service that continuously moni
         1. Go to your [AWS GuardDuty Console](https://console.aws.amazon.com/guardduty/).
         2. In the settings, enable the export of findings to your S3 bucket.
         3. Specify the S3 bucket ARN and KMS key ARN of the same region.
+
+           <Info>
+             Sample S3 ARN Key: arn:aws:s3:::<<bucket name>>.
+           </Info>
       </Step>
     </Steps>
   </Step>
