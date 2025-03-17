@@ -27,7 +27,7 @@ description: "AWS GuardDuty is a threat detection service that continuously moni
     5. Click **"Create bucket"**.
     6. Configure the bucket with appropriate policies and permissions to allow GuardDuty to write logs to it.
     7. Attach a bucket policy that grants GuardDuty permission to write logs to the bucket.\
-       Example Policy:
+       <u>Example Policy</u>:
 
        ```
        
@@ -68,6 +68,25 @@ description: "AWS GuardDuty is a threat detection service that continuously moni
     7. In the Key policy section, choose Edit
     8. Add AWS GuardDuty service permissions to use your key
        - Copy the following policy block and add it to the Statement list in your KMS key policy
+
+         ```
+         
+         {
+                     "Sid": "Allow GuardDuty to use the key",
+                     "Effect": "Allow",
+                     "Principal": {
+                         "Service": "guardduty.amazonaws.com"
+                     },
+                     "Action": [
+                         "kms:Encrypt",
+                         "kms:Decrypt",
+                         "kms:ReEncrypt*",
+                         "kms:GenerateDataKey*",
+                         "kms:DescribeKey"
+                     ],
+                     "Resource": "*"
+                 }
+         ```
     9. Review & click **Create Key**.
   </Step>
   <Step title="Enable GuardDuty Findings Export to Amazon S3">
