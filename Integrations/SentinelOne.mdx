@@ -6,51 +6,43 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
 ### Pre-requisites
 
 <Tip>
-  User account with the privileges to generate an API token.
+  A user account with the privileges to generate an API token.
 </Tip>
 
 ### Generate SentinelOne API
 
 <Steps>
   <Step title="Step 1">
-    1. Log in to your [**SentinelOne Management Console**](https://console.mobile.sentinelone.net/#!/en/login) as an **Admin**.
-
+    1. Log in to your **SentinelOne Management Console** as an **Admin**.
     2. Provide the necessary credentials (**email** and **password**), and click **Sign In**.
   </Step>
-
   <Step title="Step 2">
     **Create New Service User**
 
     1. Navigate to **Settings** and select **Users** tab.
-
     2. In the left navigation pane, select **Service Users**.
 
        ![](/images/SentinelOne2.png)
-
     3. In the **Actions** drop-down list, click on **Create New Service User**.
 
        ![](/images/SentinelOne3.png)
-
-    4. Provide the mandatory fields and click **Next**\* Name (Preferably **AirMDR**)\* Expiration Date&#x20;
+    4. Provide the mandatory fields and click **Next**\* Name (Preferably **AirMDR**)\* Expiration Date 
 
        ![](/images/SentinelOne4.png)
 
     <Tip>
-      **It is recommended that the duration be equal to the contract, but it depends on how often you wish to re-issue the token.** &#x20;
+      **It is recommended that the duration be equal to the contract, but it depends on how often you wish to re-issue the token.**  
 
-      **Account "View Only" access limits the risk.**&#x20;
+      **Account "View Only" access limits the risk.** 
     </Tip>
   </Step>
-
   <Step title="Step 3">
     **Assign Scope of Access & Generate API Token**
 
     1. To setup the access to your site, select **Site** icon under "**Select Scope of Access**".
-
     2. Set access to **Viewer**, and click **Create User**.
 
        ![](/images/SentinelOne5.png)
-
     3. **Copy** and securely store the API token (you won’t be able to see it again).
 
        ![](/images/SentinelOne6.png)
@@ -62,15 +54,12 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
 1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login.**
 
    ![](/images/Datadog11.png)
-
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**
 
    ![](/images/Datadog9.png)
-
 3. Use the search option, enter the keyword "**SentinelOne**", select the **Connections** tab, and click **Create**.
 
    ![](/images/SentinelOne.png)
-
 4. Enter the generated **API token** and **SentinelOne URL** in the Authentication Details field params, and click **Create.**
 
    ![](/images/SentinelOne1.png)
@@ -88,9 +77,8 @@ curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/threats" \
      -H "Content-Type: application/json"
 ```
 
-* If the user has **site-specific access**, it should return threats only for that site.
-
-* If restricted, it should return an **empty list or 403 error**.
+- If the user has **site-specific access**, it should return threats only for that site.
+- If restricted, it should return an **empty list or 403 error**.
 
 **Test Device Access**
 
@@ -101,13 +89,13 @@ curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/agents" \
      -H "Content-Type: application/json"
 ```
 
-* This verifies if the user can retrieve **device information** based on the assigned scope.
+- This verifies if the user can retrieve **device information** based on the assigned scope.
 
 **Troubleshooting API Access Issues**
 
-| Error Code              | Possible Issue           | Solution                  |
-| ----------------------- | ------------------------ | ------------------------- |
-| `401 Unauthorized`      | Invalid API token        | Regenerate the API token  |
-| `403 Forbidden`         | Insufficient permissions | Adjust user role or scope |
-| `404 Not Found`         | Incorrect API endpoint   | Check API documentation   |
-| `429 Too Many Requests` | Rate limit exceeded      | Wait and retry            |
+| Error Code            | Possible Issue           | Solution                  |
+| --------------------- | ------------------------ | ------------------------- |
+|                       | Invalid API token        | Regenerate the API token  |
+|                       | Insufficient permissions | Adjust user role or scope |
+|                       | Incorrect API endpoint   | Check API documentation   |
+|                       | Rate limit exceeded      | Wait and retry            |
