@@ -39,6 +39,7 @@
                         "Integrations/Microsoft-Defender",
                         "Integrations/Microsoft-Graph",
                         "Integrations/Okta",
+                        "Integrations/PagerDuty",
                         "Integrations/SentinelOne"
                         
                     ]
