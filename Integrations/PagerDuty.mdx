@@ -1,180 +1,66 @@
 ---
-title: "Google Cloud Platform - Security Command Center"
-description: "Security Command Center (SCC) is Google Cloud’s centralized security and risk management platform. It helps detect, investigate, and remediate security threats, vulnerabilities, and misconfigurations across Google Cloud resources."
+title: "PagerDuty"
+description: "PagerDuty is an incident management and response platform designed to help IT, DevOps, and security teams detect, respond to, and resolve issues in real time. It integrates with monitoring tools, alerting teams when something goes wrong, and helps automate incident workflows."
 ---
 
 ### Pre-requisites
 
 <Check>
-  User Organization must define **Owner** or **Security Admin** role (`roles/owner` or `roles/securitycenter.admin`) in your GCP organization.
+  To configure services and integrations, you need the **Admin **or **Manager Role**.
 </Check>
 
-<Check>
-  User must have **Organization Admin** permissions to enable services at the organization level.
-</Check>
+### Enable PagerDuty Integration Key
 
-### Enable Security Command Center
-
-Enabling Security Command Center will actively monitor your GCP environment for threats and vulnerabilities.
+To fetch a **PagerDuty Integration Key** (Routing Key) for sending events via an API call, follow these steps:
 
 <Steps>
-  <Step title="Access GCC">
-    1. Log in to your [Google Cloud Console](https://console.cloud.google.com/welcome).
-    2. Click on the left navigation menu (hamburger icon).
-    3. Select the "Security" tab.\
-       \
-       ![images/GCPSCC2.png](/images/GCPSCC2.png)
-    4. To select the **organization** where you want to enable SCC, click on **Select a project** > **ALL**.
+  <Step title="Access PagerDuty and Create a Service">
+    1. Go to [PagerDuty](https://identity.pagerduty.com/) and log in to your account.\
+       ![images/PagerDuty1.png](/images/PagerDuty1.png)
+    2. Click on **Services** in the top navigation bar.
+    3. Select **Service Directory** from the dropdown.\
+       ![images/PagerDuty2.png](/images/PagerDuty2.png)
+    4. Select the **Services** tab.
+       - If you already have a service:
+         - Locate and select the desired service name (e.g., Test Service) whose Routing Key you want to share.\
+           ![images/PagerDuty3.png](/images/PagerDuty3.png)
+         - Select the **Integrations** tab in the service bar menu.
+         - Click on the Integration "**PRTG Notification For PagerDuty Events API v2**" drop-down menu.
+         - Copy the securely save the required credentials
+           - **Integration Key**
+           - **Integration URL**\
+             ![images/PagerDuty4.png](/images/PagerDuty4.png)
 
-       <Note>
-         Organization is displayed at the top-level and all the projects are indented
-       </Note>
-    5. Copy the organization **ID** displayed next to the organization's Name.\
-       ![images/GCPSCC7.png](/images/GCPSCC7.png)
-  </Step>
-  <Step title="Enable Security Command Center API">
-    1. In the **Navigation menu**, go to **APIs & Services** → **Library**.
-    2. Search for **Security Command Center API**.
-    3. Click **Enable**.
-  </Step>
-  <Step title="Select Service Tier">
-    1. Select your organization, and enter keyword "Security" in the search bar.
-    2. Select the **Security Command Center**.\
-       ![images/GCPSCC3.png](/images/GCPSCC3.png)
-    3. Click on "**GET THE SECURITY COMMAND CENTER**".
-    4. Select Service Tier, preferably **Premium (Paid)** for your organization.\
-       \
-       **SCC Editions: Standard vs. Premium**
+             <Check>
+               Email the Routing Key Details for Events API v2 Integration to AirMDR operations team\
+               or\
+               Enter the generated **Integration Key,** in the Authentication Details field params → **Routing Key**, and click **Create.**
+             </Check>
+       - If you need a new service:
+         - Navigate to **Services** → **Services Directory**.
+         - Click **+ New Service** (top-right corner).\
+           ![images/PagerDuty5.png](/images/PagerDuty5.png)
+         - Provide the required details to Create a Service
+           - **Name**
+           - **Description**
+         - Click **Next**.\
+           ![images/PagerDuty6.png](/images/PagerDuty6.png)
+         - Choose the "**Generate a new Escalation Policy**" option in the Assign an Escalation Policy.
+         - Click **Next**.
+         - Select the appropriate options in the Alert Grouping and Transient Alerts groups to Reduce Noise (Alerts Interval).
+         - Click **Next**.\
+           ![images/PagerDuty8.png](/images/PagerDuty8.png)
+         - In the Integrations section, search for the keyword "**PRTG Notification For PagerDuty Events API v2**" and select "**Events API v2**"
+         - Click **Create Service**.
+         - Copy the securely save the required credentials
+           - **Integration Key**
+           - **Integration URL**\
+             ![images/PagerDuty10.png](/images/PagerDuty10.png)
 
-       | Feature                          | Standard (Free) | Premium (Paid) |
-       | -------------------------------- | --------------- | -------------- |
-       | Security Health Analytics        | ✅ Basic         | ✅ Advanced     |
-       | Event Threat Detection           | ❌ No            | ✅ Yes          |
-       | Container & VM Threat Detection  | ❌ No            | ✅ Yes          |
-       | Continuous Compliance Monitoring | ❌ No            | ✅ Yes          |
-       | Automated Security Insights      | ❌ No            | ✅ Yes          |
-    5. Click **Next**.
-    6. On the next page, review the detection you want to enable.
-
-       <Tip>
-         AirMDR recommends selecting all.
-       </Tip>
-  </Step>
-  <Step title="Configure Security Sources">
-    1. **Set Up Built-in Security Services**
-       - SCC integrates with:
-         - **Security Health Analytics**
-         - **Event Threat Detection**
-         - **VM Threat Detection**
-         - **Container Threat Detection**
-       - Configure these services based on your security requirements.
-
-         <Warning>
-           **Event Threat Detection** is mandatory.
-         </Warning>
-    2. **Enable Third-Party Integrations (Optional)**
-       - Navigate to **Integrations** and configure security tools like **SIEM**, **Threat Intelligence**, etc.
-    3. Click **Next**.
-    4. On the next page, click **Grant roles automatically** to complete the setup.
-
-    <Info>
-      You can view your findings in the findings tab on the left side.
-    </Info>
+             <Check>
+               Email the Routing Key Details for Events API v2 Integration to the AirMDR operations team\
+               or\
+               Enter the generated **Integration Key,** in the Authentication Details field params → **Routing Key**, and click **Create.**
+             </Check>
   </Step>
 </Steps>
-
-### Create a Service Account
-
-<Steps>
-  <Step title="Open Google Cloud Console">
-    1. Go to [Google Cloud Console](https://console.cloud.google.com/welcome).
-    2. Select your **project**. For example: AirMDR
-
-       <Check>
-         Project (Service account) is mandatory to enable API.
-       </Check>
-    3. Create a project, if there is no existing
-       - Go to [Google Cloud Console](https://console.cloud.google.com/welcome) with the same credentials used to log in.
-       - Click **Select a project** → **New Project**.
-       - Enter:
-         - **Project Name** (e.g., `AirMDR`)
-         - **Organization** (if applicable).
-       - Click **Create**.
-  </Step>
-  <Step title="Create a Service Account">
-    1. Go to **Google Cloud Console**.
-    2. Select **AirMDR** project.
-    3. Open **APIs & Services** → Go to **Credentials**→ Create Credentials → Click **Service Accounts**.
-    4. Click **Create Service Account**.
-    5. Enter the required information:
-       - **Service Account Name:** (e.g., `airmdr-agent`)
-       - **Service Account ID :** (e.g., `airmdr-agent`)
-       - Click **Create and Continue**.
-    6. **Generate a Key File**
-       - In the **Service Accounts list**, click on the created service account
-       - Go to **Keys** → **Add Key** → **Create new key**
-       - Choose **JSON**, then **Create**
-       - A `.json` key file will be downloaded.
-
-         <Warning>
-           Make sure to copy and save the JSON Key file securely
-         </Warning>
-    7. **Assign IAM Roles**
-
-       <Info>
-         By default, the Owner role will be applied to this service account based on inheritance from the project
-       </Info>
-       - Add roles as required for **Security Command Center**:
-         - **Security Admin (**`roles/securitycenter.admin`**)** → Allows managing SCC.
-         - **Viewer (**`roles/viewer`**)** → Grants read access.
-         - **Security Analyst (**`roles/securitycenter.analyst`**)** → (Optional) For security monitoring.
-         - **Pub/Sub Publisher (**`roles/pubsub.publisher`**)** → (Optional) For security alerts.
-       - Click **Continue** → **Done**.
-
-         <Check>
-           When finished, you should have a service account named **airmdr-agent**, credentials for this service account in a JSON file saved to your host.
-         </Check>
-  </Step>
-  <Step title="Enable Security Command Center API">
-    1. Go to [Google Cloud Console](https://console.cloud.google.com/welcome).
-    2. Select **AirMDR** project, go to **APIs & Services** → **Enabled APIs & Services**.
-    3. Search for **Security Command Center** API from the **Library** page.
-    4. Click **Enable**.
-  </Step>
-  <Step title="Assign the Required IAM Role">
-    The **Security Command Center Viewer** role (`roles/securitycenter.viewer`) allows the service account to **read SCC findings**.
-
-    1. Go to [Google Cloud Console](https://console.cloud.google.com/welcome) → **Organization in the top left corner**.
-    2. Select **AirMDR** project.
-    3. Go to **IAM & Admin** → **VIEW BY PRINCIPALS** → **GRANT ACCESS**.\
-       \
-       ![images/GCPSCC6.png](/images/GCPSCC6.png)
-    4. Search and select `airmdr-agent`.
-    5. Click **Add**.\
-       or
-    6. Enter the client **service account email** (e.g., `scc-service-account@my-security-project.iam.gserviceaccount.com`).
-    7. Assign the role:
-       - **Security Command Center Viewer (**`roles/securitycenter.viewer`**)**
-    8. Click **Save**.
-  </Step>
-  <Step title="Service Account">
-    <Check>
-      <Icon icon="envelope" /> Email the service account `.json` file and the **Organization_ID** to the AirMDR operations team mailto:[mdr-ops@airmdr.com](mailto:mdr-ops@airmdr.com) or self-configure in AirMDR Integrations Dashboard.
-    </Check>
-  </Step>
-</Steps>
-
-### Configure GCP Security Command Center API in AirMDR Integrations Dashboard
-
-1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login.**
-
-   ![](/images/Datadog11.png)
-2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**\
-   \
-   ![images/Duo7.png](/images/Duo7.png)
-3. Use the search option, enter the keyword "**Google Cloud Provider**", select the **Connections** tab, and click the **\+ Create** icon.\
-   \
-   ![images/GCPSCC5.png](/images/GCPSCC5.png)
-4. Enter the generated **organization ID,** provide the contents of the JSON file with Service Account credentials in the Authentication Details field params, and click **Create.**\
-   \
-   ![images/GCPSCC4.png](/images/GCPSCC4.png)
