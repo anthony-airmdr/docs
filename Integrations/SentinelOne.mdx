@@ -72,15 +72,7 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
     3. Assign the previously created **API Access Role** to this user.
     4. Ensure that the **Can generate API Token** option is enabled for this user.
     5. Click **Save** to create the user account.
-  </Step>
-  <Step title="Generate an API Token:">
-    1. Log in to the SentinelOne Management Console using the newly created user account.
-    2. Click on your username in the top-right corner and select **My User**.
-    3. Click on **Generate API Token**.
 
-    <Warning>
-      **Copy** and securely store the generated token, as it will be required for API authentication.
-    </Warning>
     <Note>
       To fetch alerts from SentinelOne, the admin must enable **Custom Rules** for your **account** or **scope**.\
       \
@@ -96,21 +88,6 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
     </Note>
   </Step>
 </Steps>
-
-### Configure SentinelOne API in the AirMDR Integrations Dashboard
-
-1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials, and click **Login.**
-
-   ![](/images/Datadog11.png)
-2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**
-
-   ![](/images/Datadog9.png)
-3. Use the search option, enter the keyword "**SentinelOne**", select the **Connections** tab, and click **Create**.
-
-   ![](/images/SentinelOne.png)
-4. Enter the generated **API token** and **SentinelOne URL** in the Authentication Details field params, and click **Create.**
-
-   ![](/images/SentinelOne1.png)
 
 ### Evaluate SentinelOne API Test Scope Restrictions
 
@@ -147,3 +124,18 @@ curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/agents" \
 |            | Insufficient permissions | Adjust user role or scope |
 |            | Incorrect API endpoint   | Check API documentation   |
 |            | Rate limit exceeded      | Wait and retry            |
+
+### Configure SentinelOne API in the AirMDR Integrations Dashboard
+
+1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials, and click **Login.**
+
+   ![](/images/Datadog11.png)
+2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**
+
+   ![](/images/Datadog9.png)
+3. Use the search option, enter the keyword "**SentinelOne**", select the **Connections** tab, and click **Create**.
+
+   ![](/images/SentinelOne.png)
+4. Enter the generated **API token** and **SentinelOne URL** in the Authentication Details field params, and click **Create.**
+
+   ![](/images/SentinelOne1.png)
