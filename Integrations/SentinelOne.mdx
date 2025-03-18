@@ -54,7 +54,7 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
   </Step>
 </Steps>
 
-### Fetch Alerts from SentinelOne via API
+### Fetch Threats from SentinelOne via API
 
 <Steps>
   <Step title="Create a New User Role with Necessary Permissions:">
@@ -81,6 +81,19 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
     <Warning>
       **Copy** and securely store the generated token, as it will be required for API authentication.
     </Warning>
+    <Note>
+      You must enable **Custom Rules** for your **account **or **scope** to fetch alerts from SentinelOne.\
+      \
+      To enable Custom Rules in SentinelOne:
+
+      1. Log in to SentinelOne Console.
+      2. Go to **Settings** → **Automation Rules**.
+      3. Ensure that **Custom Rules** are enabled for your organization.
+
+         <Tip>
+           If you see the error "**This scope does not have Custom Rules enabled, insufficient permissions**", contact SentinelOne support to enable it for your account.
+         </Tip>
+    </Note>
   </Step>
 </Steps>
 
