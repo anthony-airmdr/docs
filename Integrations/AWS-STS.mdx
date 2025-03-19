@@ -1,0 +1,187 @@
+---
+title: "AWS Security Token Service (STS)"
+description: "AWS GuardDuty is a threat detection service that continuously monitors your AWS accounts and workloads for malicious activity and unauthorized behavior. It helps you identify and respond to potential security threats."
+---
+
+### **Setup AWS**
+
+<Steps>
+  <Step title="Enable AWS GuardDuty">
+    1. Go to your AWS account.
+    2. Open the **GuardDuty console**: [AWS GuardDuty Console](https://console.aws.amazon.com/guardduty/).
+    3. In the **GuardDuty dashboard**, click **"Enable GuardDuty"**.
+    4. Choose whether to enable GuardDuty for:
+       - Your **current AWS account** (for a single account setup).
+       - **Multiple accounts** using AWS Organizations (if managing various accounts).
+    5. Click **"Enable GuardDuty"**.
+  </Step>
+  <Step title="Set Up an S3 Bucket for Log Storage in AWS">
+    1. Go to S3 Console: [AWS S3 Console](https://s3.console.aws.amazon.com/s3/home)
+    2. Click **"Create bucket"**.
+    3. Enter a unique bucket name (e.g., `my-security-logs-bucket`).
+    4. Choose the **AWS Region** where you want to store logs.
+
+       <Note>
+         Make sure it is in the same region where GuardDuty is enabled.
+       </Note>
+    5. Click **"Create bucket"**.
+    6. Configure the bucket with appropriate policies and permissions to allow GuardDuty to write logs to it.
+    7. Attach a bucket policy that grants GuardDuty permission to write logs to the bucket.\
+       Example Policy
+
+       ```
+       
+       {
+          "Version": "2012-10-17",
+          "Statement": [
+              {
+                  "Effect": "Allow",
+                  "Principal": {
+                      "Service": "guardduty.amazonaws.com"
+                  },
+                  "Action": "s3:PutObject",
+                  "Resource": "arn:aws:s3:::bucket-name/*"
+              },
+              {
+                  "Effect": "Allow",
+                  "Principal": {
+                      "Service": "guardduty.amazonaws.com"
+                  },
+                  "Action": "s3:GetBucketLocation",
+                  "Resource": "arn:aws:s3:::bucket-name"
+              }
+          ]
+       }
+       
+       ```
+  </Step>
+  <Step title="Configure a KMS Key Policy for AWS GuardDuty">
+    AWS **KMS (Key Management Service)** is used to encrypt findings stored in Amazon S3 or other services.
+
+    1. Open the **AWS KMS Console** → [KMS Console](https://console.aws.amazon.com/kms/home).
+    2. Select an existing KMS Key.\
+       **or**
+    3. Click **"Create Key"**.
+    4. Select the **Symmetric** key.
+    5. Choose **Encrypt and Decrypt** as the key usage.
+    6. Click **Next**, give the key an alias (e.g., `GuardDutyKey`).
+    7. In the Key policy section, choose Edit
+    8. Add AWS GuardDuty service permissions to use your key
+       - Copy the following policy block and add it to the Statement list in your KMS key policy
+
+         ```
+         
+         {
+                     "Sid": "Allow GuardDuty to use the key",
+                     "Effect": "Allow",
+                     "Principal": {
+                         "Service": "guardduty.amazonaws.com"
+                     },
+                     "Action": [
+                         "kms:Encrypt",
+                         "kms:Decrypt",
+                         "kms:ReEncrypt*",
+                         "kms:GenerateDataKey*",
+                         "kms:DescribeKey"
+                     ],
+                     "Resource": "*"
+                 }
+         ```
+    9. Review & click **Create Key**.
+  </Step>
+  <Step title="Enable GuardDuty Findings Export to Amazon S3">
+    **Pre-requisites**
+
+    <Check>
+      Ensure **GuardDuty is enabled** in your AWS account.
+    </Check>
+    <Check>
+      An **Amazon S3 bucket** exists for storing findings
+    </Check>
+    <Check>
+      Proper **IAM permissions** for GuardDuty to write to the S3 bucket.
+    </Check>
+    1. Go to your [AWS GuardDuty Console](https://console.aws.amazon.com/guardduty/).
+    2. In the settings, enable the export of findings to your S3 bucket.
+    3. Specify the S3 bucket ARN and KMS key ARN of the same region.
+
+       <Warning>
+         Issues you can run into:
+         - Principal did not have access to the KMS key.
+       </Warning>
+  </Step>
+  <Step title="Set Up an IAM Role for API Access in AWS">
+    If you need to grant **secure API access** to AWS services (e.g., EC2, Lambda, or third-party applications), you must create an **IAM role** with the right permissions.
+
+    <Steps>
+      <Step title="Create an IAM Role">
+        - **Sign in** to the [AWS IAM Console](https://console.aws.amazon.com/iam/).
+        - Click **"Roles"** → **"Create Role"**.
+        - **Select a trusted entity**:
+          - If AWS services (e.g., EC2, Lambda) need API access → Choose **AWS Service**.
+          - If a third-party app needs access → Choose **Web Identity or OpenID Connect**.
+          - If another AWS account needs access → Choose **Another AWS Account**.
+        - Click **Next**.
+      </Step>
+      <Step title="Attach API Permissions">
+        Choose a predefined **AWS Managed Policy** or create a custom one:
+
+        - **Full API Access** → `AdministratorAccess` (Not recommended for security).
+        - **Read-Only API Access** → `ReadOnlyAccess`.
+        - **GuardDuty API Access** → `AmazonGuardDutyFullAccess`.
+      </Step>
+      <Step title="Create User and Retrieve Credentials">
+        1. Review the permissions and user details.
+        2. Create the user.
+        3. Download the .csv file containing the **access key ID** and **secret access key**
+
+           <Warning>
+             Securely save and share these credentials with the AirMDR operations team to allow monitoring.
+           </Warning>
+      </Step>
+    </Steps>
+  </Step>
+</Steps>
+
+### Setting Up AWS CloudTrail for Security & Auditing
+
+AWS **CloudTrail** is a service that logs all API actions taken in your AWS account. It helps with **security auditing, compliance, and operational troubleshooting**.
+
+1. **Sign in** to the same [AWS IAM Console](https://console.aws.amazon.com/iam/) created for AWS GuardDuty.
+2. Click Permissions → **Add Permissions**.\
+   ![images/AWS3.png](/images/AWS3.png)
+3. Select the Permission options → **Attach policies directly**.
+4. Search for the keyword "CloudTrial" and select **AWSCloudTrail_ReadOnlyAccess**.\
+   ![images/AWS4.png](/images/AWS4.png)
+5. Review the Permission summary.
+6. Click **Add Permissions**.\
+   ![images/AWS5.png](/images/AWS5.png)
+
+### Mapping AWS CloudTrail Logs into Amazon Athena
+
+**Pre-requisites**
+
+<Check>
+  **CloudTrail is enabled** and it logs to an **S3 bucket**.
+</Check>
+
+<Check>
+  **Athena is enabled** in your AWS account.
+</Check>
+
+1. Open the Cloud trail in AWS and then Select **Event History**.
+2. Select **Create Athena Table** (top right corner).
+3. A pop-up opens, and select the S3 bucket in the storage location.
+4. Click **Create Table**.
+
+### Configure AWS in the AirMDR Integrations Dashboard
+
+1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials, and click **Login.**
+
+   ![](/images/Datadog11.png)
+2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**\
+   ![images/Duo7.png](/images/Duo7.png)
+3. Use the search option, enter the keyword "**Amazon Web Services**", select the **Connections** tab, and click the **\+ Create** icon.\
+   ![images/AWS1.png](/images/AWS1.png)
+4. Enter the generated \*\*access_key, secret_key, and \*\*provide the **region_name** for which this connection is to be used in the Authentication Details field params, and click **Create.**\
+   ![images/AWS2.png](/images/AWS2.png)
