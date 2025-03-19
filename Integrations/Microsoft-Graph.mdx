@@ -28,7 +28,7 @@ Setting up the **Microsoft Graph API** involves a few steps, including registeri
     2. Search and select "Microsoft Entra ID" in the search bar.\
        ![images/MSGraph3.png](/images/MSGraph3.png)
     3. Navigate to **Manage** → **App registrations.**
-    4. Click **\+ New registration.**\
+    4. Click **+ New registration.**\
        ![images/MSGraph4.png](/images/MSGraph4.png)
     5. Provide:
        - **Name**: e.g., "graphapi-client-airmdr"
@@ -46,11 +46,17 @@ Setting up the **Microsoft Graph API** involves a few steps, including registeri
   </Step>
   <Step title="Configure API Permissions">
     1. Go to **Manage** → **API Permissions** in the app settings.
-    2. Click **\+ Add a permission.**
+    2. Click **+ Add a permission.**
     3. Select **Microsoft Graph.**
     4. Choose **Application permissions**.\
        ![images/MSGraph6.png](/images/MSGraph6.png)
-    5. Select the required permissions (`User.Read` , `User.Read.All` , `User.ReadBasic.All` , `SecurityEvents.Read.All` , `SecurityAlert.Read.All` , `SecurityIncident.Read.All` , `SecurityActions.Read.All` , `AuditLog.Read.All` , `Directory.Read.All`
+    5. Select the required permissions 
+       - **To Disable / Enable User** - `User.EnableDisableAccount.All` + `User.Read.All`
+       - **To Fetch User Details** - `User.Read.All`
+       - **To Fetch User SignIn Logs** - `AuditLog.Read.All`
+       - **To Reset User Password** - `User-PasswordProfile.ReadWrite.All`
+       - **To Fetch User Groups** - `Directory.Read.All`
+       - **To Revoke Sign-In Session** - `User.RevokeSessions.All`
     6. Click on **Add Permissions**.
     7. In API permissions, click **Grant admin consent**.\
        ![images/MSGraph7.png](/images/MSGraph7.png)
@@ -58,7 +64,7 @@ Setting up the **Microsoft Graph API** involves a few steps, including registeri
   <Step title="Create Client Secret (For Authentication)">
     1. Go to **Manage** → **Certificates & secrets.**
     2. Select **Client Secrets** tab.
-    3. Click **\+ New client secret.**\
+    3. Click **+ New client secret.**\
        ![images/MSGraph8.png](/images/MSGraph8.png)
     4. Add a **description** and **expiration period.**
     5. Click **Create**.
@@ -74,14 +80,14 @@ Setting up the **Microsoft Graph API** involves a few steps, including registeri
     2. Navigate to **Azure Active Directory.**
     3. Click **App registrations.**
     4. Select your **registered app.**
-    5. Under the **Overview** section, locate **Application (client) ID** and **Tenant ID (Directory ID).**
+    5. Under the **Overview** section, locate the **Application (client) ID** and **Tenant ID (Directory ID).**
     6. Click the **Copy** icon **📋** next to the Client ID, and the Tenant ID respectively.
 
        <Info>
          Now, your **Tenant ID** and **Client ID** are copied and ready to use for authentication in Microsoft Graph API.
        </Info>
        <Check>
-         <Icon icon="envelope" /> Share the **Tenant ID**, **Client ID** and the \*\*Client Secret \*\*via a secured method with the AirMDR operations team or self-configure them in the AirMDR Integrations Dashboard.
+         <Icon icon="envelope" /> Share the **Tenant ID**, **Client ID** and the **Client Secret **via a secured method with the AirMDR operations team or self-configure them in the AirMDR Integrations Dashboard.
        </Check>
   </Step>
 </Steps>
@@ -93,7 +99,7 @@ Setting up the **Microsoft Graph API** involves a few steps, including registeri
    ![](/images/Datadog11.png)
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**\
    ![images/Duo7.png](/images/Duo7.png)
-3. Use the search option, enter the keyword "**Microsoft Graph**", select the **Connections** tab, and click the **\+ Create** icon.\
+3. Use the search option, enter the keyword "**Microsoft Graph**", select the **Connections** tab, and click the **+ Create** icon.\
    \
    ![images/MSGraph2.png](/images/MSGraph2.png)
 4. Enter the generated **Tenant ID, Client ID** and the **Client Secret** in the Authentication Details field params, and click **Create.**\
