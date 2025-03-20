@@ -17,8 +17,49 @@ Setting up AWS STS typically involves assuming roles securely across different A
   </Step>
   <Step title="Create an IAM Role for STS">
     1. Go to the [AWS IAM Console](https://console.aws.amazon.com/iam/).
-    2. Click on **Roles** in the left navigation panel.
-    3. Click the **Create role** button.
+    2. Click on **Roles** in the left navigation panel.\
+       ![images/AWS-STS1.png](/images/AWS-STS1.png)
+    3. Click the **Create role** button.\
+       ![images/AWS-STS2.png](/images/AWS-STS2.png)
+    4. In the **Select trusted entity**, choose the type of Trusted entity → AWS account.\
+       ![images/AWS-STS3.png](/images/AWS-STS3.png)
+    5. In An AWS account → **Another AWS account**, enter the **Account ID**: **<u>242133657058</u>** only as an identifier of the account that can use this role.
+
+       <Info>
+         Generally, the Account ID is a 12-digit Number, use only the Account ID mentioned above.
+       </Info>
+       <Tip>
+         To enhance the Security:
+         1. Specify an External ID, a unique identifier that the trusted account must provide when assuming the role
+         2. To add an external_id:
+            - Select the **Require an external ID** checkbox.
+            - Enter the unique agreed-upon external ID value.
+            - Do NOT check "**Require MFA**" unless the assuming account needs MFA.
+            - Click **Next**.
+       </Tip>
+  </Step>
+  <Step title="Attach Policies (Permissions)">
+    1. Choose the policies that grant permissions to the role.\
+       or
+    2. You can create a **custom policy** if no predefined policy meets your requirements.
+    3. Click **Next**.
+  </Step>
+  <Step title="Review and Create the Role">
+    1. Provide the required information in the **Role details** and the **Description** (Optional) for the role.
+       - **Role Name** – Provide a meaningful name like `AirMDR`.
+       - **Description** (Optional) – Add a short description for this role.\
+         ![images/AWS-STS4.png](/images/AWS-STS4.png)
+    2. Review your selections (Permissions and Policies), and if everything is correct.
+       - **Review Permissions** – Ensure the attached policies meet your security needs.
+       - **Review Trust Policy** – If using cross-account access or service, verify the trust policy.
+    3. Click **Create Role**.
+  </Step>
+  <Step title="Retrieve the Role ARN (Amazon Resource Name)">
+    Once the role is created:
+
+    1. Click on the role name.
+    2. Copy the **Role ARN** (Amazon Resource Name).\
+       ![images/AWS-STS5.png](/images/AWS-STS5.png)
   </Step>
 </Steps>
 
@@ -31,5 +72,7 @@ Setting up AWS STS typically involves assuming roles securely across different A
    ![images/Duo7.png](/images/Duo7.png)
 3. Use the search option, enter the keyword "**Amazon Web Services**", select the **Connections** tab, and click the **+ Create** icon.\
    ![images/AWS1.png](/images/AWS1.png)
-4. Enter the generated **access_key, secret_key, and **provide the **region_name** for which this connection is to be used in the Authentication Details field params, and click **Create.**\
-   ![images/AWS2.png](/images/AWS2.png)
+4. Provide the name for the **Instance**.
+5. In the Authentication Details → **DO IT YOURSELF** tab.
+6. Enter the generated **role_arn**, **external_id** (if specified), and **region_name** of your AWS account, and click **Create.**\
+   ![images/AWS-STS6.png](/images/AWS-STS6.png)
