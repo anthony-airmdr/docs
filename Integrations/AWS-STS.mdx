@@ -35,8 +35,8 @@ Setting up AWS STS typically involves assuming roles securely across different A
             - Select the **Require an external ID** checkbox.
             - Enter the unique agreed-upon external ID value.
             - Do NOT check "**Require MFA**" unless the assuming account needs MFA.
-            - Click **Next**.
        </Tip>
+    6. Click **Next**.
   </Step>
   <Step title="Attach Policies (Permissions)">
     1. Choose the policies that grant permissions to the role.\
@@ -45,7 +45,7 @@ Setting up AWS STS typically involves assuming roles securely across different A
     3. Click **Next**.
   </Step>
   <Step title="Review and Create the Role">
-    1. Provide the required information in the **Role details** and the **Description** (Optional) for the role.
+    1. Provide the required information in the **Role details** section for the role.
        - **Role Name** – Provide a meaningful name like `AirMDR`.
        - **Description** (Optional) – Add a short description for this role.\
          ![images/AWS-STS4.png](/images/AWS-STS4.png)
@@ -58,7 +58,7 @@ Setting up AWS STS typically involves assuming roles securely across different A
     Once the role is created:
 
     1. Click on the role name.
-    2. Copy the **Role ARN** (Amazon Resource Name).\
+    2. Copy and securely save the **Role ARN** (Amazon Resource Name).\
        ![images/AWS-STS5.png](/images/AWS-STS5.png)
   </Step>
 </Steps>
