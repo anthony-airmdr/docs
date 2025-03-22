@@ -3,7 +3,6 @@ title: "SentinelOne"
 description: "SentinelOne is a cloud-based cybersecurity platform that helps protect against cyber threats such as malware, ransomware, and advanced persistent threats (APTs)."
 ---
 
-
 ### Pre-requisites
 
 <Tip>
@@ -108,12 +107,12 @@ curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/agents" \
 
 **Troubleshooting API Access Issues**
 
-| Error Code | Possible Issue           | Solution                  |
-| ---------- | ------------------------ | ------------------------- |
-|            | Invalid API token        | Regenerate the API token  |
-|            | Insufficient permissions | Adjust user role or scope |
-|            | Incorrect API endpoint   | Check API documentation   |
-|            | Rate limit exceeded      | Wait and retry            |
+| Error Code                  | Possible Issue           | Solution                                                   |
+| --------------------------- | ------------------------ | ---------------------------------------------------------- |
+| `401 Unauthorized`          | Invalid API token        | Regenerate the API token, \ check permissions              |
+| `403 Forbidden`             | Insufficient permissions | Adjust user role or scope                                  |
+| `404 Not Found`             | Incorrect API endpoint   | Verify API version and endpoint, \ check API documentation |
+| `500 Internal Server Error` | Rate limit exceeded      | Wait and retry or contact support                          |
 
 ### Configure SentinelOne API in the AirMDR Integrations Dashboard
 
