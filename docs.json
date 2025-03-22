@@ -31,7 +31,6 @@
                     "pages": [
                         "Integrations/overview",
                         "Integrations/AWS",
-                        "Integrations/AWS-STS",
                         "Integrations/cisco-AMP",
                         "Integrations/Datadog",
                         "Integrations/Duo",
