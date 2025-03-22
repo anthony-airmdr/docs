@@ -116,24 +116,62 @@ description: "AWS GuardDuty is a threat detection service that continuously moni
     <Steps>
       <Step title="Create an IAM Role">
         - **Sign in** to the [AWS IAM Console](https://console.aws.amazon.com/iam/).
-        - Click **"Roles"** → **"Create Role"**.
+        - Click on **Roles** in the left navigation panel.\
+          ![AWS6 Pn](/images/AWS6.png)
+        - Click the **Create role** button.\
+          ![AWS7 Pn](/images/AWS7.png)
         - **Select a trusted entity**:
           - If AWS services (e.g., EC2, Lambda) need API access → Choose **AWS Service**.
           - If a third-party app needs access → Choose **Web Identity or OpenID Connect**.
           - If another AWS account needs access → Choose **Another AWS Account**.
+
+            <Info>
+              AWS Security Token Service (STS) is a web service that enables you to request temporary, limited-privilege security credentials for IAM users or federated users. These temporary credentials can be used to access AWS resources securely without creating long-term IAM credentials.
+            </Info>
+            - Enter the **Account ID**: **<u>242133657058</u>** only as an identifier of the account that can use this role.\
+              ![AWS8 Pn](/images/AWS8.png)
+
+              <Info>
+                Generally, the Account ID is a 12-digit Number, use only the Account ID mentioned above.
+              </Info>
+              <Tip>
+                To enhance the Security:
+                1. Specify an External ID, a unique identifier that the trusted account must provide when assuming the role
+                2. To add an external_id:
+                   - Select the **Require an external ID** checkbox.
+                   - Enter the unique agreed-upon external ID value.
+                   - Do NOT check "**Require MFA**" unless the assuming account needs MFA.
+              </Tip>
         - Click **Next**.
       </Step>
       <Step title="Attach API Permissions">
-        Choose a predefined **AWS Managed Policy** or create a custom one:
-
-        - **Full API Access** → `AdministratorAccess` (Not recommended for security).
-        - **Read-Only API Access** → `ReadOnlyAccess`.
-        - **GuardDuty API Access** → `AmazonGuardDutyFullAccess`.
+        - Choose a predefined **AWS Managed Policy** or create a custom one:
+          - **Full API Access** → `AdministratorAccess` (Not recommended for security).
+          - **Read-Only API Access** → `ReadOnlyAccess`.
+          - **GuardDuty API Access** → `AmazonGuardDutyFullAccess`.
+        - Click **Next.**
       </Step>
-      <Step title="Create User and Retrieve Credentials">
-        1. Review the permissions and user details.
-        2. Create the user.
-        3. Download the .csv file containing the **access key ID** and **secret access key**
+      <Step title="Review and Create the Role">
+        1. Provide the required information in the **Role details** section for the role.
+           - **Role Name** – Provide a meaningful name like `AirMDR`.
+           - **Description** (Optional) – Add a short description for this role.
+
+             ![AWS9 Pn](/images/AWS9.png)
+        2. Review your selections (Permissions and Policies), and if everything is correct.
+           - **Review Permissions** – Ensure the attached policies meet your security needs.
+           - **Review Trust Policy** – Verify the trust policy when you use cross-account access or service.
+        3. Click **Create Role**.
+
+           <Warning>
+             Securely save and share these credentials with the AirMDR operations team to allow monitoring.
+           </Warning>
+      </Step>
+      <Step title="Retrieve the Role ARN (Amazon Resource Name)">
+        Once the role is created:
+
+        1. Click on the role name.
+        2. Copy and securely save the **Role ARN** (Amazon Resource Name).\
+           ![AWS10 Pn](/images/AWS10.png)
 
            <Warning>
              Securely save and share these credentials with the AirMDR operations team to allow monitoring.
@@ -183,5 +221,6 @@ AWS **CloudTrail** is a service that logs all API actions taken in your AWS acco
    ![images/Duo7.png](/images/Duo7.png)
 3. Use the search option, enter the keyword "**Amazon Web Services**", select the **Connections** tab, and click the **\+ Create** icon.\
    ![images/AWS1.png](/images/AWS1.png)
-4. Enter the generated **access_key**, **secret_key**, and provide the **region_name** for which this connection is to be used in the Authentication Details field params, and click **Create.**\
-   ![images/AWS2.png](/images/AWS2.png)
+4. Enter the generated **access_key**, **secret_key**, **role_arn**, **external_id** (if specified), and provide the **region_name** for which this connection is to be used in the Authentication Details field params.
+5. Click **Create.**\
+   ![AWS11 Pn](/images/AWS11.png)
