@@ -37,20 +37,27 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
       **Account "View Only" access limits the risk.**
     </Tip>
   </Step>
-  <Step title="Assign Scope of Access & Generate API Token">
-    1. To set up access to your site, select the **Site** icon under "**Select Scope of Access**".
-    2. Set access to **Viewer**, and click **Create User**.
-
-       ![](/images/SentinelOne5.png)
+  <Step title="Assign User Permissions">
+    1. In the left navigation pane, select **Settings**
+    2. In the top menu, select the **Users** → **Console Users**.
+    3. To update the permissions, select the respective User checkbox and click on Admin or Viewer in the Role column.
+    4. In the Admin or Viewer pop-up, select **Endpoints** in the left pane, and enter and check the keywords "**Disconnect From Network**" and "**Initiate Scan**" respectively.
+       - `Endpoints.InitiateScan`: This permission is required for “Initiate SentinelOne Scan Skill”
+       - `Endpoints.DisconnectFromNetwork`: This permission is required for “Manage SentinelOne Network Connection”
+  </Step>
+  <Step title="Generate an API Token">
+    1. Navigate to **Settings** → **Users**.
+    2. Click on your **User Profile**.
+    3. Generate an **API Token**.
 
        <Warning>
          **Copy** and securely store the API token (you won’t be able to see it again).
        </Warning>
-       ![](/images/SentinelOne6.png)
+       ![Sentinel One6 Pn](/images/SentinelOne6.png)
   </Step>
 </Steps>
 
-### Fetch Threats from SentinelOne via API
+### Fetch Events from SentinelOne via API
 
 <Note>
   To fetch alerts from SentinelOne, the admin must enable **Custom Rules** for your **account** or **scope**.
