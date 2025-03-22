@@ -38,8 +38,13 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
     </Tip>
   </Step>
   <Step title="Assign Scope of Access & Generate API Token">
-    1. To set up access to your site, select the **Site** icon under "**Select Scope of Access**".
-    2. Set access to **Viewer**, and click **Create User**.
+    1. In the left navigation pane, select **Settings**
+    2. In the top menu, select the **Users** → **Console Users**.
+    3. To update the permissions, select the respective User checkbox and click on Admin or Viewer in the Role column.
+    4. In the Admin or Viewer pop-up, select **Endpoints** in the left pane, and enter and check the keywords "**Disconnect From Network**" and "**Initiate Scan**" respectively.
+       - `Endpoints.InitiateScan`: This permission is required for “Initiate SentinelOne Scan Skill”
+       - `Endpoints.DisconnectFromNetwork`: This permission is required for “Manage SentinelOne Network Connection”
+    5. 
 
        ![](/images/SentinelOne5.png)
 
@@ -47,6 +52,11 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
          **Copy** and securely store the API token (you won’t be able to see it again).
        </Warning>
        ![](/images/SentinelOne6.png)
+  </Step>
+  <Step title="Generate an API Token">
+    1. Navigate to **Settings** → **Users**.
+    2. Click on your **User Profile**.
+    3. Generate an **API Token**.
   </Step>
 </Steps>
 
