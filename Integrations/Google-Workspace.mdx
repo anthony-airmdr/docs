@@ -21,15 +21,15 @@ Setting up **Google Workspace** involves several steps, depending on whether you
   <Step title="Configure a New Project in GCP">
     GCP is hierarchical, so we must first create a project. If you already have a GCP environment set up, we recommend following similar steps below to create a new project that links to your Google Workspace via the registered domain.
 
-    1. Go to Google Cloud Console.
+    1. Go to [Google Cloud Console](https://console.cloud.google.com/welcome).
 
        <Note>
          Sign in with your Google account used to set up Google Workspace.
        </Note>
     2. Click on the **project selector** (top-left dropdown near “Google Cloud”).
     3. Click **"New Project"** to configure the project with all the necessary details:
-       - **Project Name**: Enter a unique name for your project (For example: AirMDR).
-       - **Organization & Location**: Choose [airmdr.com](http://airmdr.com) or your organization (if applicable) or "No organization" for personal use.
+       - **Project Name**: Enter a unique name for your project (For example: **AirMDR**).
+       - **Organization & Location**: Enter [airmdr.com](http://airmdr.com) as organization and location or your organization and your location.
     4. Click **Create**.
 
        <Info>
@@ -38,14 +38,134 @@ Setting up **Google Workspace** involves several steps, depending on whether you
          Only the creator of the project has the right to manage the project.
        </Info>
   </Step>
-  <Step title="Securely share .json and email ID">
-    <Icon icon="envelope" /> Share the .json file and the generated **admin_email_id** securely with the AirMDR operations team or self-configure in the AirMDR Integrations Dashboard.
+  <Step title="Enable Admin SDK API and Google Workspace Alert center API">
+    <Tip>
+      Our virtual agent will eventually use a GCP service account, which uses the Workspace Admin SDK to interact with the GW admin console REST API, therefore it needs to be enabled in GCP. AirMDR will only enable read access to the Reports API for this admin SDK.
+    </Tip>
+    1. Go to [Google Cloud Console](https://console.cloud.google.com/welcome) → APIs & Services → API Library.
+    2. Select Your Project (if not already selected).
+    3. Search for Each API:
+       - Search **"Admin SDK API"**, click it, and click **"Enable"**.
+       - Search **"Google Workspace Alert Center API"**, click it, and click **"Enable"**.
+
+    <Note>
+      When finished, you will have enabled the Admin SDK API within your project, where your service account will have access to pull data from Google Workspace.
+    </Note>
+  </Step>
+  <Step title="Configure OAuth Consent Screen in Google Cloud Platform (GCP)">
+    1. Go to the [Google Cloud Console](https://console.cloud.google.com/welcome).
+    2. Select your project.
+    3. Navigate to **"APIs & Services" → "OAuth consent screen"**.
+    4. Choose User Type as **Internal**.
+    5. Click **Create**.
+    6. Configure App Information with the required details:
+       - **App Name**: airmdr-agent
+       - **User Support Email**: Provide an email for users to contact ([<u>security@airmdr.com</u>](mailto:security@airmdr.com) or your email address)
+       - **Developer contact information: **[security@airmdr.com](mailto:security@airmdr.com)
+    7. Click **"Save and Continue"**.
+
+       <Check>
+         After successful configuration, we will now have a registered application using OAuth 2.0 for authorization and the consent screen information set
+       </Check>
+       <Note>
+         The default token request limit for this app daily is 10,000 and can be increased on request.
+       </Note>
+  </Step>
+  <Step title="Create a Service Account in Google Cloud">
+    <Check>
+      A service account is required for the AirMDR agent to ingest data from Google Workspace
+
+      This account is meant for non-human applications, allowing it to access resources in GW via the Admin SDK API we enabled earlier.
+    </Check>
+    <Info>
+      This is required to access Google Workspace APIs like **Admin SDK API** and **Google Workspace Alert Center API**.
+    </Info>
+    1. Go to [Google Cloud Console](https://console.cloud.google.com/welcome) → APIs & Services → Credentials → \+ Create credentials → Service account.
+    2. On the **"Create Service Account"** page provide the required details:
+       - **Service account name**: `airmdr-agent`
+       - **Service account ID**: `airmdr-agent`
+       - **Service account Description**: Describe what this service account will do
+    3. Click **"Create and Continue"**.
+    4. Assign necessary roles to grant permissions:
+       - **"Service Account Token Creator"**
+       - **"Viewer"** or **"Editor"** _(if needed for managing resources)_
+    5. Click **"Done"**.
+    6. Click on the newly created service account.
+    7. Go to the **"Keys"** tab.
+    8. Click **"Add Key" → "Create New Key"**.
+    9. Choose **JSON** format and click **"Create"**.
+
+       <Info>
+         After successful configuration, we will now have a service account named airmdr-agent, a JSON file with the necessary credentials for this service account saved to your host.
+       </Info>
+       <Check>
+         <Icon icon="envelope" /> Securely save and share the downloaded JSON file to AirMDR.
+       </Check>
+       <Note>
+         By default, the Owner role will be applied to this service account based on inheritance from the project
+       </Note>
+  </Step>
+  <Step title="Enable Domain-Wide Delegation">
+    Our service account will need domain-wide delegation of permissions to access APIs that reach outside of GCP and into Google Workspace. The important data necessary for this has already been established in earlier steps where we need an API key, service account, and OAuth client ID.
+
+    1. Go to [Google Workspace Admin Console](https://admin.google.com/).
+    2. Navigate to Settings → Access and data control → API controls.
+    3. Select Manage Domain Wide Delegation → Add a new client ID and enter the required credentials:
+       - Client ID
+
+         <Tip>
+           To retrieve Client ID:\
+           Navigate to Service Account in [GCP](https://console.cloud.google.com/welcome) and copy OAuthID\
+           or\
+           Copy from the JSON file generated while configuring the Service Account.
+         </Tip>
+       - OAuth Scopes
+
+         <Tip>
+           To retrieve OAuth Scopes:\
+           Navigate to [Google Cloud Console](https://console.cloud.google.com/welcome) → IAM & Admin → Service accounts OAuth2 Client ID (Visible in the header section of the service account)\
+           \
+           OAuth Scopes: \
+           [<u>https://www.googleapis.com/auth/admin.reports.audit.readonly</u>](https://www.googleapis.com/auth/admin.reports.audit.readonly), [https://<u>www.googleapis.com/auth</u>/apps.alerts](https://www.googleapis.com/auth/apps.alerts)
+         </Tip>
+    4. Click **"AUTHORIZE"**.
+
+       <Check>
+         <Icon icon="rocket-launch" /> Now you have Successfully enabled Domain-wide Delegation in Google Workspace
+       </Check>
+       <Note>
+         AirMDR requires the JSON file generated while configuring the Service Account or an email ID that has admin access to read alerts in the Alert Center UI\
+         \
+         AirMDR Service account in GCP only needs access to:
+         - [admin.reports.audit.readonly](https://www.googleapis.com/auth/admin.reports.audit.readonly): To access Google Workspace Audit Reports
+         - [apps.alerts](https://www.googleapis.com/auth/apps.alerts): To read alerts
+       </Note>
+  </Step>
+  <Step title="Pulling Workspace reports logs into SIEM (Security Information and Event Management)">
+    To **pull Google Workspace reports and logs into a SIEM** (Security Information and Event Management) system, AirMDR requires OAuth2 client credentials follow these steps to provide the credentials:
+
+    1. In the search bar, enter the keyword "Credentials".
+    2. Click on Credentials (APIs & Services) → Credentials 
+    3. Click on \+ Create credentials → OAuth client ID.
+    4. In **Application type **select _Desktop_ app.
+    5. Choose a name for the **Name** field, (For example: Gsuite Reports Collector).
+    6. Click on **Create**. 
+
+       <Info>
+         A pop-up window will appear indicating that the OAuth client has been created.
+       </Info>
+    7. Click on **Download** **JSON**.
+    8. Click on **Ok**.
+
+       <Check>
+         Rename the file to `credentials_reports.json` 
+       </Check>
   </Step>
 </Steps>
 
 ### Configure Google Workspace in AirMDR Integrations Dashboard
 
-1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login.**
+1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials, and click **Login.**
 
    ![](/images/Datadog11.png)
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**\
