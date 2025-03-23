@@ -15,16 +15,32 @@ description: "Google Workspace (formerly G Suite) is a cloud-based productivity 
 
 ### **Setup Google Workspace**
 
-Setting up **Google Workspace** involves several steps, depending on whether you are creating a new account or managing an existing domain.
+Setting up **Google Workspace** involves several steps, depending on whether you create a new account or manage an existing domain.
 
 <Steps>
-  <Step title="Google Workspace">
-    1. Login with 
+  <Step title="Configure a New Project in GCP">
+    GCP is hierarchical, so we must first create a project. If you already have a GCP environment set up, we recommend following similar steps below to create a new project that links to your Google Workspace via the registered domain.
+
+    1. Go to Google Cloud Console.
+
+       <Note>
+         Sign in with your Google account used to set up Google Workspace.
+       </Note>
+    2. Click on the **project selector** (top-left dropdown near “Google Cloud”).
+    3. Click **"New Project"** to configure the project with all the necessary details:
+       - **Project Name**: Enter a unique name for your project (For example: AirMDR).
+       - **Organization & Location**: Choose [airmdr.com](http://airmdr.com) or your organization (if applicable) or "No organization" for personal use.
+    4. Click **Create**.
+
+       <Info>
+         <Icon icon="rocket-launch" /> Now you have Successfully created a New Organization and Project in GCP\
+         \
+         Only the creator of the project has the right to manage the project.
+       </Info>
+    5. 
   </Step>
   <Step title="Securely share .json and email ID">
-    <Check>
-      <Icon icon="envelope" /> Share the .json file and the generated **admin_email_id **via a secured method with the AirMDR operations team or self-configure in the AirMDR Integrations Dashboard.
-    </Check>
+    <Icon icon="envelope" /> Share the .json file and the generated **admin_email_id** securely with the AirMDR operations team or self-configure in the AirMDR Integrations Dashboard.
   </Step>
 </Steps>
 
