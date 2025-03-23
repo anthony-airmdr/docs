@@ -61,7 +61,7 @@ Setting up **Google Workspace** involves several steps, depending on whether you
     6. Configure App Information with the required details:
        - **App Name**: airmdr-agent
        - **User Support Email**: Provide an email for users to contact ([<u>security@airmdr.com</u>](mailto:security@airmdr.com) or your email address)
-       - **Developer contact information: **[security@airmdr.com](mailto:security@airmdr.com)
+       - \*\*Developer contact information: \*\*[security@airmdr.com](mailto:security@airmdr.com)
     7. Click **"Save and Continue"**.
 
        <Check>
@@ -80,7 +80,8 @@ Setting up **Google Workspace** involves several steps, depending on whether you
     <Info>
       This is required to access Google Workspace APIs like **Admin SDK API** and **Google Workspace Alert Center API**.
     </Info>
-    1. Go to [Google Cloud Console](https://console.cloud.google.com/welcome) → APIs & Services → Credentials → \+ Create credentials → Service account.
+    1. Go to [Google Cloud Console](https://console.cloud.google.com/welcome) → APIs & Services → Credentials → \+ Create credentials → Service account.\
+       ![Google Workspace1 Pn](/images/GoogleWorkspace1.png)
     2. On the **"Create Service Account"** page provide the required details:
        - **Service account name**: `airmdr-agent`
        - **Service account ID**: `airmdr-agent`
@@ -89,7 +90,8 @@ Setting up **Google Workspace** involves several steps, depending on whether you
     4. Assign necessary roles to grant permissions:
        - **"Service Account Token Creator"**
        - **"Viewer"** or **"Editor"** _(if needed for managing resources)_
-    5. Click **"Done"**.
+    5. Click **"Done"**.\
+       ![Google Workspace2 Pn](/images/GoogleWorkspace2.png)
     6. Click on the newly created service account.
     7. Go to the **"Keys"** tab.
     8. Click **"Add Key" → "Create New Key"**.
@@ -126,8 +128,10 @@ Setting up **Google Workspace** involves several steps, depending on whether you
            Navigate to [Google Cloud Console](https://console.cloud.google.com/welcome) → IAM & Admin → Service accounts OAuth2 Client ID (Visible in the header section of the service account)\
            \
            OAuth Scopes: \
-           [<u>https://www.googleapis.com/auth/admin.reports.audit.readonly</u>](https://www.googleapis.com/auth/admin.reports.audit.readonly), [https://<u>www.googleapis.com/auth</u>/apps.alerts](https://www.googleapis.com/auth/apps.alerts)
+           [<u>https://www.googleapis.com/auth/admin.reports.audit.readonly</u>](https://www.googleapis.com/auth/admin.reports.audit.readonly), [<u>https://www.googleapis.com/auth/apps.alerts</u>](https://www.googleapis.com/auth/apps.alerts)
          </Tip>
+
+       ![Google Workspace Pn](/images/GoogleWorkspace.png)
     4. Click **"AUTHORIZE"**.
 
        <Check>
@@ -145,11 +149,13 @@ Setting up **Google Workspace** involves several steps, depending on whether you
     To **pull Google Workspace reports and logs into a SIEM** (Security Information and Event Management) system, AirMDR requires OAuth2 client credentials follow these steps to provide the credentials:
 
     1. In the search bar, enter the keyword "Credentials".
-    2. Click on Credentials (APIs & Services) → Credentials 
-    3. Click on \+ Create credentials → OAuth client ID.
-    4. In **Application type **select _Desktop_ app.
+    2. Click on Credentials (APIs & Services) → Credentials.\
+       ![Google Workspace3 Pn](/images/GoogleWorkspace3.png)
+    3. Click on \+ Create credentials → OAuth client ID.\
+       ![Google Workspace1 Pn](/images/GoogleWorkspace1.png)
+    4. In Application type select _Desktop_ app.
     5. Choose a name for the **Name** field, (For example: Gsuite Reports Collector).
-    6. Click on **Create**. 
+    6. Click on **Create**.
 
        <Info>
          A pop-up window will appear indicating that the OAuth client has been created.
@@ -158,7 +164,7 @@ Setting up **Google Workspace** involves several steps, depending on whether you
     8. Click on **Ok**.
 
        <Check>
-         Rename the file to `credentials_reports.json` 
+         Rename the file to `credentials_reports.json`
        </Check>
   </Step>
 </Steps>
@@ -170,5 +176,7 @@ Setting up **Google Workspace** involves several steps, depending on whether you
    ![](/images/Datadog11.png)
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**\
    ![images/Duo7.png](/images/Duo7.png)
-3. Use the search option, enter the keyword "**Google Workspace**", select the **Connections** tab, and click the **\+ Create** icon.
-4. Enter the generated **admin_email_id,** provide the contents of the JSON file with Service Account credentials in the Authentication Details field params, and click **Create.**
+3. Use the search option, enter the keyword "**Google Workspace**", select the **Connections** tab, and click the **\+ Create** icon.\
+   ![Google Workspace5 Pn](/images/GoogleWorkspace5.png)
+4. Enter the generated **admin_email_id,** provide the contents of the JSON file with Service Account credentials in the Authentication Details field params, and click **Create.**\
+   ![Google Workspace6 Pn](/images/GoogleWorkspace6.png)
