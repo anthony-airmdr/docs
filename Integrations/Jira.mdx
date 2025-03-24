@@ -3,7 +3,12 @@ title: "JIRA"
 description: "JIRA is a popular project management and issue-tracking tool developed by Atlassian. It is mainly used for bug tracking, agile project management, and workflow automation."
 ---
 
-### **Generate JIRA API Token**
+To integrate JIRA with AirMDR, you need:
+
+1. **Instance URL** – The unique URL of your JIRA instance.
+2. **Email Token (API Token)** – Used for authentication in API requests.
+
+### Generate JIRA Email Token (API Token)
 
 JIRA API tokens allow users to authenticate API requests securely without using passwords. Here’s how to **create, manage, and revoke** API tokens in JIRA.
 
@@ -24,7 +29,27 @@ JIRA API tokens allow users to authenticate API requests securely without using 
   </Step>
 </Steps>
 
+### Access Instance URL
+
+1. Go to the Atlassian API Token Page.
+2. Log in with your **JIRA (Atlassian) credentials**.
+3. Click on your profile picture (top-right corner) → **"Profile"**.
+4. Your instance URL is displayed in the browser’s address bar.
+
 ### Manage & Revoke API Tokens
+
+<Steps>
+  <Step title="Access Atlassian API Token Page">
+    1. Go to the Atlassian API Token Page.
+    2. Log in with your **JIRA (Atlassian) credentials**.
+  </Step>
+  <Step title="Revoke the Token Access">
+    1. Scroll to the **API Tokens** section.
+    2. You will see a list of all active API tokens.
+    3. Click **“Revoke”** next to the token you want to delete.
+    4. Confirm the action when prompted.
+  </Step>
+</Steps>
 
 ### Configure JIRA API Token in the AirMDR Integrations Dashboard
 
@@ -34,4 +59,4 @@ JIRA API tokens allow users to authenticate API requests securely without using 
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**\
    ![images/Duo7.png](/images/Duo7.png)
 3. Use the search option, enter the keyword "**JIRA**", select the **Connections** tab, and click the **\+ Create** icon.
-4. Enter the email used to log in to the JIRA account and the generated **Token,** **instance_url** in the Authentication Details field params, and click **Create.**
+4. Enter the email used to login to the JIRA account and the generated **Token,** **instance_url** in the Authentication Details field params, and click **Create.**
