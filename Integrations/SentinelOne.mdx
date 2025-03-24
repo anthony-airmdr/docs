@@ -41,9 +41,9 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
     1. In the left navigation pane, select **Settings**.\
        ![Sentinel One7 Pn](/images/SentinelOne7.png)
     2. In the top menu, select the **Users** → **Console Users**.
-    3. To update the permissions, select the respective User checkbox and click on Admin or Viewer in the Role column.\
+    3. To update the permissions, select the respective User checkbox and click on Viewer in the Role column.\
        ![Sentinel One8 Pn](/images/SentinelOne8.png)
-    4. In the **Admin** or **Viewer** pop-up, select **Endpoints** in the left pane, and in the right pane enter and check "**Disconnect From Network**" and "**Initiate Scan**" respectively.
+    4. In the **Viewer** pop-up, select **Endpoints** in the left pane, and the right pane enter and check "**Disconnect From Network**" and "**Initiate Scan**" respectively.
        - `Endpoints.InitiateScan`: This permission is required for “Initiate SentinelOne Scan Skill”
        - `Endpoints.DisconnectFromNetwork`: This permission is required for “Manage SentinelOne Network Connection”.\
          ![Sentinel One9 Pn](/images/SentinelOne9.png)
@@ -62,7 +62,7 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
   </Step>
 </Steps>
 
-### Fetch Events from SentinelOne via API
+### Fetch Alerts from SentinelOne via API
 
 <Note>
   To fetch alerts from SentinelOne, the admin must enable **Custom Rules** for your **account** or **scope**.
@@ -77,6 +77,26 @@ To enable Custom Rules in SentinelOne:
    <Tip>
      If you see the error "**This scope does not have Custom Rules enabled, insufficient permissions**", contact SentinelOne support to enable it for your account.
    </Tip>
+
+### Access Threats on SentinelOne server
+
+<Note>
+  To access threat data via the SentinelOne API, the user account must have at least read/view permissions on the SentinelOne server.\
+  \
+  These permissions allow the account to retrieve data, such as threats, agents, and management console activity.
+</Note>
+
+To enable permissions to view threats in SentinelOne:
+
+1. In the left navigation pane, select **Settings**.\
+   ![Sentinel One7 Pn](/images/SentinelOne7.png)
+2. In the top menu, select the **Users** → **Console Users**.
+3. To update the permissions, select the respective User checkbox and click on Viewer in the Role column.\
+   ![Sentinel One8 Pn](/images/SentinelOne8.png)
+4. In the **Viewer** pop-up, select **Endpoints** in the left pane, and in the right pane enter and check "**View Threats**".\
+   ![Sentinel One11 Pn](/images/SentinelOne11.png)
+5. In the **Viewer** pop-up, select **Endpoints** in the left pane, and in the right pane enter and check "**View Threats**".\
+   ![Sentinel One12 Pn](/images/SentinelOne12.png)
 
 ### Evaluate SentinelOne API Test Scope Restrictions
 
@@ -107,12 +127,12 @@ curl -X GET "https://<your-sentinelone-url>/web/api/v2.1/agents" \
 
 **Troubleshooting API Access Issues**
 
-| Error Code                  | Possible Issue           | Solution                                                   |
-| --------------------------- | ------------------------ | ---------------------------------------------------------- |
-| `401 Unauthorized`          | Invalid API token        | Regenerate the API token, \ check permissions              |
-| `403 Forbidden`             | Insufficient permissions | Adjust user role or scope                                  |
-| `404 Not Found`             | Incorrect API endpoint   | Verify API version and endpoint, \ check API documentation |
-| `500 Internal Server Error` | Rate limit exceeded      | Wait and retry or contact support                          |
+| Error Code                  | Possible Issue           | Solution                                                    |
+| --------------------------- | ------------------------ | ----------------------------------------------------------- |
+| `401 Unauthorized`          | Invalid API token        | Regenerate the API token, \\ check permissions              |
+| `403 Forbidden`             | Insufficient permissions | Adjust user role or scope                                   |
+| `404 Not Found`             | Incorrect API endpoint   | Verify API version and endpoint, \\ check API documentation |
+| `500 Internal Server Error` | Rate limit exceeded      | Wait and retry or contact support                           |
 
 ### Configure SentinelOne API in the AirMDR Integrations Dashboard
 
