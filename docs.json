@@ -36,6 +36,7 @@
                         "Integrations/Duo",
                         "Integrations/GCP-SCC",
                         "Integrations/GitHub",
+                        "Integrations/Google-Workspace",
                         "Integrations/Microsoft-Defender",
                         "Integrations/Microsoft-Graph",
                         "Integrations/Okta",
