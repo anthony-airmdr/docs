@@ -73,16 +73,28 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
 
     ![Sentinel One3 Pn](/images/SentinelOne3.png)
  9. Provide the mandatory fields and click **Next**
-    - Name: Provide a unique name for the Service User 
-    - Expiration Date
+    - Name: Provide a unique name for the Service User (e.g., AirMDR Actions)
+    - Expiration Date\
+      ![Sentinel One17 Pn](/images/SentinelOne17.png)
 10. Click **Next**.
 
     <Tip>
       **It is recommended that the duration be equal to the contract, but it depends on how often you wish to re-issue the token.**
     </Tip>
 11. Allow access to your site under "**Select Scope of Access**". 
-12. Set access to "**Viewer**" (that's the default).
+12. Set access to "**AirMDR Actions**" (select the custom role defined with pages and permissions).
 13. Click **Create User**.
+
+    <Note>
+      In the Authentication Required pop-up, enter the Two-Factor Authentication Code and click **Confirm Action**.
+    </Note>
+    \
+    ![Sentinel One18 Pn](/images/SentinelOne18.png)
+14. Use the **Copy API Token** option at the bottom to copy the API Token.
+
+    <Warning>
+      **Copy** and securely store the API token (you won’t be able to see it again).
+    </Warning>
 
 ### Evaluate SentinelOne API Test Scope Restrictions
 
