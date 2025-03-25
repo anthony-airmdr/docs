@@ -16,87 +16,57 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
     1. Log in to your **SentinelOne Management Console** as an **Admin**.
     2. Provide the necessary credentials (**email** and **password**), and click **Sign In**.
   </Step>
-  <Step title="Create a New Service User">
-    1. Navigate to **Settings** and select the **Users** tab.
-    2. In the left navigation pane, select **Service Users**.
+  <Step title="Create a New Service User - Viewer Access">
+     1. Navigate to **Settings** and select the **Users** tab.
+     2. In the left navigation pane, select **Service Users**.
 
-       ![](/images/SentinelOne2.png)
-    3. In the **Actions** drop-down list, click on **Create New Service User**.
+        ![](/images/SentinelOne2.png)
+     3. In the **Actions** drop-down list, click on **Create New Service User**.
 
-       ![](/images/SentinelOne3.png)
-    4. Provide the mandatory fields and click **Next**\\
-       - Name: (Preferably **AirMDR**)\\
-       - Expiration Date
-    5. Click **Next**.
+        ![](/images/SentinelOne3.png)
+     4. Provide the mandatory fields and click **Next**
+        - Name: (Preferably **AirMDR**)
+        - Expiration Date
+     5. Click **Next**.\
+        ![Sentinel One4 Pn](/images/SentinelOne4.png)
 
-       ![](/images/SentinelOne4.png)
+        <Tip>
+          **It is recommended that the duration be equal to the contract, but it depends on how often you wish to re-issue the token.**
+        </Tip>
+     6. Allow access to your site under "**Select Scope of Access**".  
+     7. Set access to "**Viewer**" (that's the default).
+     8. Click **Create User**.\
+        ![Sentinel One5 Pn](/images/SentinelOne5.png)
+     9. "API Token For Test" pop-up will appear.
+    10. Use the **<Icon icon="copy" /> Copy API Token** option at the bottom to copy the API Token.
 
-    <Tip>
-      **It is recommended that the duration be equal to the contract, but it depends on how often you wish to re-issue the token.** 
-
-      **Account "View Only" access limits the risk.**
-    </Tip>
-  </Step>
-  <Step title="Assign User Permissions">
-    1. In the left navigation pane, select **Settings**.\
-       ![Sentinel One7 Pn](/images/SentinelOne7.png)
-    2. In the top menu, select the **Users** → **Console Users**.
-    3. To update the permissions, select the respective User checkbox and click on Viewer in the Role column.\
-       ![Sentinel One8 Pn](/images/SentinelOne8.png)
-    4. In the **Viewer** pop-up, select **Endpoints** in the left pane, and the right pane enter and check "**Disconnect From Network**" and "**Initiate Scan**" respectively.
-       - `Endpoints.InitiateScan`: This permission is required for “Initiate SentinelOne Scan Skill”
-       - `Endpoints.DisconnectFromNetwork`: This permission is required for “Manage SentinelOne Network Connection”.\
-         ![Sentinel One9 Pn](/images/SentinelOne9.png)
-
-         ![Sentinel One10 Pn](/images/SentinelOne10.png)
-  </Step>
-  <Step title="Generate an API Token">
-    1. Navigate to **Settings** → **Users**.
-    2. Click on your **User Profile**.
-    3. Generate an **API Token**.
-
-       <Warning>
-         **Copy** and securely store the API token (you won’t be able to see it again).
-       </Warning>
-       ![Sentinel One6 Pn](/images/SentinelOne6.png)
+        <Warning>
+          **Copy** and securely store the API token (you won’t be able to see it again).
+        </Warning>
+        ![Sentinel One6 Pn](/images/SentinelOne6.png)
   </Step>
 </Steps>
 
-### Fetch Alerts from SentinelOne via API
+### Get Alerts from SentinelOne via API - Custom Role
 
-<Note>
-  To fetch alerts from SentinelOne, the admin must enable **Custom Rules** for your **account** or **scope**.
-</Note>
-
-To enable Custom Rules in SentinelOne:
+<Info>
+  To fetch defined alerts from SentinelOne, the admin must create a **Custom Role **for your **account** or **scope**.
+</Info>
 
 1. Log in to your **SentinelOne Management Console** as an **Admin**.
-2. Go to **Settings** → **Automation Rules**.
-3. Ensure that **Custom Rules** are enabled for your organization.
+2. Go to **Settings** → **USERS** in the top menu.\
+   ![Sentinel One14 Pn](/images/SentinelOne14.png)
+3. Select the **Roles** tab on the left.
+4. Click on the **Actions** drop-down menu and select **New Role**.\
+   ![Sentinel One15 Pn](/images/SentinelOne15.png)
+5. Enter the required details to create a Role:
+   - Role Name: Unique role name for your organization
+   - Description: Describe the role of your endpoint configuration.
+6. In the left pane, select the required pages (e.g., Endpoints, Endpoint Threats, Access Settings, Accounts, Activity) and the required permissions for the respective page in the right pane for the New Role.
+7. Click **Save**.\
+   ![Sentinel One13 Pn](/images/SentinelOne13.png)
+8. 
 
-   <Tip>
-     If you see the error "**This scope does not have Custom Rules enabled, insufficient permissions**", contact SentinelOne support to enable it for your account.
-   </Tip>
-
-### Fetch Threats from SentinelOne via API
-
-<Note>
-  To access threat data via the SentinelOne API, the user account must have at least read/view permissions on the SentinelOne server.\
-  \
-  These permissions allow the account to retrieve data, such as threats, agents, and management console activity.
-</Note>
-
-To enable permissions to view threats in SentinelOne:
-
-1. In the left navigation pane, select **Settings**.\
-   ![Sentinel One7 Pn](/images/SentinelOne7.png)
-2. In the top menu, select the **Users** → **Console Users**.
-3. To update the permissions, select the respective User checkbox and click on Viewer in the Role column.\
-   ![Sentinel One8 Pn](/images/SentinelOne8.png)
-4. In the **Viewer** pop-up, select **Endpoints** in the left pane, and in the right pane enter and check "**View Threats**".\
-   ![Sentinel One11 Pn](/images/SentinelOne11.png)
-5. In the **Viewer** pop-up, select **Endpoints** in the left pane, and in the right pane enter and check "**View Threats**".\
-   ![Sentinel One12 Pn](/images/SentinelOne12.png)
 
 ### Evaluate SentinelOne API Test Scope Restrictions
 
