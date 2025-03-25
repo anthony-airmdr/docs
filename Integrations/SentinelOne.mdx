@@ -65,38 +65,65 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
  5. Enter the required details to create a Role:
     - Role Name: Unique role name for your organization
     - Description: Describe the role of your endpoint configuration.
- 6. In the left pane, select the required pages (e.g., Endpoints, Endpoint Threats, Access Settings, Accounts, Activity) and the required permissions for the respective page in the right pane for the New Role and click **Save**.\
+ 6. In the left pane, select the required pages (e.g., Endpoints, Endpoint Threats, Access Settings, Accounts, Activity) and the required permissions for the respective page in the right pane for the New Role.
+
+    <AccordionGroup>
+      <Accordion title="To Initiate Scan and Manage SentinelOne" icon="sparkles">
+        To create a SentinelOne API to scan and manage SentinelOne Network connection:\
+        Navigate to **Settings → USERS → Roles → Actions → New Role **and define the below-mentioned permissions 
+        1. Select **Endpoints** in the left pane.
+        2. Select **View**, **Initiate Scan,** and **Disconnect From Network** from the right pane.
+
+           <Info>
+             **Endpoints.InitiateScan**: This permission is required for “Initiate SentinelOne Scan Skill”
+
+             \
+             **Endpoints.DisconnectFromNetwork**: This permission is required for “Manage SentinelOne Network Connection”
+           </Info>
+      </Accordion>
+      <Accordion title="To View Threats" icon="sparkles">
+        To create a SentinelOne API to view threats:\
+        Navigate to **Settings → USERS → Roles → Actions → New Role **and define the below-mentioned permissions 
+        1. Select **Endpoints** in the left pane and **View Threats** in the right pane.
+        2. Select \*\*Threat Detection \*\*in the left pane and **View** in the right pane.
+      </Accordion>
+    </AccordionGroup>
+ 7. Click **Save**.\
     ![Sentinel One13 Pn](/images/SentinelOne13.png)
- 7. In the left navigation pane, select **Service Users**.\
+ 8. In the left navigation pane, select **Service Users**.\
     ![Sentinel One2 Pn](/images/SentinelOne2.png)
- 8. In the **Actions** drop-down list, click on **Create New Service User**.
+ 9. In the **Actions** drop-down list, click on **Create New Service User**.
 
     ![Sentinel One3 Pn](/images/SentinelOne3.png)
- 9. Provide the mandatory fields and click **Next**
+10. Provide the mandatory fields and click **Next**
     - Name: Provide a unique name for the Service User (e.g., AirMDR Actions)
     - Expiration Date\
       ![Sentinel One17 Pn](/images/SentinelOne17.png)
-10. Click **Next**.
+11. Click **Next**.
 
     <Tip>
       **It is recommended that the duration be equal to the contract, but it depends on how often you wish to re-issue the token.**
     </Tip>
-11. Allow access to your site under "**Select Scope of Access**". 
-12. Set access to "**AirMDR Actions**" (select the custom role defined with pages and permissions).
-13. Click **Create User**.
+12. Allow access to your site under "**Select Scope of Access**". 
+13. Set access to "**AirMDR Actions**" (select the custom role defined with pages and permissions).
+14. Click **Create User**.
 
     <Note>
       In the Authentication Required pop-up, enter the Two-Factor Authentication Code and click **Confirm Action**.
     </Note>
     \
     ![Sentinel One18 Pn](/images/SentinelOne18.png)
-14. Use the **Copy API Token** option at the bottom to copy the API Token.
+15. Use the **Copy API Token** option at the bottom to copy the API Token.
 
     <Warning>
       **Copy** and securely store the API token (you won’t be able to see it again).
     </Warning>
 
 ![Sentinel One19 Pn](/images/SentinelOne19.png)
+
+<Check>
+  <Icon icon="envelope" /> Share the **API Token** and the **SentinelOne URL** securely with the AirMDR team or self-configure them in the AirMDR Integrations Dashboard.
+</Check>
 
 ### Evaluate SentinelOne API Test Scope Restrictions
 
