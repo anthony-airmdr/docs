@@ -17,6 +17,9 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
     2. Provide the necessary credentials (**email** and **password**), and click **Sign In**.
   </Step>
   <Step title="Create a New Service User - Viewer Access">
+    <Info>
+      **Viewer** role in SentinelOne provides **read-only access**, allowing users to view threats, devices, and reports.
+    </Info>
      1. Navigate to **Settings** and select the **Users** tab.
      2. In the left navigation pane, select **Service Users**.
 
@@ -33,12 +36,12 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
         <Tip>
           **It is recommended that the duration be equal to the contract, but it depends on how often you wish to re-issue the token.**
         </Tip>
-     6. Allow access to your site under "**Select Scope of Access**".  
+     6. Allow access to your site under "**Select Scope of Access**". 
      7. Set access to "**Viewer**" (that's the default).
      8. Click **Create User**.\
         ![Sentinel One5 Pn](/images/SentinelOne5.png)
      9. "API Token For Test" pop-up will appear.
-    10. Use the **<Icon icon="copy" /> Copy API Token** option at the bottom to copy the API Token.
+    10. Use the **Copy API Token**  option at the bottom to copy the API Token.
 
         <Warning>
           **Copy** and securely store the API token (you won’t be able to see it again).
@@ -47,26 +50,39 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
   </Step>
 </Steps>
 
-### Get Alerts from SentinelOne via API - Custom Role
+### Get Alerts from SentinelOne API - Custom Role
 
 <Info>
-  To fetch defined alerts from SentinelOne, the admin must create a **Custom Role **for your **account** or **scope**.
+  To fetch defined alerts from SentinelOne, the admin must create a **Custom Role** for your **account** or **scope**.
 </Info>
 
-1. Log in to your **SentinelOne Management Console** as an **Admin**.
-2. Go to **Settings** → **USERS** in the top menu.\
-   ![Sentinel One14 Pn](/images/SentinelOne14.png)
-3. Select the **Roles** tab on the left.
-4. Click on the **Actions** drop-down menu and select **New Role**.\
-   ![Sentinel One15 Pn](/images/SentinelOne15.png)
-5. Enter the required details to create a Role:
-   - Role Name: Unique role name for your organization
-   - Description: Describe the role of your endpoint configuration.
-6. In the left pane, select the required pages (e.g., Endpoints, Endpoint Threats, Access Settings, Accounts, Activity) and the required permissions for the respective page in the right pane for the New Role.
-7. Click **Save**.\
-   ![Sentinel One13 Pn](/images/SentinelOne13.png)
-8. 
+ 1. Log in to your **SentinelOne Management Console** as an **Admin**.
+ 2. Go to **Settings** → **USERS** in the top menu.\
+    ![Sentinel One14 Pn](/images/SentinelOne14.png)
+ 3. Select the **Roles** tab on the left.
+ 4. Click on the **Actions** drop-down menu and select **New Role**.\
+    ![Sentinel One15 Pn](/images/SentinelOne15.png)
+ 5. Enter the required details to create a Role:
+    - Role Name: Unique role name for your organization
+    - Description: Describe the role of your endpoint configuration.
+ 6. In the left pane, select the required pages (e.g., Endpoints, Endpoint Threats, Access Settings, Accounts, Activity) and the required permissions for the respective page in the right pane for the New Role and click **Save**.\
+    ![Sentinel One13 Pn](/images/SentinelOne13.png)
+ 7. In the left navigation pane, select **Service Users**.\
+    ![Sentinel One2 Pn](/images/SentinelOne2.png)
+ 8. In the **Actions** drop-down list, click on **Create New Service User**.
 
+    ![Sentinel One3 Pn](/images/SentinelOne3.png)
+ 9. Provide the mandatory fields and click **Next**
+    - Name: Provide a unique name for the Service User 
+    - Expiration Date
+10. Click **Next**.
+
+    <Tip>
+      **It is recommended that the duration be equal to the contract, but it depends on how often you wish to re-issue the token.**
+    </Tip>
+11. Allow access to your site under "**Select Scope of Access**". 
+12. Set access to "**Viewer**" (that's the default).
+13. Click **Create User**.
 
 ### Evaluate SentinelOne API Test Scope Restrictions
 
