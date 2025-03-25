@@ -20,40 +20,39 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
     <Info>
       **Viewer** role in SentinelOne provides **read-only access**, allowing users to view threats, devices, and reports.
     </Info>
-     1. Navigate to **Settings** and select the **Users** tab.
-     2. In the left navigation pane, select **Service Users**.
+    1. Navigate to **Settings** and select the **Users** tab.
+    2. In the left navigation pane, select **Service Users**.
 
-        ![](/images/SentinelOne2.png)
-     3. In the **Actions** drop-down list, click on **Create New Service User**.
+       ![](/images/SentinelOne2.png)
+    3. In the **Actions** drop-down list, click on **Create New Service User**.
 
-        ![](/images/SentinelOne3.png)
-     4. Provide the mandatory fields and click **Next**
-        - Name: (Preferably **AirMDR**)
-        - Expiration Date
-     5. Click **Next**.\
-        ![Sentinel One4 Pn](/images/SentinelOne4.png)
+       ![](/images/SentinelOne3.png)
+    4. Provide the mandatory fields and click **Next**
+       - Name: (Preferably **AirMDR**)
+       - Expiration Date
+    5. Click **Next**.\
+       ![Sentinel One4 Pn](/images/SentinelOne4.png)
 
-        <Tip>
-          **It is recommended that the duration be equal to the contract, but it depends on how often you wish to re-issue the token.**
-        </Tip>
-     6. Allow access to your site under "**Select Scope of Access**". 
-     7. Set access to "**Viewer**" (that's the default).
-     8. Click **Create User**.\
-        ![Sentinel One5 Pn](/images/SentinelOne5.png)
-     9. "API Token For Test" pop-up will appear.
-    10. Use the **Copy API Token**  option at the bottom to copy the API Token.
+       <Tip>
+         **It is recommended that the duration be equal to the contract, but it depends on how often you wish to re-issue the token.**
+       </Tip>
+    6. Allow access to your site under "**Select Scope of Access**". 
+    7. Set access to "**Viewer**" (that's the default).
+    8. Click **Create User**.\
+       ![Sentinel One5 Pn](/images/SentinelOne5.png)
+    9. Use the **Copy API Token** option at the bottom to copy the API Token.
 
-        <Warning>
-          **Copy** and securely store the API token (you won’t be able to see it again).
-        </Warning>
-        ![Sentinel One6 Pn](/images/SentinelOne6.png)
+       <Warning>
+         **Copy** and securely store the API token (you won’t be able to see it again).
+       </Warning>
+       ![Sentinel One6 Pn](/images/SentinelOne6.png)
   </Step>
 </Steps>
 
 ### Get Alerts from SentinelOne API - Custom Role
 
 <Info>
-  To fetch defined alerts from SentinelOne, the admin must create a **Custom Role** for your **account** or **scope**.
+  To get defined alerts from SentinelOne, the admin must create a **Custom Role** for your **account** or **scope**.
 </Info>
 
  1. Log in to your **SentinelOne Management Console** as an **Admin**.
@@ -65,12 +64,12 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
  5. Enter the required details to create a Role:
     - Role Name: Unique role name for your organization
     - Description: Describe the role of your endpoint configuration.
- 6. In the left pane, select the required pages (e.g., Endpoints, Endpoint Threats, Access Settings, Accounts, Activity) and the required permissions for the respective page in the right pane for the New Role.
+ 6. In the left pane, select the required pages (e.g., Endpoints, Endpoint Threats, Access Settings, Accounts, Activity) and the required permissions (e.g., View, Initiate Scan, Disconnect From Network) for the respective page in the right pane to create a custom role.\
+    For Example:
 
     <AccordionGroup>
       <Accordion title="To Initiate Scan and Manage SentinelOne" icon="sparkles">
-        To create a SentinelOne API to scan and manage SentinelOne Network connection:\
-        Navigate to **Settings → USERS → Roles → Actions → New Role **and define the below-mentioned permissions 
+        To create a SentinelOne API to scan and manage SentinelOne Network connection:
         1. Select **Endpoints** in the left pane.
         2. Select **View**, **Initiate Scan,** and **Disconnect From Network** from the right pane.
 
@@ -82,10 +81,9 @@ description: "SentinelOne is a cloud-based cybersecurity platform that helps pro
            </Info>
       </Accordion>
       <Accordion title="To View Threats" icon="sparkles">
-        To create a SentinelOne API to view threats:\
-        Navigate to **Settings → USERS → Roles → Actions → New Role **and define the below-mentioned permissions 
+        To create a SentinelOne API to view threats:
         1. Select **Endpoints** in the left pane and **View Threats** in the right pane.
-        2. Select \*\*Threat Detection \*\*in the left pane and **View** in the right pane.
+        2. Select **Threat Detection** in the left pane and **View** in the right pane.
       </Accordion>
     </AccordionGroup>
  7. Click **Save**.\
