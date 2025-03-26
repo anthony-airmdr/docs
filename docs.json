@@ -42,7 +42,8 @@
                         "Integrations/Microsoft-Graph",
                         "Integrations/Okta",
                         "Integrations/PagerDuty",
-                        "Integrations/SentinelOne"
+                        "Integrations/SentinelOne",
+                        "Integrations/SumoLogic"
                         
                     ]
                 }
