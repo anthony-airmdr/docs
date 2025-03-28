@@ -36,7 +36,7 @@ description: "Slack is a messaging platform designed for teams and workplaces, o
     5. Slack will generate a Webhook URL.
 
        <Check>
-         <Icon icon="envelope" /> Email the **Webhook URL** to AirMDR or self Configure Slack in the AirMDR Integrations Dashboard.
+         <Icon icon="envelope" /> Securely save and share the **Webhook URL** with the AirMDR support team or self-configure Slack in the AirMDR Integrations Dashboard.
        </Check>
   </Step>
 </Steps>
@@ -47,14 +47,23 @@ Open **cURL** and run the following command to check if your API Key is working:
 
 ```
 
-curl -X POST -H 'Content-type: application/json' \
---data '{"text":"Hello, Slack!"}' \
-https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
+POST https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
+Content-type: application/json
+{
+    "text": "Hello, Slack."
+}
 ```
 
 <Note>
   Replace the URL with the Slack Webhook URL generated earlier.
 </Note>
+
+Response:\
+Go to the channel your app was installed into, and you will see that the "Hello, Slack" message has been posted by your app.
+
+<Warning>
+  Webhook URL contains a secret. Do not share it online, including via public version control repositories. **Slack actively searches out and revokes leaked secrets.**
+</Warning>
 
 ### Configure Slack in the AirMDR Integrations Dashboard
 
