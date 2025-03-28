@@ -6,59 +6,54 @@ description: "Slack is a messaging platform designed for teams and workplaces, o
 ### Generate Slack Webhook URL
 
 <Steps>
-  <Step title="Access SumoLogic Portal">
-    1. Login to the [SumoLogic portal](https://service.sumologic.com/ui/) with your credentials.
-    2. Provide the necessary credentials (**Email** and **Password**), and click **Sign In**.
-  </Step>
-  <Step title="Create a New Access Key and Access ID">
-    1. In the left navigation pane, select **Administration** → **Security**.
-    2. In the top menu, select the **Access Keys** tab.
-    3. Click on the **\+ Add Access Key** icon.
-    4. In the **Add New Access Key** window, enter a descriptive name for the key in the **Name** field.​
-    5. (Optional) In the **Allowed CORS Domains** field, specify any domains from which the access key can access Sumo Logic APIs.
-    6. Choose the appropriate **Scopes** for the key:​
-       - **Default**: Grants all permissions.
-       - **Custom**: Select specific permissions by choosing the desired **View** and **Manage** permissions.
-    7. Click **Save** to generate the Access ID and Access Key.\
-       ![Sumo Logic8 Pn](/images/SumoLogic8.png)
+  <Step title="Slack API Page - Create an App">
+    1. Go to [Slack API Page](https://api.slack.com/apps).
 
-       <Warning>
-         This is the only time the **Access ID** and **Access Key** will be displayed. \
-         Copy and securely store both values before clicking **Done**.
-       </Warning>
        <Note>
-         Administrators can only manage access keys for the organization by navigating to **Administration** → **Security** → **Access Keys** in the main menu.
+         You can create a new Slack app here.
        </Note>
+    2. Click **"Create an App"**.
+    3. Choose **"From scratch"** and enter the required information:
+       - **App Name**: Provide a name for your app.
+       - **Pick a workspace to develop your app in**:  Select a workspace where you want to install the app.
+  </Step>
+  <Step title="Enable Incoming Webhooks">
+    1. In the left navigation menu, navigate to **Features** → **Incoming Webhooks**.
+    2. Toggle **"Activate Incoming Webhooks"** to **On**.
+
        <Check>
          <Icon icon="envelope" /> Email the **Access ID** and **Access Key** to AirMDR or self Configure Duo Security in the AirMDR Integrations Dashboard.
        </Check>
   </Step>
+  <Step title="Create a Webhook URL">
+    1. Scroll down to the **"Webhook URLs for Your Workspace"** section.
+    2. Click **"Add New Webhook to Workspace"**.
+    3. Select a channel where messages will be posted.
+    4. Click **"Allow"** to grant permissions.
+    5. Slack will generate a Webhook URL.
+
+       <Check>
+         Email the **Webhook URL** to AirMDR or self Configure Slack in the AirMDR Integrations Dashboard.
+       </Check>
+  </Step>
 </Steps>
 
-### Slack API Testing
+### Evaluate Slack Webhook URL
 
 Open **cURL** and run the following command to check if your API Key is working:
 
 ```
 
-curl --location --request POST 'https://api.sumologic.com/api/v1/search/jobs' \
-  --header 'Content-Type: application/json' \
-  --user '<access_id>:<access_key>' \
-  --data-raw '{
-    "query": "_sourceCategory=* | count by _sourceName",
-    "from": "<FROM_TIME>",
-    "to": "<TO_TIME>",
-    "timeZone": "UTC"
-}'
+curl -X POST -H 'Content-type: application/json' \
+--data '{"text":"Hello, Slack!"}' \
+https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-Response
+<Note>
+  Replace the URL with the Slack Webhook URL generated earlier.
+</Note>
 
-```
-{"valid": true}
-```
-
-### Configure SumoLogic in the AirMDR Integrations Dashboard
+### Configure Slack in the AirMDR Integrations Dashboard
 
 1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials, and click **Login**
 
@@ -66,9 +61,5 @@ Response
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations**
 
    ![](/images/Datadog9.png)
-3. Use the search option, enter the keyword "**SumoLogic**", select the **Connections** tab, and click **Create**.
-
-   ![Sumo Logic1 Pn](/images/SumoLogic1.png)
-4. Enter the generated **Access ID** and **Access Key** in the Authentication Details field params, and click **Create.**
-
-   ![Sumo Logic2 Pn](/images/SumoLogic2.png)
+3. Use the search option, enter the keyword "**Slack**", select the **Connections** tab, and click **Create**.
+4. Enter the generated **Webhook URL** in the Authentication Details field params, and click **Create.**
