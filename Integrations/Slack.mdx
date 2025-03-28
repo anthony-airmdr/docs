@@ -12,28 +12,31 @@ description: "Slack is a messaging platform designed for teams and workplaces, o
        <Note>
          You can create a new Slack app here.
        </Note>
-    2. Click **"Create an App"**.
-    3. Choose **"From scratch"** and enter the required information:
+    2. Click **"Create New App"** in the top right corner.
+    3. **"Create an App"** pop-up will appear.\
+       ![Slack4 Pn](/images/Slack4.png)
+    4. Choose **"From scratch"** and enter the required information:
        - **App Name**: Provide a name for your app.
-       - **Pick a workspace to develop your app in**:  Select a workspace where you want to install the app.
+       - **Pick a workspace to develop your app in**:  Select a workspace where you want to install the app.\
+         ![Slack5 Pn](/images/Slack5.png)
+    5. Click **Create App**.
   </Step>
   <Step title="Enable Incoming Webhooks">
-    1. In the left navigation menu, navigate to **Features** → **Incoming Webhooks**.
-    2. Toggle **"Activate Incoming Webhooks"** to **On**.
-
-       <Check>
-         <Icon icon="envelope" /> Email the **Access ID** and **Access Key** to AirMDR or self Configure Duo Security in the AirMDR Integrations Dashboard.
-       </Check>
+    1. In the left navigation menu, navigate to **Features** → **Incoming Webhooks**.\
+       ![Slack1 Pn](/images/Slack1.png)
+    2. Toggle **"Activate Incoming Webhooks"** to **On**.\
+       ![Slack2 Pn](/images/Slack2.png)
   </Step>
   <Step title="Create a Webhook URL">
     1. Scroll down to the **"Webhook URLs for Your Workspace"** section.
-    2. Click **"Add New Webhook to Workspace"**.
+    2. Click **"Add New Webhook to Workspace"**.\
+       ![Slack3 Pn](/images/Slack3.png)
     3. Select a channel where messages will be posted.
     4. Click **"Allow"** to grant permissions.
     5. Slack will generate a Webhook URL.
 
        <Check>
-         Email the **Webhook URL** to AirMDR or self Configure Slack in the AirMDR Integrations Dashboard.
+         <Icon icon="envelope" /> Email the **Webhook URL** to AirMDR or self Configure Slack in the AirMDR Integrations Dashboard.
        </Check>
   </Step>
 </Steps>
@@ -61,5 +64,7 @@ https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations**
 
    ![](/images/Datadog9.png)
-3. Use the search option, enter the keyword "**Slack**", select the **Connections** tab, and click **Create**.
-4. Enter the generated **Webhook URL** in the Authentication Details field params, and click **Create.**
+3. Use the search option, enter the keyword "**Slack**", select the **Connections** tab, and click **Create**.\
+   ![Slack6 Pn](/images/Slack6.png)
+4. Enter the generated **Webhook URL** in the Authentication Details field params, and click **Create.**\
+   ![Slack7 Pn](/images/Slack7.png)
