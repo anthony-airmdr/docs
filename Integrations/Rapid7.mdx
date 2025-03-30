@@ -1,71 +1,37 @@
 ---
 title: "Rapid7"
-description: "Slack is a messaging platform designed for teams and workplaces, offering real-time communication, collaboration tools, and integrations with other apps. Slack API integrations, making it useful for automation and notifications, like using Slack Webhooks to send updates from other systems."
+description: "Rapid7 provides security solutions for vulnerability management, incident detection, response, and cloud security. Rapid7 platform helps organizations identify and mitigate risks, detect threats, and respond to incidents efficiently."
 ---
 
-### Generate Slack Webhook URL
+### Generate Rapid 7 API & Setup Deployment Region
+
+You will need an API key to interact with the Rapid7 InsightAppSec API.
 
 <Steps>
-  <Step title="Slack API Page - Create an App">
-    1. Go to [Slack API Page](https://api.slack.com/apps).
-
-       <Note>
-         You can create a new Slack app here.
-       </Note>
-    2. Click **"Create New App"** in the top right corner.
-    3. **"Create an App"** pop-up will appear.\
-       ![Slack4 Pn](/images/Slack4.png)
-    4. Choose **"From scratch"** and enter the required information:
-       - **App Name**: Provide a name for your app. (e.g. Super Service)
-       - **Pick a workspace to develop your app in**:  Select a workspace where you want to install the app. (e.g. airmdr)\
-         ![Slack5 Pn](/images/Slack5.png)
-    5. Click **Create App**.
-  </Step>
-  <Step title="Enable Incoming Webhooks">
-    1. In the left navigation menu, navigate to **Features** → **Incoming Webhooks**.\
-       ![Slack1 Pn](/images/Slack1.png)
-    2. Toggle **"Activate Incoming Webhooks"** to **On**.\
-       ![Slack2 Pn](/images/Slack2.png)
-  </Step>
-  <Step title="Create a Webhook URL">
-    1. Scroll down to the **"Webhook URLs for Your Workspace"** section.
-    2. Click **"Add New Webhook to Workspace"**.\
-       ![Slack3 Pn](/images/Slack3.png)
-    3. Select a channel where you want to send messages.
-    4. Click **"Allow"** to grant permissions.
-    5. Slack will generate a Webhook URL.
-
-       <Check>
-         <Icon icon="envelope" /> Securely save and share the **Webhook URL** with the AirMDR support team or self-configure Slack in the AirMDR Integrations Dashboard.
-       </Check>
+  <Step title="Access Rapid7 Insight Platform">
+    1. Go to the [Rapid7 Insight Platform](https://insight.rapid7.com/).
+    2. Click on the gear icon (⚙️) at the page's top right corner.
+    3. From the dropdown menu, select "**API Keys**."
+    4. Choose 
+       - 
+       - 
+    5. 
   </Step>
 </Steps>
 
-### Evaluate Slack Webhook URL
+### Evaluate Rapid 7 API
 
 Open **cURL** and run the following command to check if your API Key is working:
 
 ```
 
-POST https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
-Content-type: application/json
-{
-    "text": "Hello, Slack."
-}
 ```
 
 <Note>
-  Replace the URL with the Slack Webhook URL generated earlier.
+  
 </Note>
 
-Response:\
-Go to the channel your app was installed into, and you will see that the "Hello, Slack" message has been posted by your app.
-
-<Warning>
-  Webhook URL contains a secret. Do not share it online, including via public version control repositories. **Slack actively searches out and revokes leaked secrets.**
-</Warning>
-
-### Configure Slack in the AirMDR Integrations Dashboard
+### Configure Rapid 7 in the AirMDR Integrations Dashboard
 
 1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials, and click **Login**
 
@@ -73,7 +39,5 @@ Go to the channel your app was installed into, and you will see that the "Hello,
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations**
 
    ![](/images/Datadog9.png)
-3. Use the search option, enter the keyword "**Slack**", select the **Connections** tab, and click **Create**.\
-   ![Slack6 Pn](/images/Slack6.png)
-4. Enter the generated **Webhook URL** in the Authentication Details field params, and click **Create.**\
-   ![Slack7 Pn](/images/Slack7.png)
+3. Use the search option, enter the keyword "**Rapid 7**", select the **Connections** tab, and click **Create**.
+4. Enter the generated **API **token in the Authentication Details field params, and click **Create.**
