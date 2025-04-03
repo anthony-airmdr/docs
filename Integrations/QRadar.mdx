@@ -1,41 +1,29 @@
 ---
-title: "SumoLogic"
-description: "Sumo Logic is a cloud-based log management and analytics platform used for monitoring, troubleshooting, and securing applications and infrastructure. It collects, analyzes, and visualizes machine data (logs, metrics, and traces) to help your organizations gain real-time insights into IT environments."
+title: "QRadar"
+description: "IBM QRadar is a Security Information and Event Management (SIEM) solution that helps organizations detect, investigate, and respond to security threats. It collects and analyzes log data from various sources (network devices, servers, applications, etc.) to identify potential security incidents."
 ---
 
-### Generate SumoLogic Access Key and Access ID
-
-Sumo Logic has two user interfaces (UIs):
-
-1. **Classic UI** – The older interface, which some legacy users may still be using.
-2. **New UI (Cloud SIEM & Observability UI)** – A modernized version with enhanced features and improved navigation.
-
-### To Generate Access Key and Access ID - SumoLogic Classic UI
+### Generate SEC Token via QRadar UI
 
 <Steps>
-  <Step title="Access SumoLogic Portal">
-    1. Login to the [SumoLogic portal](https://service.sumologic.com/ui/) with your credentials.
-    2. Provide the necessary credentials (**Email** and **Password**), and click **Sign In**.\
-       ![Sumo Logic11 Pn](/images/SumoLogic11.png)
+  <Step title="Access IBM QRadar Portal">
+    1. Login to the **QRadar** as an administrator.
+    2. Provide the necessary credentials (**Email** and **Password**), and click **Sign In**.
   </Step>
-  <Step title="Create a New Access Key and Access ID">
-    1. In the left navigation pane, select **Administration** → **Security**.\
-       ![Sumo Logic5 Pn](/images/SumoLogic5.png)
-    2. In the top menu, select the **Access Keys** tab.
-    3. Click on the **\+ Add Access Key** icon.\
-       ![Sumo Logic6 Pn](/images/SumoLogic6.png)
-    4. In the **Add New Access Key** window, enter a descriptive name for the key in the **Name** field.​\
-       ![Sumo Logic7 Pn](/images/SumoLogic7.png)
-    5. (Optional) In the **Allowed CORS Domains** field, specify any domains from which the access key can access Sumo Logic APIs.
-    6. Choose the appropriate **Scopes** for the key:​
-       - **Default**: Grants all permissions.
-       - **Custom**: Select specific permissions by choosing the desired **View** and **Manage** permissions.
-    7. Click **Save** to generate the Access ID and Access Key.\
-       ![Sumo Logic8 Pn](/images/SumoLogic8.png)
+  <Step title="Create a Auth SEC Token">
+    1. Go to **Admin** → **Authorized Services**.
+    2. Click **Add Authorized Service**.
+    3. Fill in the required details:
+       - **Service Name**: (e.g., `API_Access`)
+       - **User Role**: Select the role with the necessary permissions.
+       - **Expiry Date**: Set a validity period for the token.
+       - **API Access**: Choose the appropriate access level.
+    4. Click **Create** to generate the SEC token.
+    5. Copy and save the token securely, as it will not be shown again.
 
        <Warning>
-         This is the only time the **Access ID** and **Access Key** will be displayed. \
-         Copy and securely store both values before clicking **Done**.
+         This is the only time the **Auth SEC Token** will be displayed. \
+         Copy and securely store values before clicking **Done**.
        </Warning>
        <Note>
          Administrators can only manage access keys for the organization by navigating to **Administration** → **Security** → **Access Keys** in the main menu.
@@ -46,44 +34,7 @@ Sumo Logic has two user interfaces (UIs):
   </Step>
 </Steps>
 
-### To Generate Access Key and Access ID - SumoLogic New UI
-
-<Steps>
-  <Step title="Access SumoLogic Portal">
-    1. Login to the [SumoLogic portal](https://service.sumologic.com/ui/) with your credentials.
-    2. Provide the necessary credentials (**Email** and **Password**), and click **Sign In**.\
-       ![Sumo Logic11 Pn](/images/SumoLogic11.png)
-  </Step>
-  <Step title="Create a New Access Key and Access ID">
-    1. In the main menu, click on your **username**.
-    2. Select **Preferences**.\
-       ![Sumo Logic12 Pn](/images/SumoLogic12.png)
-    3. Click on the **Personal Access Keys** tab.
-    4. Click on the **\+ Add Access Key** icon.\
-       ![Sumo Logic13 Pn](/images/SumoLogic13.png)
-    5. In the **Add New Access Key** window, enter a descriptive name for the key in the **Name** field.​\
-       ![Sumo Logic7 Pn](/images/SumoLogic7.png)
-    6. (Optional) In the **Allowed CORS Domains** field, specify any domains from which the access key can access Sumo Logic APIs.
-    7. Choose the appropriate **Scopes** for the key:​
-       - **Default**: Grants all permissions.
-       - **Custom**: Select specific permissions by choosing the desired **View** and **Manage** permissions.
-    8. Click **Save** to generate the Access ID and Access Key.\
-       ![Sumo Logic8 Pn](/images/SumoLogic8.png)
-
-       <Warning>
-         This is the only time the **Access ID** and **Access Key** will be displayed. \
-         Copy and securely store both values before clicking **Done**.
-       </Warning>
-       <Note>
-         Administrators can only manage access keys for the organization by navigating to **Administration** → **Security** → **Access Keys** in the main menu.
-       </Note>
-       <Check>
-         <Icon icon="envelope" /> Email the **Access ID** and **Access Key** to AirMDR or self Configure Duo Security in the AirMDR Integrations Dashboard.
-       </Check>
-  </Step>
-</Steps>
-
-### SumoLogic API Testing
+### QRadar API Testing
 
 Open **cURL** and run the following command to check if your API Key is working:
 
@@ -114,9 +65,5 @@ Response
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations**
 
    ![](/images/Datadog9.png)
-3. Use the search option, enter the keyword "**SumoLogic**", select the **Connections** tab, and click **Create**.
-
-   ![Sumo Logic1 Pn](/images/SumoLogic1.png)
-4. Enter the generated **Access ID** and **Access Key** in the Authentication Details field params, and click **Create.**
-
-   ![Sumo Logic2 Pn](/images/SumoLogic2.png)
+3. Use the search option, enter the keyword "**QRadar**", select the **Connections** tab, and click **Create**.
+4. Enter the generated **Deployment URL** and **Auth SEC Token **in the Authentication Details field params, and click **Create.**
