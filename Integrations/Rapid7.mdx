@@ -57,9 +57,9 @@ You will need an API key to interact with the Rapid7 InsightAppSec API.
 
     ```
     
-    curl -X GET "https://<REGION>.api.insight.rapid7.com/vm/v4/assets" \
-         -H "X-Api-Key: YOUR_API_KEY" \
-         -H "Accept: application/json"
+    curl --location 'https://{region}.api.insight.rapid7.com/idr/v2/investigations' \
+    --header 'X-Api-Key: {API Key}' \
+    --header 'Content-Type: application/json'
     ```
   </Step>
 </Steps>
