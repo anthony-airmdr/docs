@@ -40,15 +40,6 @@ Open **cURL** and run the following command to check if your API Key is working:
 
 ```
 
-curl --location --request POST 'https://api.sumologic.com/api/v1/search/jobs' \
-  --header 'Content-Type: application/json' \
-  --user '<access_id>:<access_key>' \
-  --data-raw '{
-    "query": "_sourceCategory=* | count by _sourceName",
-    "from": "<FROM_TIME>",
-    "to": "<TO_TIME>",
-    "timeZone": "UTC"
-}'
 ```
 
 Response
