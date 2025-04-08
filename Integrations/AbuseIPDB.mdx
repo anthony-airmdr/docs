@@ -37,15 +37,6 @@ You will need an API key to interact with the Rapid7 InsightAppSec API.
     <Tip>
       Ensure your network allows outbound connectivity to these hostnames over TCP port 443.
     </Tip>
-    | Region            | Web Data                                    | Deployment Endpoint                          | API Endpoint                          | S3 (Agent Downloads)              |
-    | ----------------- | ------------------------------------------- | -------------------------------------------- | ------------------------------------- | --------------------------------- |
-    | United States - 1 | `exposure-analytics.insight.rapid7.com`     | `us.deployment.endpoint.ingress.rapid7.com`  | `us.api.endpoint.ingress.rapid7.com`  | `s3.amazonaws.com`                |
-    | United States - 2 | `us2.exposure-analytics.insight.rapid7.com` | `us2.deployment.endpoint.ingress.rapid7.com` | `us2.api.endpoint.ingress.rapid7.com` | `s3.us-east-2.amazonaws.com`      |
-    | United States - 3 | `us3.exposure-analytics.insight.rapid7.com` | `us3.deployment.endpoint.ingress.rapid7.com` | `us3.api.endpoint.ingress.rapid7.com` | `s3.us-west-2.amazonaws.com`      |
-    | Canada            | `ca.exposure-analytics.insight.rapid7.com`  | `ca.deployment.endpoint.ingress.rapid7.com`  | `ca.api.endpoint.ingress.rapid7.com`  | `s3.ca-central-1.amazonaws.com`   |
-    | Europe            | `eu.exposure-analytics.insight.rapid7.com`  | `eu.deployment.endpoint.ingress.rapid7.com`  | `eu.api.endpoint.ingress.rapid7.com`  | `s3.eu-central-1.amazonaws.com`   |
-    | Japan             | `ap.exposure-analytics.insight.rapid7.com`  | `ap.deployment.endpoint.ingress.rapid7.com`  | `ap.api.endpoint.ingress.rapid7.com`  | `s3.ap-northeast-1.amazonaws.com` |
-    | Australia         | `au.exposure-analytics.insight.rapid7.com`  | `au.deployment.endpoint.ingress.rapid7.com`  | `au.api.endpoint.ingress.rapid7.com`  | `s3.ap-southeast-2.amazonaws.com` |
   </Step>
   <Step title="Associate the UUID with Your API Key">
     Since Rapid7 does not natively provide UUIDs for API keys, you can:
