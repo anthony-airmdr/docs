@@ -38,6 +38,13 @@ description: "IBM QRadar is a Security Information and Event Management (SIEM) s
 
 Open **cURL** and run the following command to check if your API Key is working:
 
+```
+
+curl --location '{auth_url}/api/siem/offenses' \
+--header 'SEC: {token}' \
+--header 'Range: items=0-0'
+```
+
 ### Configure SumoLogic in the AirMDR Integrations Dashboard
 
 1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials, and click **Login**
