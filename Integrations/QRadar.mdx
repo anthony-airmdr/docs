@@ -11,7 +11,7 @@ description: "IBM QRadar is a Security Information and Event Management (SIEM) s
     2. Provide the necessary credentials (**Email** and **Password**), and click **Sign In**.
   </Step>
   <Step title="Create an Auth SEC Token">
-    1. Go to **Admin tab**.
+    1. Go to **Admin tab** in the top menu.
     2. Select the **User Management → Authorized Services**.
     3. Click **Add Authorized Service**.
     4. Fill in the required details:
@@ -35,9 +35,31 @@ description: "IBM QRadar is a Security Information and Event Management (SIEM) s
   </Step>
 </Steps>
 
-### Access
+### Access Deployment URL in IBM QRadar UI
 
-### QRadar API Testing
+1. Login to the **QRadar** as an administrator.
+2. Provide the necessary credentials (**Email** and **Password**), and click **Sign In**.
+3. Go to **Admin tab** in the top menu.
+4. Under **System and License Management**, you can check settings like **Host** or **Network Settings**.
+5. Typically, it would be something like `https://<QRadar-IP>/console`, where `<QRadar-IP>` is the IP address or the hostname of your QRadar system.
+
+<Note>
+  The base **deployment URL** in QRadar is generally the IP address or domain of your QRadar system followed by `/api/`for the API endpoints.QRadar API Testing\
+  \
+  For example: https://\<QRadar-IP\>/api/\
+  \
+  Replace `<QRadar-IP>` with the actual IP address or the hostname of your QRadar system.
+
+  So if your QRadar instance is hosted at `192.168.1.100`, the deployment URL would be: https://192.168.1.100/api
+</Note>
+
+<Warning>
+  Ensure that the URL starts with `https://` for secure connections
+</Warning>
+
+<Check>
+  Securely share the **URL** to AirMDR or self Configure in the AirMDR Integrations Dashboard.
+</Check>
 
 Open **cURL** and run the following command to check if your API Key is working:
 
