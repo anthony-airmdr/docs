@@ -1,0 +1,60 @@
+---
+title: "QRadar"
+description: "IBM QRadar is a Security Information and Event Management (SIEM) solution that helps organizations detect, investigate, and respond to security threats. It collects and analyzes log data from various sources (network devices, servers, applications, etc.) to identify potential security incidents."
+---
+
+### Generate SEC Token via QRadar UI
+
+<Steps>
+  <Step title="Access IBM QRadar Portal">
+    1. Login to the **QRadar** as an administrator.
+    2. Provide the necessary credentials (**Email** and **Password**), and click **Sign In**.
+  </Step>
+  <Step title="Create an Auth SEC Token">
+    1. Go to **Admin** → **Authorized Services**.
+    2. Click **Add Authorized Service**.
+    3. Fill in the required details:
+       - **Service Name**: (e.g., `API_Access`)
+       - **User Role**: Select the role with the necessary permissions.
+       - **Expiry Date**: Set a validity period for the token.
+       - **API Access**: Choose the appropriate access level.
+    4. Click **Create** to generate the SEC token.
+    5. Copy and save the token securely, as it will not be shown again.
+
+       <Warning>
+         This is the only time the **Auth SEC Token** will be displayed. \
+         Copy and securely store values before clicking **Done**.
+       </Warning>
+       <Note>
+         Administrators can only manage access keys for the organization by navigating to **Administration** → **Security** → **Access Keys** in the main menu.
+       </Note>
+       <Check>
+         <Icon icon="envelope" /> Email the **Access ID** and **Access Key** to AirMDR or self Configure Duo Security in the AirMDR Integrations Dashboard.
+       </Check>
+  </Step>
+</Steps>
+
+### QRadar API Testing
+
+Open **cURL** and run the following command to check if your API Key is working:
+
+```
+
+```
+
+Response
+
+```
+{"valid": true}
+```
+
+### Configure SumoLogic in the AirMDR Integrations Dashboard
+
+1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials, and click **Login**
+
+   ![](/images/Datadog11.png)
+2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations**
+
+   ![](/images/Datadog9.png)
+3. Use the search option, enter the keyword "**QRadar**", select the **Connections** tab, and click **Create**.
+4. Enter the generated **Deployment URL** and **Auth SEC Token** in the Authentication Details field params and click **Create.**
