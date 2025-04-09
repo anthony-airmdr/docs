@@ -42,6 +42,7 @@
                         "Integrations/Microsoft-Graph",
                         "Integrations/Okta",
                         "Integrations/PagerDuty",
+                        "Integrations/QRadar",
                         "Integrations/Rapid7",
                         "Integrations/SentinelOne",
                         "Integrations/Slack",
