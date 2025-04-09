@@ -11,15 +11,16 @@ description: "IBM QRadar is a Security Information and Event Management (SIEM) s
     2. Provide the necessary credentials (**Email** and **Password**), and click **Sign In**.
   </Step>
   <Step title="Create an Auth SEC Token">
-    1. Go to **Admin** → **Authorized Services**.
-    2. Click **Add Authorized Service**.
-    3. Fill in the required details:
+    1. Go to **Admin tab**.
+    2. Select the **User Management → Authorized Services**.
+    3. Click **Add Authorized Service**.
+    4. Fill in the required details:
        - **Service Name**: (e.g., `API_Access`)
        - **User Role**: Select the role with the necessary permissions.
        - **Expiry Date**: Set a validity period for the token.
        - **API Access**: Choose the appropriate access level.
-    4. Click **Create** to generate the SEC token.
-    5. Copy and save the token securely, as it will not be shown again.
+    5. Click **Create** to generate the SEC token.
+    6. Copy and save the token securely, as it will not be shown again.
 
        <Warning>
          This is the only time the **Auth SEC Token** will be displayed. \
@@ -29,10 +30,12 @@ description: "IBM QRadar is a Security Information and Event Management (SIEM) s
          Administrators can only manage access keys for the organization by navigating to **Administration** → **Security** → **Access Keys** in the main menu.
        </Note>
        <Check>
-         <Icon icon="envelope" /> Email the **Access ID** and **Access Key** to AirMDR or self Configure Duo Security in the AirMDR Integrations Dashboard.
+         <Icon icon="envelope" /> Email the **Auth SEC Token** to AirMDR or self Configure IBM QRadar in the AirMDR Integrations Dashboard.
        </Check>
   </Step>
 </Steps>
+
+### Access
 
 ### QRadar API Testing
 
@@ -55,5 +58,5 @@ curl --location '{auth_url}/api/siem/offenses' \
    ![](/images/Datadog9.png)
 3. Use the search option, enter the keyword "**QRadar**", select the **Connections** tab, and click **Create**.\
    ![Q Radar1 Pn](/images/QRadar1.png)
-4. Enter the generated **Deployment URL** and **Auth SEC Token** in the Authentication Details field params and click **Create.**\
+4. Enter the generated **Auth SEC Token** and **Deployment URL** in the Authentication Details field params and click **Create.**\
    ![Q Radar2 Pn](/images/QRadar2.png)
