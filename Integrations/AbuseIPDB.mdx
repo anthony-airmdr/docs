@@ -20,56 +20,48 @@ description: "AbuseIPDB API allows you to integrate AbuseIPDB's data into applic
 
 ### Generate AbuseIPDB API
 
-You will need an API key to interact with the AbuseIPDB API.
+You will need an API key to interact with the AbuseIPDB.
 
 <Steps>
   <Step title="Access AbuseIPDB Platform">
-    1. Go to [AbuseIPDB](https://www.abuseipdb.com/).
-    2. 
-    3. Click on the gear icon (⚙️) at the page's top right corner.
-    4. From the dropdown menu, select "**API Keys**".
-    5. Choose the Type of API Key (User Key or Organization Key) to Generate:
-       - **User Key:** Represents your user account and inherits your account’s permissions. All users can generate a User Key.
-       - **Organization Key:** This key represents the entire organization and provides comprehensive access across all products. Only platform or organization administrators can generate an Organization Key.
-    6. Click **Generate**.
-       - For a **User Key**:​
-         - Click on "New User Key."
-         - In the "Generate New User Key" panel, select your organization and provide a descriptive name for the key.
-         - Click "**Generate**".
-       - For an **Organization Key**:​
-         - Click on the "Organization Keys" tab.
-         - Click "New Organization Key."
-         - In the "Generate New Organization Key" panel, select the organization and provide a descriptive name for the key.
-         - Click "**Generate**".
-
-       <Warning>
-         Copy and securely save the generated **API token** (it won’t be shown again).
-       </Warning>
+    1. Login to the [AbuseIPDB](https://www.abuseipdb.com/) as an administrator.
+    2. Provide the necessary credentials (**Email** and **Password**), and click **Sign In**.
   </Step>
-  <Step title="Determine Data Storage Region">
-    <Info>
-      Each region has specific endpoints that your network must communicate with.
-    </Info>
-    <Tip>
-      Ensure your network allows outbound connectivity to these hostnames over TCP port 443.
-    </Tip>
-  </Step>
-  <Step title="Associate the UUID with Your API Key">
-    Since Rapid7 does not natively provide UUIDs for API keys, you can:
+  <Step title="Generate AbuseIPDB API Key" stepNumber="2">
+    1. Select the drop-down list, **User Name** → **Account**.
+    2. Go to the **API** tab.
+    3. Click **Create Key**.
+    4. Provide unique **Name** to your API Key and click **CREATE**.
 
-    - Store the API key and UUID mapping in your internal **configuration files** or **database**.
-    - Use the UUID as an identifier when logging API calls for tracking purposes.
-
-    To get the **UUID** of an asset, use the following API call:
-
-    ```
-    
-    curl --location 'https://{region}.api.insight.rapid7.com/idr/v2/investigations' \
-    --header 'X-Api-Key: {API Key}' \
-    --header 'Content-Type: application/json'
-    ```
+       <Note>
+         API Key will be generated, copy and use this key to make API requests.
+       </Note>
+       <Tip>
+         You can View/Copy/Delete all the generated API Keys under Keys section.
+       </Tip>
+       <Check>
+         <Icon icon="envelope" /> Email the **API Key** to AirMDR or self Configure AbuseIPDB in the AirMDR Integrations Dashboard.
+       </Check>
   </Step>
 </Steps>
+
+### Evaluate AbuseIPDB API Test
+
+Open **cURL** and run the following command to check if your API Access is working:
+
+**Example cURL request:**
+
+```
+
+curl -X GET "https://api.abuseipdb.com/api/v2/check" \
+-d ipAddress=8.8.8.8 \
+-H "Key: <Your-API-Key>" \
+-H "Accept: application/json"
+```
+
+<Note>
+  Replace `8.8.8.8` with the IP you want to check and `<Your-API-Key>` with your generated API key
+</Note>
 
 ### Configure AbuseIPDB in the AirMDR Integrations Dashboard
 
