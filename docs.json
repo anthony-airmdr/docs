@@ -30,8 +30,8 @@
                     "group": "Integrations",
                     "pages": [
                         "Integrations/overview",
-                        "Integrations/AbuseIPDB"
                         "Integrations/AWS",
+                        "Integrations/AbuseIPDB"
                         "Integrations/cisco-AMP",
                         "Integrations/Datadog",
                         "Integrations/Duo",
