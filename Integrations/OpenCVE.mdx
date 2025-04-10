@@ -3,22 +3,7 @@ title: "OpenCVE"
 description: "OpenCVE is an open-source platform and web service that helps users track and monitor CVEs (Common Vulnerabilities and Exposures) in real time."
 ---
 
-### Pre-requisites
-
-<Check>
-  User/Admin with an existing Abuse IPDB account, if not
-
-  1. Go to the [AbuseIPDB](https://www.abuseipdb.com/).
-  2. In the top right corner, click on **"Sign Up"** to create a new account.
-  3. Provide the necessary details (username, email address, password, etc.) and click **"Create Account"**.
-  4. **Verify your email** if prompted.
-
-     <Note>
-       You will need to confirm your email address by clicking the link in the verification email.
-     </Note>
-</Check>
-
-### OpenCVE  AbuseIPDB API
+### Sign Up for OpenCVE
 
 You will need a valid credentials (Username and Password) for OpenCVE client.
 
@@ -35,20 +20,30 @@ You will need a valid credentials (Username and Password) for OpenCVE client.
     4. Click on the **“Register”** button to complete the registeration.\
        ![Open CVE7 Pn](/images/OpenCVE7.png)
   </Step>
-  <Step title="Verify Email" stepNumber={2}>
+  <Step title="Verify Email" stepNumber="2">
+    <Info>
+      You will need to confirm your email address by clicking the link in the verification email.
+    </Info>
     1. Check your Email inbox for a verification email from [OpenCVE](no-reply@opencve.io).\
        ![Open CVE8 Pn](/images/OpenCVE8.png)
     2. Click the link inside the email and **Confirm** to activate your account.\
        ![Open CVE9 Pn](/images/OpenCVE9.png)
-
-    <Check>
-      <Icon icon="envelope" /> Email the ****Username and Password****  to AirMDR or self Configure OpenCVE  in the AirMDR Integrations Dashboard.
-    </Check>
   </Step>
   <Step title="Validate your New account Log In">
     1. Once verified, go back to [OpenCVE](https://www.opencve.io).
     2. On the top-right corner of the homepage, click the **“Sign in”** button.
-    3. Click **“Login”**, enter your username/email and password, and log in
+    3. Enter the necessary credentials your Username or email and Password, and click **Sign In** button.\
+       ![Open CVE13 Pn](/images/OpenCVE13.png)
+
+       <Tip>
+         After logging in, you can:
+         - **Subscribe** to vendors, products, or keywords to track CVEs.
+         - Set up **notifications** for new vulnerabilities.
+         - Browse the CVE feed and view detailed reports.
+       </Tip>
+       <Check>
+         <Icon icon="envelope" /> Email the **Username and Password**  to AirMDR or self Configure OpenCVE  in the AirMDR Integrations Dashboard.
+       </Check>
   </Step>
 </Steps>
 
@@ -72,5 +67,5 @@ curl --location 'https://app.opencve.io/api/cve?vendor=microsoft&cvss=critical&p
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations**.
 3. Use the search option, enter the keyword "**OpenCVE**", select the **Connections** tab, and click **Create**.\
    ![Open CVE1 Pn](/images/OpenCVE1.png)
-4. Enter the generated **API** token in the Authentication Details field params, and click **Create.**\
+4. Enter the credentials (**Username** and **Password**) in the Authentication Details field params, and click **Create.**\
    ![Open CVE2 Pn](/images/OpenCVE2.png)
