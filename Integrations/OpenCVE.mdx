@@ -18,37 +18,33 @@ description: "OpenCVE is an open-source platform and web service that helps user
      </Note>
 </Check>
 
-### Generate AbuseIPDB API
+### OpenCVE  AbuseIPDB API
 
-You will need an API key to interact with the AbuseIPDB.
+You will need a valid credentials (Username and Password) for OpenCVE client.
 
 <Steps>
-  <Step title="Access AbuseIPDB Platform">
-    1. Login to the [AbuseIPDB](https://www.abuseipdb.com/) as an administrator.
-    2. Provide the necessary credentials (**Email** and **Password**), and click **Sign In**.
+  <Step title="Register to OpenCVE Platform">
+    1. Open your browser and go to: 👉 [**https://www.opencve.io**](https://www.opencve.io)**.**
+    2. 
+    3. 
+    4. Login to the [AbuseIPDB](https://www.abuseipdb.com/) as an administrator.
+    5. Provide the necessary credentials (**Email** and **Password**), and click **Sign In**.
   </Step>
   <Step title="Generate AbuseIPDB API Key" stepNumber="2">
-    1. Select the drop-down list, **User Name** → **Account**.\
-       ![Abuse IPDB4 Pn](/images/AbuseIPDB4.png)
+    1. Select the drop-down list, **User Name** → **Account**.
     2. Go to the **API** tab.
-    3. Click **Create Key**.\
-       ![Abuse IPDB5 Pn](/images/AbuseIPDB5.png)
-    4. Provide unique **Name** to your API Key and click **CREATE**.\
-       ![Abuse IPDB6 Pn](/images/AbuseIPDB6.png)
-    5. API Key will be generated, copy and use this key to make API requests.
-
-       ![Abuse IPDB7 Pn](/images/AbuseIPDB7.png)
+    3. 
 
        <Tip>
          You can View/Copy/Delete all the generated API Keys under Keys section.
        </Tip>
        <Check>
-         <Icon icon="envelope" /> Email the **API Key** to AirMDR or self Configure AbuseIPDB in the AirMDR Integrations Dashboard.
+         <Icon icon="envelope" /> Email the **Username **and**Password**  to AirMDR or self Configure OpenCVE  in the AirMDR Integrations Dashboard.
        </Check>
   </Step>
 </Steps>
 
-### Evaluate AbuseIPDB API Test
+### Evaluate OpenCVE API
 
 Open **cURL** and run the following command to check if your API Access is working:
 
@@ -56,22 +52,17 @@ Open **cURL** and run the following command to check if your API Access is worki
 
 ```
 
-curl -X GET "https://api.abuseipdb.com/api/v2/check" \
--d ipAddress=8.8.8.8 \
--H "Key: <Your-API-Key>" \
--H "Accept: application/json"
+curl --location 'https://app.opencve.io/api/cve?vendor=microsoft&cvss=critical&page=1' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Basic a3VzaGFsQGFpcm1kci5jb206SkZLOGtocSF6d3k5amhrNHh1Yg=='
 ```
 
-<Note>
-  Replace `8.8.8.8` with the IP you want to check and `<Your-API-Key>` with your generated API key
-</Note>
-
-### Configure AbuseIPDB in the AirMDR Integrations Dashboard
+### Configure OpenCVE in the AirMDR Integrations Dashboard
 
 1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials, and click **Login**.\
    ![Duo7 Pn](/images/Duo7.png)
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations**.
-3. Use the search option, enter the keyword "**AbuseIPDB**", select the **Connections** tab, and click **Create**.\
-   ![Abuse IPDB2 Pn](/images/AbuseIPDB2.png)
+3. Use the search option, enter the keyword "**OpenCVE**", select the **Connections** tab, and click **Create**.\
+   ![Open CVE1 Pn](/images/OpenCVE1.png)
 4. Enter the generated **API** token in the Authentication Details field params, and click **Create.**\
-   ![Abuse IPDB8 Pn](/images/AbuseIPDB8.png)
+   ![Open CVE2 Pn](/images/OpenCVE2.png)
