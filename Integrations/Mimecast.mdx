@@ -1,0 +1,66 @@
+---
+title: "Duo Security"
+description: "Duo Security is a cloud-based multi-factor authentication (MFA) and access security platform that helps protect applications and networks by requiring users to verify their identity using multiple authentication methods before granting access."
+---
+
+### Pre-requisites
+
+<Tip>
+  User Organization must have valid credentials to access the [Duo Admin Panel](https://admin.duosecurity.com/).
+</Tip>
+
+### Generate Duo Security Admin API
+
+The Admin API allows you to programmatically create, retrieve, update, and delete users, phones, hardware tokens, admins, applications, and more
+
+<Steps>
+  <Step title="Step 1">
+    1. Log in to your [Duo Admin Panel](https://admin.duosecurity.com/).\
+       \
+       ![images/Duo8.png](/images/Duo8.png)
+    2. Navigate to **Applications** → **Protect an Application**.\
+       \
+       ![images/Duo1.png](/images/Duo1.png)
+  </Step>
+  <Step title="Step 2">
+    **Generate Admin API Credentials**
+
+    1. Search for the type of integration "Admin API".
+    2. Click **Protect** to the far right to configure the Auth API.\
+       \
+       ![images/Duo2.png](/images/Duo2.png)
+    3. Scroll down to the Permissions section.
+    4. Select the required permissions (`Grant read information` , `Grant read log`, and `Grant read resource` .
+    5. Click **Save Changes**.\
+       \
+       ![images/Duo3.png](/images/Duo3.png)
+    6. In the Details section, copy and secure the **Integration Key (ikey)** – Identifies your app, **Secret Key (skey)** – A secure credential, and **API Hostname** – URL to interact with Duo.\
+       \
+       ![images/Duo4.png](/images/Duo4.png)
+  </Step>
+  <Step title="Step 3">
+    <Check>
+      <Icon icon="envelope" /> Email the **Integration Key (ikey)**, **Secret Key (skey),** and the **API Hostname URL** to AirMDR or self Configure Duo Security in AirMDR Integrations Dashboard.
+    </Check>
+  </Step>
+</Steps>
+
+### Configure Duo Security Admin API in AirMDR Integrations Dashboard
+
+1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login.**
+
+   ![](/images/Datadog11.png)
+2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**\
+   \
+   ![images/Duo7.png](/images/Duo7.png)
+3. Use the search option, enter the keyword "**Duo Security**", select the **Connections** tab, and click the **\+ Create** icon.\
+   \
+   ![images/Duo6.png](/images/Duo6.png)
+4. Enter the generated **Integration Key (ikey)**, **Secret Key (skey)** and the **API Hostname URL** in the Authentication Details field params, and click **Create.**\
+   ![images/Duo5.png](/images/Duo5.png)
+
+### Test the Integration
+
+- Attempt login with a user enrolled in Duo.
+- Check if **push notifications**, **SMS**, or **OTP codes** work.
+- Monitor API logs in the **Duo Admin Dashboard**.
