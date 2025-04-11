@@ -3,7 +3,7 @@ title: "Astrix"
 description: "Astrix Networks is a Non-human identity security platform supports on securing non-human identities (NHIs). NHIs include service accounts, API keys, and other machine-to-machine credentials that often have extensive access permissions and can pose significant security risks if not properly managed.​"
 ---
 
-### Astrix's OAuth 2.0 authentication system Integration 
+### Astrix's OAuth 2.0 authentication system Integration
 
 To integrate with Astrix's OAuth 2.0 authentication system, you will need to obtain specific credentials and endpoints:​
 
@@ -19,8 +19,8 @@ To integrate with Astrix's OAuth 2.0 authentication system, you will need to obt
   <Step title="Register Your Application with Astrix">
     1. Go to Astrix [developer Portal](https://astrix.security/).
     2. Provide the required details about your application
-       - Name of the application, 
-       - Description of the application, 
+       - Name of the application,
+       - Description of the application,
        - Website URL.​
     3. Upon successful registration, Astrix will issue
        - **Client ID**
@@ -37,7 +37,25 @@ To integrate with Astrix's OAuth 2.0 authentication system, you will need to obt
   </Step>
 </Steps>
 
-### Configure Microsoft Graph in AirMDR Integrations Dashboard
+### Evaluate Auth Token with credentials
+
+Open **cURL** and run the following command to check if your API Access is working:
+
+**Example cURL request:**
+
+```
+
+curl -X POST "https://<your_auth_url>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "client_id": "YOUR_CLIENT_ID",
+    "client_secret": "YOUR_CLIENT_SECRET",
+    "grant_type": "client_credentials",
+    "audience": "YOUR_AUDIENCE"
+  }'
+```
+
+### Configure Astrix in AirMDR Integrations Dashboard
 
 1. Navigate to [AirMDR](https://app.airmdr.com/auth/login), provide the credentials and click **Login.**
 
