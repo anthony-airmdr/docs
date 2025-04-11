@@ -1,95 +1,39 @@
 ---
-title: "Microsoft Graph"
-description: "Microsoft Graph is an API that allows developers to access Microsoft 365 data and services. It provides a unified endpoint (https://graph.microsoft.com) to interact with various Microsoft services."
+title: "Astrix"
+description: "Astrix Networks is a Non-human identity security platform supports on securing non-human identities (NHIs). NHIs include service accounts, API keys, and other machine-to-machine credentials that often have extensive access permissions and can pose significant security risks if not properly managed.​"
 ---
 
-### Pre-requisites
+### Astrix's OAuth 2.0 authentication system Integration 
 
-<Check>
-  Microsoft 365 Tenant & Azure AD Access
+To integrate with Astrix's OAuth 2.0 authentication system, you will need to obtain specific credentials and endpoints:​
 
-  - A **Microsoft 365 account** with **Azure Active Directory (Azure AD)** access
-  - If you don’t have one, you can sign up for a
-</Check>
+1. **Auth URL**: The URL where users are directed to authorize your application.​
+2. **Base URL**: The root URL for Astrix's API endpoints.​
+3. **Client ID**: A public identifier for your application, provided when you register your app with Astrix.​
+4. **Client Secret**: A confidential key used alongside the Client ID to authenticate your application.​
+5. **Audience**: Identifies the intended recipient(s) of the access token, ensuring it's used for the correct API.​
 
-<Check>
-  Azure AD App Registration Permissions
-
-  - **Global Admin** or **App Registration Administrator** role in Azure AD is required to register an app in **Azure Active Directory**
-</Check>
-
-### Setup Microsoft Graph API
-
-Setting up the **Microsoft Graph API** involves a few steps, including registering an app in **Azure AD** and configuring permissions.
+### Generate Astrix OAuth 2.0 authentication credentials
 
 <Steps>
-  <Step title="Register an App in Azure AD">
-    1. Go to [Azure Portal](https://portal.azure.com/).
-    2. Search and select "Microsoft Entra ID" in the search bar.\
-       ![images/MSGraph3.png](/images/MSGraph3.png)
-    3. Navigate to **Manage** → **App registrations.**
-    4. Click **\+ New registration.**\
-       ![images/MSGraph4.png](/images/MSGraph4.png)
-    5. Provide:
-       - **Name**: e.g., "graphapi-client-airmdr"
-       - **Supported account types**: Choose "**Accounts in any identity provider or organizational directory (for authenticating users with user flows)**"
-    6. Click **Register.**\
-       ![images/MSGraph5.png](/images/MSGraph5.png)
-
-       <Note>
-         Post successful registration, the application must open automatically if not
-         1. Search for Microsoft Entra ID.
-         2. Select **Manage** → **App registrations.**
-         3. Select the **All Applications** tab.
-         4. Click on the registered app.
-       </Note>
+  <Step title="Register Your Application with Astrix">
+    1. Go to Astrix [developer Portal](https://astrix.security/).
+    2. Provide the required details about your application
+       - Name of the application, 
+       - Description of the application, 
+       - Website URL.​
+    3. Upon successful registration, Astrix will issue
+       - **Client ID**
+       - **Client Secret**
   </Step>
-  <Step title="Configure API Permissions">
-    1. Go to **Manage** → **API Permissions** in the app settings.
-    2. Click **\+ Add a permission.**
-    3. Select **Microsoft Graph.**
-    4. Choose **Application permissions**.\
-       ![images/MSGraph6.png](/images/MSGraph6.png)
-    5. Select the required permissions:
-       - **To Disable / Enable User** - `User.EnableDisableAccount.All` \+ `User.Read.All`
-       - **To Fetch User Details** - `User.Read.All`
-       - **To Fetch User SignIn Logs** - `AuditLog.Read.All`
-       - **To Reset User Password** - `User-PasswordProfile.ReadWrite.All`
-       - **To Fetch User Groups** - `Directory.Read.All`
-       - **To Revoke Sign-In Session** - `User.RevokeSessions.All`
-       - **To List Alerts** - `SecurityEvents.Read.All` \+ `SecurityAlert.Read.All` \+ `SecurityIncident.Read.All`
-    6. Click on **Add Permissions**.
-    7. In API permissions, click **Grant admin consent**.\
-       ![images/MSGraph7.png](/images/MSGraph7.png)
+  <Step title="Determine the Auth URL and Base URL">
+    1. The **Auth URL** is typically provided in Astrix's OAuth 2.0 documentation. It's the endpoint where users will authenticate and authorize your application.​
+    2. The **Base URL** is the root endpoint for Astrix's APIs. This is also usually specified in their API documentation.​
   </Step>
-  <Step title="Create Client Secret (For Authentication)">
-    1. Go to **Manage** → **Certificates & secrets.**
-    2. Select **Client Secrets** tab.
-    3. Click **\+ New client secret.**\
-       ![images/MSGraph8.png](/images/MSGraph8.png)
-    4. Add a **description** and **expiration period.**
-    5. Click **Create**.
-
-       <Warning>
-         Copy and securely save the **Client Secret Value** (it won’t be shown again)
-       </Warning>
-  </Step>
-  <Step title="Securely share the Client Secret, Client and Tenant IDs to AirMDR">
-    To access the Client ID, and the Tenant ID to use in Graph API authentication
-
-    1. Go to [Azure Portal](https://portal.azure.com/).
-    2. Navigate to **Azure Active Directory.**
-    3. Click **App registrations.**
-    4. Select your **registered app.**
-    5. Under the **Overview** section, locate the **Application (client) ID** and **Tenant ID (Directory ID).**
-    6. Click the **Copy** icon **📋** next to the Client ID, and the Tenant ID respectively.
-
-       <Info>
-         Now, your **Tenant ID** and **Client ID** are copied and ready to use for authentication in Microsoft Graph API.
-       </Info>
-       <Check>
-         <Icon icon="envelope" /> Share the **Tenant ID**, **Client ID**, and **Client Secret** securely with the AirMDR operations team or self-configure them in the AirMDR Integrations Dashboard.
-       </Check>
+  <Step title="Define the Audience">
+    1. The **Audience** parameter ensures that the access token is intended for the correct API.​
+    2. Astrix's documentation will specify the expected audience value. It's often a URL or URI identifying the API resource.​
+    3. When making authorization requests, include the audience parameter to specify the intended recipient of the token.​
   </Step>
 </Steps>
 
@@ -100,9 +44,8 @@ Setting up the **Microsoft Graph API** involves a few steps, including registeri
    ![](/images/Datadog11.png)
 2. Navigate to the AirMDR Integrations Dashboard in the left navigation pane and select **Integrations.**\
    ![images/Duo7.png](/images/Duo7.png)
-3. Use the search option, enter the keyword "**Microsoft Graph**", select the **Connections** tab, and click the **\+ Create** icon.\
+3. Use the search option, enter the keyword "**Astrix**", select the **Connections** tab, and click the **\+ Create** icon.\
+   ![Astrix1 Pn](/images/Astrix1.png)
+4. Enter the generated **Auth URL, Base URL, Client ID, Client Secret** and the **Audience** in the Authentication Details field params, and click **Create.**\
    \
-   ![images/MSGraph2.png](/images/MSGraph2.png)
-4. Enter the generated **Tenant ID, Client ID** and the **Client Secret** in the Authentication Details field params, and click **Create.**\
-   \
-   ![images/MSGraph1.png](/images/MSGraph1.png)
+   ![Astrix2 Pn](/images/Astrix2.png)
