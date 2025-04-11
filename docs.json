@@ -42,6 +42,7 @@
                         "Integrations/Jira",
                         "Integrations/Microsoft-Defender",
                         "Integrations/Microsoft-Graph",
+                        "Integrations/Mimecast",
                         "Integrations/Okta",
                         "Integrations/OpenCVE",
                         "Integrations/PagerDuty",
